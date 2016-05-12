@@ -4,6 +4,7 @@
 * setup app basics. gems and database
 * create github repository and upload to github
 * share github page with john K
+
 * #### Winery
  * Model
     1. name **string**
@@ -16,6 +17,7 @@
  * Controller
  * View
     * Profile => (The Main View when logged in)    
+
 * #### Sales Numbers
   * Model
      1. number of tasters **number**
@@ -28,6 +30,7 @@
      1. was this an event or not **boolean**     
   * Controller
   * View
+
 * #### User Accounts
   * name
   * email
@@ -39,10 +42,12 @@
     * User 3
     * Admin 8
     * Root 11
+
 * #### Winery-Users
   * reference winery
   * reference user
-  * permissions level **number**  
+  * permissions level **number**
+
 * #### Administrator Models & Resources
   * County
       1. name **string**
@@ -53,17 +58,18 @@
       1. belongs_to: county
       1. image **refile attachment**
   * Email reminders
+
 * #### Tracking
   * user login
     * user id
     * created_at **datetime**
     * last access
     * last page time
-    
+
   ---
-  ### Design Screens
-  ![donkeys](screens/Graph.png)
+### Design Screens
+![donkeys](screens/Graph.png)
 
-  ![donkeys](screens/Monthly Show.png)
+![donkeys](screens/Monthly Show.png)
 
-  ![donkeys](screens/Monthly.png)
+![donkeys](screens/Monthly.png)
