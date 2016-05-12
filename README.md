@@ -1,12 +1,14 @@
-# README
+## README
 
 Ruby on Rails Application for Wineries to Improve Sales by co-creating regional Sales Figures and Graphs
+
+* **The todo list and roadmap is in the design folder**
 
 * Ruby version 2.3.1
 
 * Rails version 5.0.0RC1
 
-* Postgresql
+* Database is using Postgresql
 
 * Install ImageMagick
 
@@ -14,5 +16,4 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 
 * In Production Create the psql Database user "winery-sales" and set the password
 
-* run whenever -w
-  for the chrontabs for the email reminders
+* run whenever -w (to write the chrontabs for the email reminders & ...)

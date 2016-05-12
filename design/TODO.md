@@ -28,7 +28,7 @@
      1. was this an event or not **boolean**     
   * Controller
   * View
-* ##### User Accounts
+##### User Accounts
   * name
   * email
   * password
@@ -39,11 +39,11 @@
     * User 3
     * Admin 8
     * Root 11
-* ##### Winery-Users
+##### Winery-Users
   * reference winery
   * reference user
   * permissions level **number**  
-* ##### Administrator Models & Resources
+##### Administrator Models & Resources
   * County
       1. name **string**
       1. population **number**
@@ -53,11 +53,16 @@
       1. belongs_to: county
       1. image **refile attachment**
   * Email reminders
-* ##### Tracking
+* #### Tracking
   * user login
     * user id
     * created_at **datetime**
     * last access
-  * last page time
+    * last page time
   ---
-  [donkeys](google.com) are here
+  ### Design Screens
+  ![donkeys](screens/Graph.png)
+
+  ![donkeys](screens/Monthly Show.png)
+
+  ![donkeys](screens/Monthly.png)
