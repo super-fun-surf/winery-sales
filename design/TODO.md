@@ -2,9 +2,9 @@
 
 * ~~create new Winery-Sales application framework~~
 * setup app basics. gems and database
-* create github repository and upload to github
-* share github page with john K
+* ~~create github repository and upload to github~~
 
+## Phase 1
 * #### Winery
  * Model
     1. name **string**
@@ -13,6 +13,7 @@
     1. year established **number**
     1. number of employees **number**
     1. image **refile attachment**
+    1. estate **boolean**
     1. array of dates for reminder emails **pg array or json**
  * Controller
  * View
@@ -42,6 +43,7 @@
     * User 3
     * Admin 8
     * Root 11
+  * Agree to terms
 
 * #### Winery-Users
   * reference winery
@@ -59,6 +61,7 @@
       1. image **refile attachment**
   * Email reminders
 
+## Phase 2
 * #### Tracking
   * user login
     * user id
@@ -67,8 +70,10 @@
     * last page time
 
   ---
+
 ### Design Screens
-![donkeys](screens/Graph.png)
+
+![nameofimage](screens/Graph.png)
 
 ![donkeys](screens/Monthly Show.png)
 

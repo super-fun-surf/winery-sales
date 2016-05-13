@@ -2,7 +2,7 @@
 
 Ruby on Rails Application for Wineries to Improve Sales by co-creating regional Sales Figures and Graphs
 
-* **The todo list and roadmap is in the design folder**
+* **The [todo list](design/TODO.md) and roadmap is in the design folder**
 
 * Ruby version 2.3.1
 
