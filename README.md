@@ -12,7 +12,7 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 
 * Install ImageMagick
 
-* Copy over the env.yml into the config/ folder
+* Copy over the env.yml into the folder config/ 
 
 * In Production Create the psql Database user "winery-sales" and set the password
 

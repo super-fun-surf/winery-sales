@@ -43,7 +43,8 @@
     * User 3
     * Admin 8
     * Root 11
-  * Agree to terms
+  1. #### Actions for the Users
+    1. Agree to terms
 
 * #### Winery-Users
   * reference winery
