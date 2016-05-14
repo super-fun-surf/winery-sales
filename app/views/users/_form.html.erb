@@ -1,0 +1,39 @@
+<%= form_for(@user, html: {class: "form-inline"}) do |f| %>
+  <%= render 'shared/error_messages', donkey: f.object %>
+
+  <div class="form-group pull-right">
+    <%# f.submit 'Save', class: 'btn btn-primary' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, class: "form-label" %><br>
+    <%= f.text_field :name, size: 50, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :email, class: "form-label" %><br>
+    <%= f.email_field :email, size: 50, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :password, class: "form-label"  %><br>
+    <%= f.password_field :password, size: 50, class: "form-control" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= f.label :password_confirmation, "Confirmation", class: "form-label"  %><br>
+    <%= f.password_field :password_confirmation, size: 50, class: "form-control" %>
+  </div>
+  <br>
+
+  <%# attachment_image_tag @mega_mail, :image, :fill, 220, 100, style: 'border-radius:.2em;' %>
+  <div class="form-group">
+    <strong><%# f.label :image, 'Heading Image', class: 'form-label' %></strong><br>
+    <%# f.attachment_field :image, direct: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
+  </div>
+  <br>
+<% end %>

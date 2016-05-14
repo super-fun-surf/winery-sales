@@ -45,6 +45,9 @@
     * Root 11
   1. #### Actions for the Users
     1. Agree to terms
+    1. email a login link.
+    1. email a password reset
+    1. email a verification    
 
 * #### Winery-Users
   * reference winery

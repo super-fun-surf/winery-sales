@@ -1,0 +1,6 @@
+
+<%= link_to 'signup', new_user_url %>
+<br>
+<% @users.each do |user| %>
+  <%= user.name %><br>
+<% end %>
