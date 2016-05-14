@@ -47,7 +47,9 @@
     1. Agree to terms
     1. email a login link.
     1. email a password reset
-    1. email a verification    
+    1. email a verification
+    1. Create a Winery
+    1. Join a winery **with Approval automated**
 
 * #### Winery-Users
   * reference winery

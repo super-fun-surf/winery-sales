@@ -11,8 +11,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)    # Not the final implementation!
+    @user = User.new(user_params)
     if @user.save
+      log_in @user
       redirect_to @user, notice: "User account created successfully, Welcome!"
     else
       render 'new'
