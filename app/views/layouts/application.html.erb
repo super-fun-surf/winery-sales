@@ -24,7 +24,7 @@
         <%= link_to "Log in", login_path %>
       <% end %>
     </div>
-    <div style='' class="main">
+    <div style='' class="container-fluid main">
       <%= yield %>
       <%= debug(params) if Rails.env.development? %>
     </div>

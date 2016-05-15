@@ -1,0 +1,39 @@
+
+
+ <div class="card card-block" style="margin-left:.5rem;margin-right:.5rem;display:inline-block;max-width:20rem;background-color:rgba(200,200,200,1.0);">
+   <img class="card-img-top" src="<%= gravatar_img_url user.email %>">
+   <div class="card-block">
+     <h4 class="card-title"><%= link_to user.name, user %></h4>
+     <p class="card-text">Last Login: <%= pluralize(rand(31), "day") %> ago.<br>
+     <%= pluralize(rand(5), "Month") %> behind entering data.</p>
+   </div>
+   <ul class="list-group list-group-flush">
+     <li class="list-group-item">CFO @ The Winery Co.</li>
+
+   </ul>
+   <div class="card-block">
+     <a href="#" class="card-link">Edit User</a>
+     <% if current_user.admin? && !current_user?(user) %>
+     <%= link_to "Destroy User", user, method: :delete,
+                                 class: 'card-link btn btn-sm btn-danger',
+                                  data: { confirm: "You sure?" } %>
+                                  <% end %>
+
+
+   </div>
+ </div>
+
+<!--
+ <div class="media" style="margin:1rem;border-radius:.333em;max-width:20rem;display:inline-block;background-color:rgba(200,200,200,1.0)">
+   <a class="media-left" href="#">
+     <img class="media-object" src="<%= gravatar_img_url user.email %>" alt="Generic placeholder image">
+   </a>
+   <div class="media-body" style="padding-top:.6em;padding-bottom:1em;padding-right:.420em;">
+     <h4 class="media-heading" ><%= link_to user.name, user %></h4>
+     CFO @ The Winery Co.<br>
+     Last Login: 2 days ago.<br>
+     1 Month behind entering data.
+
+   </div>
+ </div>
+-->

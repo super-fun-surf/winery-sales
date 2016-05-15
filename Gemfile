@@ -20,13 +20,11 @@ gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'will_paginate', '~> 3.1.0'
-#gem 'will_paginate-bootstrap'
 #gem 'bootstrap-will_paginate'
-gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+#gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
-
 gem 'font-awesome-rails', '~> 4.5.0', :require => "font-awesome-rails"
 
 #database postgresql

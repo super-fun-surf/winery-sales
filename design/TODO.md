@@ -41,7 +41,7 @@
   * permissions **number**
     * Guest 0
     * User 3
-    * Admin 8
+    * Admin 10
     * Root 11
   1. #### Actions for the Users
     1. Agree to terms

@@ -33,4 +33,26 @@ class User < ApplicationRecord
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
+
+#USERS PERMISSIONS
+  def active?
+    return false unless permissions > 0
+    true
+  end
+  def winery_user?
+    return false unless permissions >= 3
+    true
+  end
+  def admin?
+    return false unless permissions >= 10
+    true
+  end
+  def root?
+    return false unless permissions >= 11
+    true
+  end
+
+
+
+
 end
