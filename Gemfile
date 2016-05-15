@@ -17,10 +17,12 @@ gem "refile", require: "refile/rails", github: 'refile/refile'
 gem "refile-mini_magick", github: 'refile/refile-mini_magick'
 
 #style
-#gem 'autoprefixer-rails'
+
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'will_paginate', '~> 3.1.0'
+#gem 'will_paginate-bootstrap'
 #gem 'bootstrap-will_paginate'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

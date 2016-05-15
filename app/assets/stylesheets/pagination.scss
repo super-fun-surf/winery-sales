@@ -1,0 +1,54 @@
+.pagination {
+  background: #f1f1f1;
+  //border: 1px solid #e5e5e5;
+  text-align: center;
+  vertical-align: middle;
+  //padding: 1em;
+  cursor: default;
+  display: inline-block;
+  margin: .2em .35em .2em .35em !important;
+  font-size: 1.1em;
+  line-height: 1.2;
+  align-self: center;
+  ul {
+    border: none;
+  }
+
+  .previous_page, .next_page {
+    //background: #31B0D5;
+    background: rgba(91, 192, 222, .6);
+    padding: .2em;
+    padding-left: .3em;
+    padding-right: .3em;
+    border-radius: .3em;
+
+    margin: .1em;
+  }
+  span {
+    padding: 0.2em 0.3em;
+  }
+  li {
+    display: inline-block;
+  }
+  .disabled {
+    color: #aaaaaa;
+  }
+  .active {
+    font-style: normal;
+    font-weight: 800;
+    background-color: darken(#f1f1f1, 20);
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 1em;
+    text-shadow: rgba(white, .8) 1px 1px 1px;
+  }
+  a {
+    padding: .5em;
+    text-decoration: none;
+    color: black;
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
+  }
+}
