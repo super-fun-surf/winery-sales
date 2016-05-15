@@ -3,9 +3,33 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.rc1', '< 5.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'rack', github: 'rack/rack'
+gem 'sinatra', github: 'sinatra/sinatra'
+#gem 'rack', '~> 2.0.0.rc1'
+
+#spreadsheets
+#gem 'roo', '~> 2.1.0'
+#gem 'roo-xls', '~> 1.0.0'
+
+#files
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+gem "refile", require: "refile/rails", github: 'refile/refile'
+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+
+#style
+#gem 'autoprefixer-rails'
+gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'will_paginate', '~> 3.1.0'
+#gem 'bootstrap-will_paginate'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+
+gem 'font-awesome-rails', '~> 4.5.0', :require => "font-awesome-rails"
+
+#database postgresql
 gem 'pg'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -19,6 +43,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.x'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -36,6 +61,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'rails-controller-testing'
+  gem 'faker',                '1.4.2'
+  gem 'sqlite3'
 end
 
 group :development do

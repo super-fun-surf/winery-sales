@@ -1,6 +1,15 @@
 
-<%= link_to 'signup', new_user_url %>
+<%# link_to 'signup', new_user_url %>
 <br>
+<%= will_paginate @users %>
+
+<ul class="users">
 <% @users.each do |user| %>
-  <%= user.name %><br>
+  <li>
+    <%= gravatar_for user.email %>
+    <%= link_to user.name, user %>
+  </li>
 <% end %>
+</ul>
+
+<%= will_paginate @users %>

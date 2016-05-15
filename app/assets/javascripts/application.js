@@ -12,5 +12,24 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
+
+//= require tether
+//= require bootstrap-sprockets
+//= require refile
+
 //= require_tree .
+
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+
+    $(function(){
+      $.fn.wysihtml5.defaultOptions.toolbar.fa = true;
+    });
+});
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
