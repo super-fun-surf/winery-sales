@@ -20,7 +20,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.create_activation_digest
     @user.save
-    send_user_activation_mail(@user, "Wineries - New User Registration")    
+    send_user_activation_mail(@user, "Wineries - New User Registration")
+    render json: { status: :ok }
   end
 
   def create

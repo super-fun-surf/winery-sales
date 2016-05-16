@@ -1,11 +1,36 @@
-<h1>Welcome to the Wineries Group of Mendocino</h1>
-<%# debugger %>
-<p>Hi <%= @user.name %>,</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      .button {
+        padding: .6em;
+        padding-top: .45em;
+        font-size: 1.5em;
+        border-radius: 1em;
+        border: none;
+        background-color: rgb(174, 252, 234);
+        margin: 1em;
+      }
+      a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
 
-<p>
-  Community Resource Center!<br>
-  Click on the link below to activate your account:
-</p>
+  <body>
+    <h1>Welcome to the Wineries Group of Mendocino</h1>
+    <%# debugger %>
+    <p>Hi <%= @user.name %>,</p>
 
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
-                                                    email: @user.email) %>
+    <p>
+      Welcome to our Community Resource Center!<br>
+      Click on the link below to activate your account:
+    </p>
+    <p style="padding-top:1em;">
+    <%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+                                                        email: @user.email), class: 'button' %>
+
+                                                      </p>
+  </body>
+</html>
