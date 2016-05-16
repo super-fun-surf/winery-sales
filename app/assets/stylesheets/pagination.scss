@@ -6,17 +6,19 @@
   //padding: 1em;
   cursor: default;
   display: inline-block;
-  margin: .2em .35em .2em .35em !important;
+  margin: .2em .35em .4em .35em !important;
   font-size: 1.1em;
   line-height: 1.2;
   align-self: center;
+  padding-top: .2em;
+  padding-bottom: .2em;
   ul {
     border: none;
   }
 
   .previous_page, .next_page {
     //background: #31B0D5;
-    background: rgba(250, 229, 184, .25);
+    //background: rgba(250, 229, 184, .25);
     padding: .2em;
     padding-left: .3em;
     padding-right: .3em;
