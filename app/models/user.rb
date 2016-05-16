@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
 
-  self.per_page = 10
+  self.per_page = 12
 
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -85,7 +85,7 @@ class User < ApplicationRecord
   def password_reset_expired?
     reset_sent_at < 3.hours.ago
   end
-  
+
   private
     def downcase_email
       self.email = email.downcase

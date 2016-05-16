@@ -28,6 +28,8 @@ module UserMailgun
     return '500'
   end
 
+  # render_to_string(:action => "users/profile", :layout => false)
+  
   def user_activation_html(user)
     render_to_string partial: 'user_email/account_activation', locals: {user: user}
   end

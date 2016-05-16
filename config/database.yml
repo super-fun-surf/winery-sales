@@ -28,5 +28,8 @@ test:
 production:
   <<: *default
   #database: db/production.sqlite3
+  #sudo -u postgres createuser -s winery
+  #sudo -u postgres psql
+  #\password winery   #use same password as is in the env.yml
   username: winery
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>

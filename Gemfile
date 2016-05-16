@@ -8,8 +8,8 @@ gem 'sinatra', github: 'sinatra/sinatra'
 #gem 'rack', '~> 2.0.0.rc1'
 
 #spreadsheets
-#gem 'roo', '~> 2.1.0'
-#gem 'roo-xls', '~> 1.0.0'
+gem 'roo', '~> 2.1.0'
+gem 'roo-xls', '~> 1.0.0'
 
 #email
 gem 'mailgun-ruby', '~>1.1.0'

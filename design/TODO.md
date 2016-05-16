@@ -3,6 +3,9 @@
 * ~~create new Winery-Sales application framework~~
 * setup app basics. gems and database
 * ~~create github repository and upload to github~~
+* ~~Users~~
+* Wineries
+* Sales
 
 ## Phase 1
 * #### Winery
