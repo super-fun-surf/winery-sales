@@ -85,11 +85,7 @@ class User < ApplicationRecord
   def password_reset_expired?
     reset_sent_at < 3.hours.ago
   end
-  # Sends password reset email.
-  def send_password_reset_email
-    send_password_reset_mail(self)
-  end
-
+  
   private
     def downcase_email
       self.email = email.downcase
