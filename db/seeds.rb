@@ -9,14 +9,34 @@ User.create!(name:  "Luke",
              email: "lukeallen@gmail.com",
              password:              "donkey",
              password_confirmation: "donkey",
-             permissions: 10)
+             permissions: 10,
+             activated_at: Time.zone.now)
+ User.create!(name:  "Donkey",
+              email: "donkey@donkeydonkey.net",
+              password:              "donkey",
+              password_confirmation: "donkey",
+              permissions: 3,
+              activated_at: Time.zone.now)
 
-20.times do |n|
+10.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name:  name,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               permissions: 3,
+               activated_at: Time.zone.now)
+end
+
+10.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+100}@railstutorial.org"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password
+               )
 end

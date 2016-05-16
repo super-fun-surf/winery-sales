@@ -11,6 +11,9 @@ gem 'sinatra', github: 'sinatra/sinatra'
 #gem 'roo', '~> 2.1.0'
 #gem 'roo-xls', '~> 1.0.0'
 
+#email
+gem 'mailgun-ruby', '~>1.1.0'
+
 #files
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem "refile", require: "refile/rails", github: 'refile/refile'

@@ -4,15 +4,21 @@ donkey:
   email: donkey@example.com
   password_digest: <%= User.digest('password') %>
   permissions: 10
+  activated_at: <%= Time.zone.now %>
+
 monkey:
   name: Monkey Man
   email: monkey@example.com
   password_digest: <%= User.digest('password') %>
+  permissions: 3
+  activated_at: <%= Time.zone.now %>
 
 michael:
   name: Michael Example
   email: michael@example.com
   password_digest: <%= User.digest('password') %>
+  permissions: 3
+  activated_at: <%= Time.zone.now %>
 
 archer:
   name: Sterling Archer

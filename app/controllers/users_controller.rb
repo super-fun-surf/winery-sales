@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  include UserMailgun
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.all.paginate(page: params[:page])
+    @users = User.order(created_at: :desc).paginate(page: params[:page])
   end
 
   def show
@@ -15,11 +16,19 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def send_new_activation_email
+    @user = User.find(params[:id])
+    @user.create_activation_digest
+    @user.save
+    send_user_activation_mail(@user, "Wineries - New User Registration")    
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      redirect_to @user, notice: "User account created successfully, Welcome!"
+      send_user_activation_mail(@user, "Wineries - New User Registration")
+      redirect_to @user, notice: "User account created: Welcome!"
     else
       render 'new'
     end

@@ -1,24 +1,35 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
 
-<div class="=">
-  <div class="">
-    <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+<div class="row">
+  <div class="col-md-2 col-lg-3 col-xl-4"></div>
+  <div class="col-md-8 col-lg-6 col-xl-4">
+    <div class="card card-block">
+      <h1>Log in</h1>
+      <%= form_for(:session, url: login_path, html: {class: ''}) do |f| %>
+        <%# render 'shared/error_messages', donkey: f.object %>
+        <div class="form-group">
+          <%= f.label :email, class: "form-label"  %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+        <div class="form-group">
+          <%= f.label :password, class: "form-label"  %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :remember_me, class: "form-label checkbox inline" do %>
+            <%= f.check_box :remember_me, class: '', style: "position:relative;margin-left:0;" %>
+            <span>Remember me on this computer</span>
+          <% end %>
 
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-       <%= f.check_box :remember_me %>
-       <span>Remember me on this computer</span>
+        </div>
+
+        <%= f.submit "Log in", class: "btn btn-primary" %>
       <% end %>
-      
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+    </div>
   </div>
+  <div class="col-md-2 col-lg-3 col-xl-4"></div>
 </div>

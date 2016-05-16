@@ -1,0 +1,16 @@
+<h1>We received your order</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>
+  We received your order and are processing it. Enjoy the weather and have a Happy Garden.
+</p>
+
+<br>
+<h3>Order #<%= @order.id %></h3>
+<% @order.line_items.each do |li| %>
+  <%= li.product_id %> | <%= li.name %> x <%= li.quantity %> = <%= number_to_currency li.price_with_discount %>
+  <br>
+<% end %>
+  <br>
+  <h2>Total: <%= number_to_currency(@order.invoice_total.to_f) %></h2>

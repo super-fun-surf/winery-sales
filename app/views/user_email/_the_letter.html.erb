@@ -1,0 +1,22 @@
+<%= render partial: "mega_mails/style", layout: false %>
+
+<div class="marketing-bg" style="width:100%;">
+  <div align="center" style="padding:1em;">
+    <div id="container" style="box-shadow: 0px 0px 12px 3px rgba(0,0,0,.223);padding-bottom:2em;overflow:hidden;border-radius:.5em;background-color:rgba(255, 255, 248,.98);width:100%;max-width:620px;">
+      <%# attachment_image_tag(customer.orders.first.line_items.first.product.docs.order(:created_at).first, :image, :fill, 600, 204, format: "jpg") %>
+      <%# image_tag(root_url + attachment_url(customer.orders.order(:created_at).last.line_items.first.product.docs.order(:created_at).first, :image, :fill, 600, 204, format: "jpg")) %>
+      <% product = nil  %>
+      <%= image_tag(root_url + attachment_url(@mega_mail, :image, :fill, 620, 244, format: "jpg"), width: "100%", class: "header") if @mega_mail.image.present? %>
+      <%# customer.orders.length %>
+      <div class="mega_mail_content" align="left" style="line-height:1.1em;padding:2em;padding-top:1em;">
+        <%# <h3>Hi %>
+        <%# @name %>
+        <%# ,</h3> %>
+        <%= raw message %>
+      </div>
+      <small align="center"><strong><a href="https://bountifulgardens.org">Bountiful Gardens <%= Time.now.strftime('%Y') %></a></small></strong>
+      <br>
+      <small align="right"><strong><%= link_to 'unsubscribe', new_unsubscribe_url(email: @email) if @email.present? %></small></strong>
+    </div>
+  </div>
+</div>

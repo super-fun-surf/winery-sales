@@ -1,10 +1,5 @@
 <% provide(:title, @user.name) %>
-
-<h1>
-
-</h1>
-<h2></h2>
-<h3></h3>
+<div>
 <h2>
   <%= gravatar_for @user.email %>
   <%= @user.name %>
@@ -12,3 +7,16 @@
 <h3>
   <%= @user.email %>
 </h3>
+</div>
+<br>
+<% if !@user.activated? %>
+  <div>
+    Your Account is not yet verified. Check your email for an activation mail.
+    <br>
+    <%= link_to 'Resend Activation Email', send_new_activation_email_path(id:@user.id), remote: true, onclick: "this.style.backgroundColor='rgb(245, 169, 99)';this.style.color='#FFFFFF';", class: 'btn btn-sm btn-info' %>
+  </div>
+<% end %>
+<% if admin? %>
+<%# @user.activation_token  = User.new_token %>
+<%# render partial: 'user_email/account_activation', layout: false, locals: {user: @user} %>
+<% end %>

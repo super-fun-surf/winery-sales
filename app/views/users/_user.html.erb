@@ -4,8 +4,11 @@
    <img class="card-img-top" src="<%= gravatar_img_url user.email %>">
    <div class="card-block">
      <h4 class="card-title"><%= link_to user.name, user %></h4>
-     <p class="card-text">Last Login: <%= pluralize(rand(31), "day") %> ago.<br>
-     <%= pluralize(rand(5), "Month") %> behind entering data.</p>
+     <p class="card-text">
+       Last Login: <%= pluralize(rand(31), "day") %> ago.<br>
+       <%= pluralize(rand(5), "Month") %> behind entering data.<br>
+       <small><%= mail_to user.email %></small>
+     </p>
    </div>
    <ul class="list-group list-group-flush">
      <li class="list-group-item">CFO @ The Winery Co.</li>
