@@ -1,0 +1,29 @@
+<%= image_tag attachment_url(@region, :profile_image, :fill, 620, 244, format: "jpg"), class: 'profile-image-wide' if @region.profile_image.present? %>
+
+<h2>
+  <%= @region.name %>
+</h2>
+
+<p>
+  <strong>County:</strong>
+  <%= link_to @region.county.name, @region.county, class: 'btn btn-secondary' %>
+</p>
+<p>
+  <strong><%= pluralize(@region.wineries.count, 'Winery') %></strong>
+  <br>
+  <% @region.wineries.each do |winery| %>
+    <style>
+      #winery-name {
+        background: url('<%= root_url + attachment_url(winery, :profile_image, :fill, 200, 60, format: "jpg") if winery.profile_image.present? %>');
+      }
+    </style>
+    <%= link_to winery.name, winery, class: 'btn btn-secondary btn-text-shadow', id: 'winery-name' %>
+  <% end %>
+</p>
+
+<p>
+  Averages for the region
+</p>
+
+<%= link_to 'Edit', edit_region_path(@region) %> |
+<%= link_to 'Back', regions_path %>

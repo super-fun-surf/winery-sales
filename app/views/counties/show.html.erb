@@ -1,0 +1,43 @@
+<%= image_tag attachment_url(@county, :profile_image, :fill, 620, 244, format: "jpg"), class: 'profile-image-wide' if @county.profile_image.present? %>
+
+<h2>
+  <%= @county.name %>
+</h2>
+
+<p>
+  <strong>Population:</strong>
+  <%= @county.population %>
+</p>
+
+<p>
+  <strong><%= pluralize(@county.regions.count, 'Region') %></strong>
+  <br>
+  <% @county.regions.each do |region| %>
+    <style>
+      #region-<%= region.id.to_s %> {
+        <% if region.profile_image.present? %>
+          background: url('<%= root_url + attachment_url(region, :profile_image, :fill, 200, 60, format: "jpg") %>');
+        <% end %>
+      }
+    </style>
+
+    <% name = region.name + '<br>' + '<small>' + pluralize(region.wineries.count, 'Winery') + '</small>'
+    name = name.html_safe %>
+    <%= link_to region.name, region, class: 'btn btn-secondary btn-text-shadow', id: 'region-' + region.id.to_s %>
+    <%=  %>
+  <% end %>
+</p>
+<p>
+  <strong><%= pluralize(@county.wineries.count, 'Winery') %></strong>
+  <br>
+  <% @county.wineries.each do |winery| %>
+    <style>
+      #winery-name {
+        background: url('<%= root_url + attachment_url(winery, :profile_image, :fill, 200, 60, format: "jpg") if winery.profile_image.present?%>');
+      }
+    </style>
+    <%= link_to winery.name, winery, class: 'btn btn-secondary btn-text-shadow', id: 'winery-name' %>
+  <% end %>
+</p>
+<%= link_to 'Edit', edit_county_path(@county) %> |
+<%= link_to 'Back', counties_path %>

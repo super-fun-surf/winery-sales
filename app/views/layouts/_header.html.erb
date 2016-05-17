@@ -1,0 +1,21 @@
+<div style='' class="header">
+  <% if admin? %>
+    <%= link_to "All Users", users_path, class: "btn btn-sm btn-secondary" %>
+    <%= link_to "All Wineries", wineries_path, class: "btn btn-sm btn-secondary" %>
+  <% end %>
+
+  <% if logged_in? %>
+    <%= link_to 'Counties', counties_path, class: 'btn btn-sm btn-secondary' %>
+    <%= link_to 'Regions', regions_path, class: 'btn btn-sm btn-secondary' %>
+    <%= link_to current_user.name, user_path(current_user) %>
+    |
+    <%= link_to "Edit Profile", edit_user_path(current_user) %>
+    |
+    <%= link_to "Log out", logout_path, method: :delete %>
+  <% else #not logged in  %>
+    <div class="nav pull-right">
+      <%= link_to "Log in", login_path, class: 'btn btn-primary' %>
+      <%= link_to "Sign Up!", signup_path, class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

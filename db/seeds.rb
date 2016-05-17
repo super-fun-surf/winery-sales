@@ -18,25 +18,47 @@ User.create!(name:  "Luke",
               permissions: 3,
               activated_at: Time.zone.now)
 
-10.times do |n|
+20.times do |n|
   name  = Faker::Name.name
+  title = Faker::Name.title
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
+  #w = Winery.all.count
+  #winery = Winery.find(1..w)
   User.create!(name:  name,
                email: email,
                password:              password,
                password_confirmation: password,
+               title: title,
                permissions: 3,
                activated_at: Time.zone.now)
 end
 
+
+
+County.create!(name:  "Mendocino",
+               population: 88000
+               )
+
+
 10.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+100}@railstutorial.org"
-  password = "password"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password
+  name  = Faker::Address.city
+  county = County.find_by(name: "Mendocino")
+  Region.create!(name:  name,
+               county: county
+               )
+end
+
+
+52.times do |n|
+  name  = Faker::Company.name
+  num_of_employees = rand(46)
+  year_established = rand(1900..2016)
+  c = Region.all.count
+  region = Region.find(rand(1..c))
+  Winery.create!(name:  name,
+               num_of_employees: num_of_employees,
+               year_established: year_established,
+               region: region
                )
 end

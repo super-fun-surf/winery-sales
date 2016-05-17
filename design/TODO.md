@@ -11,7 +11,7 @@
 * #### Winery
  * Model
     1. name **string**
-    1. county **reference**
+    1. county **implied**
     1. region **reference**
     1. year established **number**
     1. number of employees **number**
@@ -61,9 +61,9 @@
 
 * #### Administrator Models & Resources
   * County
-      1. name **string**
-      1. population **number**
-      1. image **refile attachment**
+      1. ~~name **string**~~
+      1. ~~population **number**~~
+      1. profile_image **refile attachment**
   * Region
       1. name **string**
       1. belongs_to: county

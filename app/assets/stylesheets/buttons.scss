@@ -1,3 +1,14 @@
 .btn-top-margin {
   margin-top: .6em;
 }
+
+.btn-text-shadow {
+  color: rgb(10,10,10);
+  text-shadow: 0px 0px 2px rgb(255,255,255);
+  //text-shadow: 2px 2px #ff0000;
+  &:hover {
+    color: rgb(1,1,1);
+    background: white !important;
+  }
+  border-color: rgb(80,80,80);
+}

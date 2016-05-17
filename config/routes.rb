@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :wineries
+  resources :regions
+  resources :counties
   get 'password_resets/new'
 
   get 'password_resets/edit'

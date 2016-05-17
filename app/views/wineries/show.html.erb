@@ -1,0 +1,38 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @winery.name %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @winery.region %>
+</p>
+
+<p>
+  <strong>Year established:</strong>
+  <%= @winery.year_established %>
+</p>
+
+<p>
+  <strong>Num of employees:</strong>
+  <%= @winery.num_of_employees %>
+</p>
+
+<p>
+  <strong>Profile image:</strong>
+  <%= @winery.profile_image_id %>
+</p>
+
+<p>
+  <strong>Estate:</strong>
+  <%= @winery.estate %>
+</p>
+
+<p>
+  <strong>Reminder days:</strong>
+  <%= @winery.reminder_days %>
+</p>
+
+<%= link_to 'Edit', edit_winery_path(@winery) %> |
+<%= link_to 'Back', wineries_path %>

@@ -6,3 +6,54 @@ body {
   top: 3.2em;
   padding-top: 1em;
 }
+
+
+footer {
+  position:fixed;
+  left: 0;
+  bottom: -.2em;
+  width:100%;
+
+  padding-left: .618em;
+  padding-right: .618em;
+  margin-top: 0em;
+  padding-top: 0em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  line-height: 1em;
+  height: $footer_xs;
+
+  @include media-breakpoint-up(sm) {
+    padding-left: 1em;
+    padding-right: 2em;
+    margin-top: 0;
+    padding-top: .618em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+
+    height: $footer_sm;
+  }
+
+  background-color: $footer-color;
+  color: #161518;
+  a {
+    color: #161518;
+    &:hover {
+      color: rgb(100,10,10);
+    }
+    &:visited {
+      color: #161518;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<%= form_for(winery) do |f| %>
+  <%= render 'shared/error_messages', donkey: f.object %>
+
+  <div class="form-group">
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :region, class: "form-label" %>
+    <%= f.collection_select :region_id, Region.order(:name), :id, :name, class: "form-control"  %>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.label :year_established, class: "form-label" %>
+    <%= f.number_field :year_established, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :num_of_employees, class: "form-label" %>
+    <%= f.number_field :num_of_employees, class: "form-control"  %>
+  </div>
+
+  <%= attachment_image_tag winery, :profile_image, :fill, 220, 100, style: 'border-radius:.2em;' %>
+  <div class="form-group">
+    <strong><%= f.label :profile_image, 'Winery Profile Image', class: 'form-label' %></strong><br>
+    <%= f.attachment_field :profile_image, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :estate, class: "form-label" %>
+    <%= f.check_box :estate, class: "form-control"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reminder_days, class: "form-label" %>
+    <%= f.text_field :reminder_days %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: 'btn btn-success', onclick: "this.style.backgroundColor='rgb(0, 135, 153)';this.style.color='#FFFFFF';this.innerHTML='Uploading #{fa_icon('spinner spin')}';" %>
+  </div>
+<% end %>

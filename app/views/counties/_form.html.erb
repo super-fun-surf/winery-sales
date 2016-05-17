@@ -1,0 +1,23 @@
+<%= form_for(county) do |f| %>
+  <%= render 'shared/error_messages', donkey: f.object %>
+
+  <div class="form-group">
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-control"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :population, class: "form-label" %>
+    <%= f.text_field :population, class: "form-control"  %>
+  </div>
+
+  <%= attachment_image_tag county, :profile_image, :fill, 220, 100, style: 'border-radius:.2em;' %>
+  <div class="form-group">
+    <strong><%= f.label :profile_image, 'County Profile Image', class: 'form-label' %></strong><br>
+    <%= f.attachment_field :profile_image, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: 'btn btn-success', onclick: "this.style.backgroundColor='rgb(0, 135, 153)';this.style.color='#FFFFFF';this.innerHTML='Uploading #{fa_icon('spinner spin')}';" %>
+  </div>
+<% end %>
