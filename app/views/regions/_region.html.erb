@@ -1,7 +1,7 @@
 
 
  <div class="card card-block" style="margin-left:.5rem;margin-right:.5rem;display:inline-block;max-width:20rem;background-color:rgba(200,200,200,1.0);">
-   <img class="card-img-top" src="<%= attachment_url(region, :profile_image, :fill, 280, 120, format: "jpg")%>">
+   <img class="card-img-top" style="max-width:16rem;" src="<%= attachment_url(region, :profile_image, :fill, 280, 120, format: "jpg", fallback: random_cali_image)%>">
 
    <div class="card-block">
      <h4 class="card-title"><%= link_to region.name, region %></h4>

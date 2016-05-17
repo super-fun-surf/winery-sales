@@ -1,38 +1,31 @@
+<%= image_tag attachment_url(@region, :profile_image, :fill, 620, 244, format: "jpg", fallback: random_wine_image), class: 'profile-image-wide' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @winery.name %>
-</p>
+<br>
+  <strong><%= @winery.name %></strong>
 
-<p>
-  <strong>Region:</strong>
-  <%= @winery.region %>
-</p>
 
-<p>
-  <strong>Year established:</strong>
-  <%= @winery.year_established %>
-</p>
+<div class="winery-info">
+  <p>
+    <strong>Region:</strong>
+    <%= link_to @winery.region.name, @winery.region %>
+  </p>
 
-<p>
-  <strong>Num of employees:</strong>
-  <%= @winery.num_of_employees %>
-</p>
+  <p>
+    <strong>Year established:</strong>
+    <%= @winery.year_established %>
+  </p>
 
-<p>
-  <strong>Profile image:</strong>
-  <%= @winery.profile_image_id %>
-</p>
+  <p>
+    <strong>Num of employees:</strong>
+    <%= @winery.num_of_employees %>
+  </p>
 
-<p>
-  <strong>Estate:</strong>
-  <%= @winery.estate %>
-</p>
-
-<p>
-  <strong>Reminder days:</strong>
-  <%= @winery.reminder_days %>
-</p>
+  <p>
+    <strong>Estate:</strong>
+    <%= @winery.estate %>
+  </p>
+</div>
+<br>
 
 <%= link_to 'Edit', edit_winery_path(@winery) %> |
 <%= link_to 'Back', wineries_path %>

@@ -11,8 +11,8 @@
      </p>
    </div>
    <ul class="list-group list-group-flush">
-     <li class="list-group-item">Winery 1</li>
-     <li class="list-group-item">Winery 2</li>
+     <li class="list-group-item"><%= pluralize(county.regions.count, 'Region') %></li>
+     <li class="list-group-item"><%= pluralize(county.wineries.count, 'Winery') %></li>
 
    </ul>
    <div class="card-block">
