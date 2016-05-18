@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  region: one
+  winery: one
+  year_established: 1
+  num_of_employees: 1
+  profile_image_id: MyString
+  estate: false
+
+two:
+  name: MyString
+  region: two
+  winery: two
+  year_established: 1
+  num_of_employees: 1
+  profile_image_id: MyString
+  estate: false

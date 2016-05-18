@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tasting_rooms
   resources :wineries
   resources :regions
   resources :counties

@@ -10,13 +10,10 @@
 ## Phase 1
 * #### Winery
  * Model
-    1. name **string**
-    1. county **implied**
-    1. region **reference** REMOVE
+    1. name **string**    
     1. year established **number**
     1. number of employees **number**
-    1. image **refile attachment**
-    1. estate **boolean** REMOVE
+    1. image **refile attachment**    
     1. array of dates for reminder emails **pg array or json**
  * Controller
  * View
@@ -24,11 +21,12 @@
 
  * #### Tasting room
   * Model
+    1. name
     1. winery **belongs_to**
     1. region **reference**
     1. year established **number**
     1. number of employees **number**
-    1. image **refile attachment**
+    1. image **refile attachment** use the winery if not present
     1. estate **boolean**
 
 * #### Sales Numbers

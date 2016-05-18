@@ -6,8 +6,10 @@
 
 <div class="winery-info">
   <p>
-    <strong>Region:</strong>
-    <%= link_to @winery.region.name, @winery.region %>
+    <strong>Regions:</strong>
+    <% @winery.tasting_rooms.each do |tr| %>
+      <%= link_to tr.region.name, tr.region %>
+    <% end %>
   </p>
 
   <p>
@@ -20,10 +22,7 @@
     <%= @winery.num_of_employees %>
   </p>
 
-  <p>
-    <strong>Estate:</strong>
-    <%= @winery.estate %>
-  </p>
+  
 </div>
 <br>
 

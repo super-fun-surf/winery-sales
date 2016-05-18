@@ -50,17 +50,30 @@ County.create!(name:  "Mendocino",
 end
 
 
-36.times do |n|
+12.times do |n|
   name  = Faker::Company.name
   num_of_employees = rand(46)
+  year_established = rand(1900..2016)
+  Winery.create!(name:  name,
+               num_of_employees: num_of_employees,
+               year_established: year_established,
+               )
+end
+
+20.times do |n|
+  name  = Faker::Company.name
+  num_of_employees = rand(13)
   year_established = rand(1900..2016)
   c = Region.all.count
   region = Region.find(rand(1..c))
   estate = rand(1)
-  Winery.create!(name:  name,
+  w = Winery.all.count
+  winery = Winery.find(rand(1..w))
+  TastingRoom.create!(name:  name,
                num_of_employees: num_of_employees,
                year_established: year_established,
                region: region,
-               estate: estate
+               estate: estate,
+               winery: winery
                )
 end

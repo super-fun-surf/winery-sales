@@ -6,7 +6,10 @@
    <div class="card-block">
      <h4 class="card-title"><%= link_to winery.name, winery %></h4>
      <p class="card-text">
-       <%= link_to winery.region.name, winery.region %><br>
+       <strong>Tasting Rooms:</strong><br>
+        <% winery.tasting_rooms.each do |tr| %>
+          <%= link_to tr.region.name, tr %><br>
+          <% end %>
        Est. <%= winery.year_established %><br>
        <strong>Num of employees:</strong>
        <%= winery.num_of_employees %><br>

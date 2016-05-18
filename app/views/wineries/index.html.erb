@@ -21,11 +21,11 @@
     <% @wineries.each do |winery| %>
       <tr>
         <td><%= winery.name %></td>
-        <td><%= winery.region %></td>
+        <td><%= winery.regions.count %></td>
         <td><%= winery.year_established %></td>
         <td><%= winery.num_of_employees %></td>
         <td><%= winery.profile_image_id %></td>
-        <td><%= winery.estate %></td>
+        <td><%# winery.estate %></td>
         <td><%= winery.reminder_days %></td>
         <td><%= link_to 'Show', winery %></td>
         <td><%= link_to 'Edit', edit_winery_path(winery) %></td>

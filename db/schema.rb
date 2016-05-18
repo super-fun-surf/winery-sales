@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517041250) do
+ActiveRecord::Schema.define(version: 20160518143133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(version: 20160517041250) do
     t.index ["county_id"], name: "index_regions_on_county_id", using: :btree
   end
 
+  create_table "tasting_rooms", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "region_id"
+    t.integer  "winery_id"
+    t.integer  "year_established"
+    t.integer  "num_of_employees"
+    t.string   "profile_image_id"
+    t.boolean  "estate"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["region_id"], name: "index_tasting_rooms_on_region_id", using: :btree
+    t.index ["winery_id"], name: "index_tasting_rooms_on_winery_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -51,18 +65,16 @@ ActiveRecord::Schema.define(version: 20160517041250) do
 
   create_table "wineries", force: :cascade do |t|
     t.string   "name"
-    t.integer  "region_id"
     t.integer  "year_established"
     t.integer  "num_of_employees"
     t.string   "profile_image_id"
-    t.boolean  "estate"
     t.jsonb    "reminder_days"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["region_id"], name: "index_wineries_on_region_id", using: :btree
     t.index ["reminder_days"], name: "index_wineries_on_reminder_days", using: :gin
   end
 
   add_foreign_key "regions", "counties"
-  add_foreign_key "wineries", "regions"
+  add_foreign_key "tasting_rooms", "regions"
+  add_foreign_key "tasting_rooms", "wineries"
 end

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tasting_room.name %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @tasting_room.region %>
+</p>
+
+<p>
+  <strong>Winery:</strong>
+  <%= @tasting_room.winery %>
+</p>
+
+<p>
+  <strong>Year established:</strong>
+  <%= @tasting_room.year_established %>
+</p>
+
+<p>
+  <strong>Num of employees:</strong>
+  <%= @tasting_room.num_of_employees %>
+</p>
+
+<p>
+  <strong>Profile image:</strong>
+  <%= @tasting_room.profile_image_id %>
+</p>
+
+<p>
+  <strong>Estate:</strong>
+  <%= @tasting_room.estate %>
+</p>
+
+<%= link_to 'Edit', edit_tasting_room_path(@tasting_room) %> |
+<%= link_to 'Back', tasting_rooms_path %>
