@@ -12,18 +12,28 @@
  * Model
     1. name **string**
     1. county **implied**
+    1. region **reference** REMOVE
+    1. year established **number**
+    1. number of employees **number**
+    1. image **refile attachment**
+    1. estate **boolean** REMOVE
+    1. array of dates for reminder emails **pg array or json**
+ * Controller
+ * View
+    * Profile => (The Main View when logged in)
+
+ * #### Tasting room
+  * Model
+    1. winery **belongs_to**
     1. region **reference**
     1. year established **number**
     1. number of employees **number**
     1. image **refile attachment**
     1. estate **boolean**
-    1. array of dates for reminder emails **pg array or json**
- * Controller
- * View
-    * Profile => (The Main View when logged in)    
 
 * #### Sales Numbers
   * Model
+     1. tasting_room **belongs_to**
      1. number of tasters **number**
      1. number of tasters that purchased **number**
      1. number of club signups **number**
@@ -39,7 +49,7 @@
   * name
   * email
   * password
-  * has many wineries through winery_users
+  * has many wineries through winery_users **CHANGE**
   * picture **refile attachment**  
   * permissions **number**
     * Guest 0
