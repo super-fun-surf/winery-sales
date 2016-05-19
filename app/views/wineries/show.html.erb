@@ -6,9 +6,9 @@
 
 <div class="winery-info">
   <p>
-    <strong>Regions:</strong>
+    <strong>Regions:</strong><br>
     <% @winery.tasting_rooms.each do |tr| %>
-      <%= link_to tr.region.name, tr.region %>
+      <%= link_to tr.region.name, tr %><br>
     <% end %>
   </p>
 
@@ -22,7 +22,7 @@
     <%= @winery.num_of_employees %>
   </p>
 
-  
+
 </div>
 <br>
 

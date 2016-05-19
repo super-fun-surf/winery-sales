@@ -7,6 +7,13 @@ body {
   padding-top: 1em;
 }
 
+.table-hover-inverse {
+  tr{
+    &:hover {
+    background-color: rgb(117, 128, 117);
+  }
+}
+}
 
 footer {
   position:fixed;

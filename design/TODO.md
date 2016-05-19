@@ -29,17 +29,20 @@
     1. image **refile attachment** use the winery if not present
     1. estate **boolean**
 
-* #### Sales Numbers
+* #### Sales Summary
   * Model
      1. tasting_room **belongs_to**
      1. number of tasters **number**
-     1. number of tasters that purchased **number**
+     1. number of purchasers **number**
      1. number of club signups **number**
-     1. tasting sales **floating point**
-     1. month **nunber** could be nill if using start and end date
-     1. start date **datetime** could be nill if using monthly entry
-     1. end date **datetime** could be nill if event or monthly entry
-     1. was this an event or not **boolean**     
+     1. sales_in_dollars **floating point**
+     1. year **number**
+     1. month **nunber** could be nill     
+     1. day **number** could be nill.
+
+     1. **not to start** was this an event or not **boolean**     
+     1. **not to start** start date **datetime** could be nill if using monthly entry
+     1. **not to start** end date **datetime** could be nill if event or monthly entry     
   * Controller
   * View
 

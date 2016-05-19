@@ -1,0 +1,40 @@
+
+<h1>Sales Summaries</h1>
+
+<table class="table table-hover table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Tasting room</th>
+      <th>Num of tasters</th>
+      <th>Num of purchasers</th>
+      <th>Num of club signups</th>
+      <th>Sales in dollars</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Day</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales_summaries.each do |sales_summary| %>
+      <tr>
+        <td><%= sales_summary.tasting_room.winery.name %></td>
+        <td><%= sales_summary.num_of_tasters %></td>
+        <td><%= sales_summary.num_of_purchasers %></td>
+        <td><%= sales_summary.num_of_club_signups %></td>
+        <td><%= sales_summary.sales_in_dollars %></td>
+        <td><%= sales_summary.year %></td>
+        <td><%= sales_summary.month %></td>
+        <td><%= sales_summary.day %></td>
+        <td><%= link_to 'Show', sales_summary %></td>
+        <td><%= link_to 'Edit', edit_sales_summary_path(sales_summary) %></td>
+        <td><%= link_to 'Destroy', sales_summary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sales Summary', new_sales_summary_path %>

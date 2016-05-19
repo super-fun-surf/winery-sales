@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tasting room:</strong>
+  <%= @sales_summary.tasting_room %>
+</p>
+
+<p>
+  <strong>Num of tasters:</strong>
+  <%= @sales_summary.num_of_tasters %>
+</p>
+
+<p>
+  <strong>Num of purchasers:</strong>
+  <%= @sales_summary.num_of_purchasers %>
+</p>
+
+<p>
+  <strong>Num of club signups:</strong>
+  <%= @sales_summary.num_of_club_signups %>
+</p>
+
+<p>
+  <strong>Sales in dollars:</strong>
+  <%= @sales_summary.sales_in_dollars %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @sales_summary.year %>
+</p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @sales_summary.month %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @sales_summary.day %>
+</p>
+
+<%= link_to 'Edit', edit_sales_summary_path(@sales_summary) %> |
+<%= link_to 'Back', sales_summaries_path %>

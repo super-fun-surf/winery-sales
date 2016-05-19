@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tasting_room: one
+  num_of_tasters: 1
+  num_of_purchasers: 1
+  num_of_club_signups: 1
+  sales_in_dollars: 9.99
+  year: 1
+  month: 1
+  day: 1
+
+two:
+  tasting_room: two
+  num_of_tasters: 1
+  num_of_purchasers: 1
+  num_of_club_signups: 1
+  sales_in_dollars: 9.99
+  year: 1
+  month: 1
+  day: 1

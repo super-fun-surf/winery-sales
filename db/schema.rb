@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518143133) do
+ActiveRecord::Schema.define(version: 20160519021712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20160518143133) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["county_id"], name: "index_regions_on_county_id", using: :btree
+  end
+
+  create_table "sales_summaries", force: :cascade do |t|
+    t.integer  "tasting_room_id"
+    t.integer  "num_of_tasters"
+    t.integer  "num_of_purchasers"
+    t.integer  "num_of_club_signups"
+    t.decimal  "sales_in_dollars",    precision: 8, scale: 2
+    t.integer  "year"
+    t.integer  "month"
+    t.integer  "day"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.index ["tasting_room_id"], name: "index_sales_summaries_on_tasting_room_id", using: :btree
   end
 
   create_table "tasting_rooms", force: :cascade do |t|
@@ -75,6 +89,7 @@ ActiveRecord::Schema.define(version: 20160518143133) do
   end
 
   add_foreign_key "regions", "counties"
+  add_foreign_key "sales_summaries", "tasting_rooms"
   add_foreign_key "tasting_rooms", "regions"
   add_foreign_key "tasting_rooms", "wineries"
 end

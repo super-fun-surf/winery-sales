@@ -69,11 +69,52 @@ end
   estate = rand(1)
   w = Winery.all.count
   winery = Winery.find(rand(1..w))
-  TastingRoom.create!(name:  name,
+  room = TastingRoom.create!(name:  name,
                num_of_employees: num_of_employees,
                year_established: year_established,
                region: region,
                estate: estate,
                winery: winery
                )
+  month = 1
+  4.times do |sale|
+    tasters = rand(3..90)
+    purchasers = rand(tasters)
+    clubs = rand(tasters/2)
+    sales_in_dollars = rand(120.00..30000.00)
+    year = 2016
+    chance = rand(5)
+    if chance < 4
+      SalesSummary.create!(tasting_room: room,
+                        num_of_tasters: tasters,
+                        num_of_purchasers: purchasers,
+                        num_of_club_signups: clubs,
+                        sales_in_dollars: sales_in_dollars,
+                        month: month,
+                        year: year
+                        )
+    end
+    month = month + 1
+  end
+  month = 1
+  12.times do |sale|
+    tasters = rand(3..90)
+    purchasers = rand(tasters)
+    clubs = rand(tasters/2)
+    sales_in_dollars = rand(120.00..30000.00)
+    year = 2015
+    #chance = rand(5)
+    #if chance < 4
+      SalesSummary.create!(tasting_room: room,
+                        num_of_tasters: tasters,
+                        num_of_purchasers: purchasers,
+                        num_of_club_signups: clubs,
+                        sales_in_dollars: sales_in_dollars,
+                        month: month,
+                        year: year
+                        )
+    #end
+    month = month + 1
+  end
+
 end
