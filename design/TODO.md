@@ -4,8 +4,12 @@
 * setup app basics. gems and database
 * ~~create github repository and upload to github~~
 * ~~Users~~
-* Wineries
-* Sales
+* ~~Wineries~~
+* ~~Sales~~
+* make a way of reporting the missing sales months for the tasting rooms
+* winery profile sidebar Partial
+  * for incorporation into individual month sales summaries
+  
 
 ## Phase 1
 * #### Winery

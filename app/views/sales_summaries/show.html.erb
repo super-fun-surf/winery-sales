@@ -1,44 +1,68 @@
-<p id="notice"><%= notice %></p>
+<h2>Winery: <%= link_to @sales_summary.tasting_room.winery.name, @sales_summary.tasting_room.winery %></h2>
+<div class="pull-right">
+  <%= link_to 'Edit', edit_sales_summary_path(@sales_summary), class: 'btn btn-secondary' %> |
+</div>
+<strong>Tasting room:</strong>
+<%= link_to @sales_summary.tasting_room.region.name, @sales_summary.tasting_room.region %>
+<br>
 
-<p>
-  <strong>Tasting room:</strong>
-  <%= @sales_summary.tasting_room %>
-</p>
+<% sales_summary = @sales_summary %>
 
-<p>
-  <strong>Num of tasters:</strong>
-  <%= @sales_summary.num_of_tasters %>
-</p>
 
-<p>
-  <strong>Num of purchasers:</strong>
-  <%= @sales_summary.num_of_purchasers %>
-</p>
-
-<p>
-  <strong>Num of club signups:</strong>
-  <%= @sales_summary.num_of_club_signups %>
-</p>
-
-<p>
-  <strong>Sales in dollars:</strong>
-  <%= @sales_summary.sales_in_dollars %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @sales_summary.year %>
-</p>
-
-<p>
-  <strong>Month:</strong>
-  <%= @sales_summary.month %>
-</p>
-
-<p>
-  <strong>Day:</strong>
-  <%= @sales_summary.day %>
-</p>
-
-<%= link_to 'Edit', edit_sales_summary_path(@sales_summary) %> |
-<%= link_to 'Back', sales_summaries_path %>
+<div style="width: 100%;max-width:40rem;" class="container-regular table-responsive">
+  <h3><%= Date::MONTHNAMES[sales_summary.month] %> <%= sales_summary.year %></h3>
+  <table class="table-summary table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= @sales_summary.tasting_room.winery.name %></th>
+        <th>Variance</th>
+        <th>Region Average</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="right">Tasters</td>
+        <td><%= sales_summary.num_of_tasters %></td>
+        <td><span class="btn variance_pos">%</span></td>
+        <td><%= sales_summary.avg_tasters %></td>
+      </tr>
+      <tr>
+        <td class="right">Tasters that purchased</td>
+        <td><%= sales_summary.num_of_purchasers %></td>
+        <td><span class="btn variance_neg">%</td>
+        <td>Num#</td>
+      </tr>
+      <tr>
+        <td class="right">Club Signups</td>
+        <td><%= sales_summary.num_of_club_signups %></td>
+        <td>%</td>
+        <td>Num#</td>
+      </tr>
+      <tr>
+        <td class="right">Tasting Room Sales</td>
+        <td><%= number_to_currency sales_summary.sales_in_dollars, precision: 0 %></td>
+        <td>%</td>
+        <td>Num#</td>
+      </tr>
+      <tr>
+        <td class="right">Purchase Conversion</td>
+        <td><%= number_to_percentage sales_summary.percent_tasters_purcahased, precision: 1 %></td>
+        <td>%</td>
+        <td>Num#</td>
+      </tr>
+      <tr>
+        <td class="right">Club Conversion</td>
+        <td><%= number_to_percentage sales_summary.percent_club_signup, precision: 1 %></td>
+        <td>%</td>
+        <td>Num#</td>
+      </tr>
+      <tr>
+        <td class="right">Sales Per Taster</td>
+        <td><%= number_to_currency sales_summary.sales_per_taster %></td>
+        <td>%</td>
+        <td>Num#</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

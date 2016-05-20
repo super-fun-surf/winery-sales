@@ -1,3 +1,4 @@
+<%= image_tag attachment_url(@tasting_room.winery, :profile_image, :fill, 620, 244, format: "jpg", fallback: random_wine_image), class: 'profile-image-wide' %>
 <div class="pull-right">
   <%= link_to 'Edit', edit_tasting_room_path(@tasting_room), class: 'btn btn-secondary' %>
 </div>
@@ -14,9 +15,6 @@
 </p>
 
 <p>
-</p>
-
-<p>
   <strong>Year established:</strong>
   <%= @tasting_room.year_established %>
 </p>
@@ -24,11 +22,6 @@
 <p>
   <strong>Num of employees:</strong>
   <%= @tasting_room.num_of_employees %>
-</p>
-
-<p>
-  <strong>Profile image:</strong>
-  <%= @tasting_room.profile_image_id %>
 </p>
 
 <p>

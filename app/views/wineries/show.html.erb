@@ -2,7 +2,7 @@
   <div class="col-md-4 col-lg-3">
     <%= image_tag attachment_url(@region, :profile_image, :fill, 620, 244, format: "jpg", fallback: random_wine_image), class: 'profile-image-wide' %>
     <br>
-    <h3 style="line-height:1.6em;"><%= @winery.name %></h3>
+    <h3 style="line-height:1.6em;margin-left:.25em;"><%= @winery.name %></h3>
     <div class="winery-info">
       <p>
         <strong>Regions:</strong><br>

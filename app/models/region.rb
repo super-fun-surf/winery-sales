@@ -3,4 +3,6 @@ class Region < ApplicationRecord
   belongs_to :county
   has_many :tasting_rooms
   has_many :wineries, through: :tasting_rooms
+
+
 end
