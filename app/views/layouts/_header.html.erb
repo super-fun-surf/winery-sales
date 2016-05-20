@@ -1,10 +1,11 @@
 <div style='' class="header">
   <% if admin? %>
     <%= link_to "All Users", users_path, class: "btn btn-sm btn-secondary" %>
-    <%= link_to "All Wineries", wineries_path, class: "btn btn-sm btn-secondary" %>
+
   <% end %>
 
   <% if logged_in? %>
+    <%= link_to "All Wineries", wineries_path, class: "btn btn-sm btn-secondary" %>
     <%= link_to 'Counties', counties_path, class: 'btn btn-sm btn-secondary' %>
     <%= link_to 'Regions', regions_path, class: 'btn btn-sm btn-secondary' %>
     <div class="nav pull-right">
