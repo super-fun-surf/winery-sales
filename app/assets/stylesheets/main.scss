@@ -19,9 +19,18 @@ body {
   border-radius: .4em;
   padding: 1.2em;
   padding-top: 1.8em;
+  padding-bottom: 3em;
   margin: 1em;
   margin-bottom: 2em;
+
 }
+
+.form-inline-spaced {
+  div {
+    margin-bottom: 1em !important;
+}
+}
+
 footer {
   position:fixed;
   left: 0;

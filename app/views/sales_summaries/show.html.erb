@@ -3,7 +3,7 @@
   <%= link_to 'Edit', edit_sales_summary_path(@sales_summary), class: 'btn btn-secondary' %> |
 </div>
 <strong>Tasting room:</strong>
-<%= link_to @sales_summary.tasting_room.region.name, @sales_summary.tasting_room.region %>
+<%= link_to @sales_summary.tasting_room.region.name, @sales_summary.tasting_room %>
 <br>
 
 <% sales_summary = @sales_summary %>

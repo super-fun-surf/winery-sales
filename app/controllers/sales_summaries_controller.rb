@@ -15,6 +15,8 @@ class SalesSummariesController < ApplicationController
   # GET /sales_summaries/new
   def new
     @sales_summary = SalesSummary.new
+    @sales_summary.month = Date.today.month
+    @sales_summary.year = Date.today.year
   end
 
   # GET /sales_summaries/1/edit
