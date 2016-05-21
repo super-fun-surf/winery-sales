@@ -3,16 +3,16 @@
   <div class="col-md-10 col-lg-8 col-xl-6">
     <div class="container-regular">
       <h1>Enter Sales for the Month</h1>
-      <%= form_for(sales_summary, html: {class: "form-inline form-inline-spaced"}) do |f| %>
+      <%= form_for(sales_summary, html: {class: ""}) do |f| %>
         <%= render 'shared/error_messages', donkey: f.object %>
         <% if params[:tasting_room].present? %>
           <%= f.hidden_field :tasting_room_id, :value => params[:tasting_room] %>
         <% end %>
         <br>
-        <div class="form-group">
-          <%= f.label :month, class: "form-label" %>
+        <div class="form-inline form-group row">
+          <%= f.label :month, class: "form-control-label" %>
           <%= select_month(@sales_summary.month, :field_name => 'month', :prefix => 'sales_summary', class: "form-control") %>
-          <%= f.label :year, class: "form-label" %>
+          <%= f.label :year, class: "form-control-label" %>
           <%= select_year(@sales_summary.year, field_name: 'year', prefix: 'sales_summary', class: 'form-control') %>
         </div>
 
@@ -21,24 +21,32 @@
           <%# f.text_field :tasting_room_id %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :num_of_tasters, class: "form-label" %>
-          <%= f.number_field :num_of_tasters, class: 'form-control' %>
+        <div class="form-group row">
+          <%= f.label :num_of_tasters, style: 'text-align:right', class: "form-control-label col-sm-5" %>
+          <div class="col-sm-7">
+            <%= f.number_field :num_of_tasters, class: 'form-control ' %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :num_of_tasters_that_purchased, class: "form-label" %>
-          <%= f.number_field :num_of_purchasers, class: 'form-control' %>
+        <div class="form-group row">
+          <%= f.label :num_of_tasters_that_purchased, style: 'text-align:right', class: "form-control-label col-sm-5" %>
+          <div class="col-sm-7">
+            <%= f.number_field :num_of_purchasers, class: 'form-control' %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :num_of_club_signups, class: "form-label" %>
-          <%= f.number_field :num_of_club_signups, class: 'form-control' %>
+        <div class="form-group row">
+          <%= f.label :num_of_club_signups, style: 'text-align:right', class: "form-control-label col-sm-5" %>
+          <div class="col-sm-7">
+            <%= f.number_field :num_of_club_signups, class: 'form-control' %>
+          </div>
         </div>
 
-        <div class="form-group">
-          <%= f.label :sales_in_dollars, class: "form-label" %>
-          <%= f.text_field :sales_in_dollars, class: 'form-control' %>
+        <div class="form-group row">
+          <%= f.label :sales_in_dollars, style: 'text-align:right', class: "form-control-label col-sm-5" %>
+          <div class="col-sm-7">
+            <%= f.text_field :sales_in_dollars, class: 'form-control' %>
+          </div>
         </div>
 
 
