@@ -58,7 +58,7 @@ class SalesSummariesController < ApplicationController
   def destroy
     @sales_summary.destroy
     respond_to do |format|
-      format.html { redirect_to sales_summaries_url, notice: 'Sales summary was successfully destroyed.' }
+      format.html { redirect_to :back || sales_summaries_url, notice: 'Sales summary was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
