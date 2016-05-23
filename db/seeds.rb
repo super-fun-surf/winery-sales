@@ -11,11 +11,11 @@ User.create!(name:  "Luke",
              password_confirmation: "donkey",
              permissions: 10,
              activated_at: Time.zone.now)
- User.create!(name:  "Donkey",
-              email: "donkey@donkeydonkey.net",
-              password:              "donkey",
-              password_confirmation: "donkey",
-              permissions: 3,
+ User.create!(name:  "John K",
+              email: "john@westcompany.org",
+              password:              "geterdone",
+              password_confirmation: "geterdone",
+              permissions: 10,
               activated_at: Time.zone.now)
 
 20.times do |n|
