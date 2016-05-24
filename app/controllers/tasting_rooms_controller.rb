@@ -10,6 +10,8 @@ class TastingRoomsController < ApplicationController
   # GET /tasting_rooms/1
   # GET /tasting_rooms/1.json
   def show
+    #@start_time_this_year = Date.today.beginning_of_year
+    @end_month = Date.today.month - 1
   end
 
   # GET /tasting_rooms/new
@@ -65,6 +67,7 @@ class TastingRoomsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_tasting_room
       @tasting_room = TastingRoom.find(params[:id])
+      @winery = @tasting_room.winery if @tasting_room.winery.present?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -27,6 +27,8 @@ class SalesSummariesController < ApplicationController
       else
         redirect_to :back, notice: "Month not available yet"
       end
+    else
+      @tasting_room = @sales_summary.tasting_room
     end
   end
 

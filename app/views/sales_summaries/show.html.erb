@@ -1,141 +1,137 @@
-<h2>Winery: <%= link_to @sales_summary.tasting_room.winery.name, @sales_summary.tasting_room.winery %></h2>
-<div class="pull-right">
-  <%= link_to 'Edit', edit_sales_summary_path(@sales_summary), class: 'btn btn-secondary' %> |
-</div>
-<strong>Tasting room:</strong>
-<%= link_to @sales_summary.tasting_room.region.name, @sales_summary.tasting_room %>
+<% provide(:title, @sales_summary.winery.name) %>
+<%# link_to @sales_summary.tasting_room.winery.name, @sales_summary.tasting_room.winery %>
+<%# link_to @sales_summary.tasting_room.region.name, @sales_summary.tasting_room %>
 <br>
-
 <% sales_summary = @sales_summary %>
-
-
-<div style="width: 100%;max-width:40rem;" class="container-regular table-responsive">
-
-    <h3>
-      <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
-        <div class="styled_select">
-          <%= select_month(@sales_summary.month, :field_name => 'month', class: "form-control" ) %>
-        </div>
-        <div class="styled_select">
-          <%= select_year(@sales_summary.year, field_name: 'year', class: 'form-control') %>
-        </div>
-        <%= submit_tag "View", class: "btn btn-success-outline", style: "position:relative;" %>
+<div class="row">
+  <%= render partial: 'wineries/side_profile', locals: {winery: @sales_summary.winery} %>
+  <div class="col-md-12 col-lg-9">
+    <div style="width: 100%;max-width:40rem;" class="container-regular table-responsive">
+      <h3>
+        <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
+          <div class="styled_select">
+            <%= select_month(@sales_summary.month, :field_name => 'month', class: "form-control" ) %>
+          </div>
+          <div class="styled_select">
+            <%= select_year(@sales_summary.year, field_name: 'year', class: 'form-control') %>
+          </div>
+          <%= submit_tag "View", class: "btn btn-success-outline", style: "position:relative;" %>
         <% end %>
-          <%# Date::MONTHNAMES[sales_summary.month] %> <%# sales_summary.year %>
+        <%# Date::MONTHNAMES[sales_summary.month] %> <%# sales_summary.year %>
       </h3>
+      <table class="table-summary table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th><strong style="font-size:1.1em;"><%= @sales_summary.tasting_room.winery.name %></strong>: <%= @sales_summary.tasting_room.region.name %></th>
+            <th>Variance</th>
+            <th>Region Average</th>
+          </tr>
+        </thead>
+        <tbody>
 
+          <tr>
+            <td class="right">Tasters</td>
+            <td><%= sales_summary.num_of_tasters %></td>
+            <td><span class="btn
+              <% if sales_summary.num_of_tasters_percent_different >= 0 %>
+              variance_pos
+              <% else %>
+              variance_neg
+              <% end %>
+              ">
+              <%= number_to_percentage sales_summary.num_of_tasters_percent_different, precision: 1 %></span>
+            </td>
+            <td><%= sales_summary.avg_tasters %></td>
+          </tr>
 
-  <table class="table-summary table-hover">
-    <thead>
-      <tr>
-        <th></th>
-        <th><strong style="font-size:1.1em;"><%= @sales_summary.tasting_room.winery.name %></strong>: <%= @sales_summary.tasting_room.region.name %></th>
-        <th>Variance</th>
-        <th>Region Average</th>
-      </tr>
-    </thead>
-    <tbody>
+          <tr>
+            <td class="right">Tasters that purchased</td>
+            <td><%= sales_summary.num_of_purchasers %></td>
+            <td><span class="btn
+              <% if sales_summary.num_of_purchasers_percent_different >= 0 %>
+              variance_pos
+              <% else %>
+              variance_neg
+              <% end %>
+              ">
+              <%= number_to_percentage sales_summary.num_of_purchasers_percent_different, precision: 1 %></span>
+            </td>
+            <td><%= sales_summary.avg_purchasers %></td>
+          </tr>
 
-      <tr>
-        <td class="right">Tasters</td>
-        <td><%= sales_summary.num_of_tasters %></td>
-        <td><span class="btn
-          <% if sales_summary.num_of_tasters_percent_different >= 0 %>
-          variance_pos
-          <% else %>
-          variance_neg
-          <% end %>
-          ">
-          <%= number_to_percentage sales_summary.num_of_tasters_percent_different, precision: 1 %></span>
-        </td>
-        <td><%= sales_summary.avg_tasters %></td>
-      </tr>
-
-      <tr>
-        <td class="right">Tasters that purchased</td>
-        <td><%= sales_summary.num_of_purchasers %></td>
-        <td><span class="btn
-          <% if sales_summary.num_of_purchasers_percent_different >= 0 %>
-          variance_pos
-          <% else %>
-          variance_neg
-          <% end %>
-          ">
-          <%= number_to_percentage sales_summary.num_of_purchasers_percent_different, precision: 1 %></span>
-        </td>
-        <td><%= sales_summary.avg_purchasers %></td>
-      </tr>
-
-      <tr>
-        <td class="right">Club Signups</td>
-        <td><%= sales_summary.num_of_club_signups %></td>
-        <td><span class="btn
-          <% if sales_summary.num_of_club_signups_percent_different >= 0 %>
-          variance_pos
-          <% else %>
-          variance_neg
-          <% end %>
-          ">
-          <%= number_to_percentage sales_summary.num_of_club_signups_percent_different, precision: 1 %></span>
-        </td>
-        <td><%= sales_summary.avg_club_signups %></td>
-      </tr>
-      <tr>
-        <td class="right">Tasting Room Sales</td>
-        <td><%= number_to_currency sales_summary.sales_in_dollars, precision: 0 %></td>
-        <td><span class="btn
-          <% if sales_summary.sales_in_dollars_percent_different >= 0 %>
-          variance_pos
-          <% else %>
-          variance_neg
-          <% end %>
-          ">
-          <%= number_to_percentage sales_summary.sales_in_dollars_percent_different, precision: 1 %></span>
-        </td>
-        <td><%= number_to_currency sales_summary.avg_sales_in_dollars, precision: 0 %></td>
-      </tr>
-      <tr>
-        <td class="right">Purchase Conversion</td>
-        <td><%= number_to_percentage sales_summary.percent_tasters_purcahased, precision: 1 %></td>
-        <td><span class="btn
-          <% if sales_summary.conversion_percent_different >= 0 %>
-          variance_pos
-          <% else %>
-          variance_neg
-          <% end %>
-          ">
-          <%= number_to_percentage sales_summary.conversion_percent_different, precision: 1 %></span>
-        </td>
-        <td><%= number_to_percentage sales_summary.avg_tasters_purchased, precision: 1 %></td>
-      </tr>
-      <tr>
-        <td class="right">Club Conversion</td>
-        <td><%= number_to_percentage sales_summary.percent_club_signup, precision: 1 %></td>
-        <td><span class="btn
-          <% if sales_summary.club_conversion_percent_different >= 0 %>
-          variance_pos
-          <% else %>
-          variance_neg
-          <% end %>
-          ">
-          <%= number_to_percentage sales_summary.club_conversion_percent_different, precision: 1 %></span>
-        </td>
-        <td><%= number_to_percentage sales_summary.avg_club_conversion, precision: 1 %></td>
-      </tr>
-      <tr>
-        <td class="right">Sales Per Taster</td>
-        <td><%= number_to_currency sales_summary.sales_per_taster %></td>
-        <td><span class="btn
-          <% if sales_summary.sales_per_taster_percent_different >= 0 %>
-          variance_pos
-          <% else %>
-          variance_neg
-          <% end %>
-          ">
-          <%= number_to_percentage sales_summary.sales_per_taster_percent_different, precision: 1 %></span>
-        </td>
-        <td><%= number_to_currency sales_summary.avg_sales_per_taster, precision: 1 %></td>
-      </tr>
-    </tbody>
-  </table>
+          <tr>
+            <td class="right">Club Signups</td>
+            <td><%= sales_summary.num_of_club_signups %></td>
+            <td><span class="btn
+              <% if sales_summary.num_of_club_signups_percent_different >= 0 %>
+              variance_pos
+              <% else %>
+              variance_neg
+              <% end %>
+              ">
+              <%= number_to_percentage sales_summary.num_of_club_signups_percent_different, precision: 1 %></span>
+            </td>
+            <td><%= sales_summary.avg_club_signups %></td>
+          </tr>
+          <tr>
+            <td class="right">Tasting Room Sales</td>
+            <td><%= number_to_currency sales_summary.sales_in_dollars, precision: 0 %></td>
+            <td><span class="btn
+              <% if sales_summary.sales_in_dollars_percent_different >= 0 %>
+              variance_pos
+              <% else %>
+              variance_neg
+              <% end %>
+              ">
+              <%= number_to_percentage sales_summary.sales_in_dollars_percent_different, precision: 1 %></span>
+            </td>
+            <td><%= number_to_currency sales_summary.avg_sales_in_dollars, precision: 0 %></td>
+          </tr>
+          <tr>
+            <td class="right">Purchase Conversion</td>
+            <td><%= number_to_percentage sales_summary.percent_tasters_purcahased, precision: 1 %></td>
+            <td><span class="btn
+              <% if sales_summary.conversion_percent_different >= 0 %>
+              variance_pos
+              <% else %>
+              variance_neg
+              <% end %>
+              ">
+              <%= number_to_percentage sales_summary.conversion_percent_different, precision: 1 %></span>
+            </td>
+            <td><%= number_to_percentage sales_summary.avg_tasters_purchased, precision: 1 %></td>
+          </tr>
+          <tr>
+            <td class="right">Club Conversion</td>
+            <td><%= number_to_percentage sales_summary.percent_club_signup, precision: 1 %></td>
+            <td><span class="btn
+              <% if sales_summary.club_conversion_percent_different >= 0 %>
+              variance_pos
+              <% else %>
+              variance_neg
+              <% end %>
+              ">
+              <%= number_to_percentage sales_summary.club_conversion_percent_different, precision: 1 %></span>
+            </td>
+            <td><%= number_to_percentage sales_summary.avg_club_conversion, precision: 1 %></td>
+          </tr>
+          <tr>
+            <td class="right">Sales Per Taster</td>
+            <td><%= number_to_currency sales_summary.sales_per_taster %></td>
+            <td><span class="btn
+              <% if sales_summary.sales_per_taster_percent_different >= 0 %>
+              variance_pos
+              <% else %>
+              variance_neg
+              <% end %>
+              ">
+              <%= number_to_percentage sales_summary.sales_per_taster_percent_different, precision: 1 %></span>
+            </td>
+            <td><%= number_to_currency sales_summary.avg_sales_per_taster, precision: 1 %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

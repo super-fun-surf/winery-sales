@@ -1,3 +1,4 @@
+<% provide(:title, @tasting_room.winery.name) %>
 <div class="row">
   <%= render partial: 'wineries/side_profile', locals: {winery: @tasting_room.winery} %>
   <div class="col-md-12 col-lg-9">
@@ -14,6 +15,7 @@
     <%# end %>
 
     <br>
+    <%# render partial: 'tasting_rooms/sales_graph', locals: {tasting_room: @tasting_room} %>
     <%= render partial: 'tasting_rooms/sales_table', locals: {tasting_room: @tasting_room} %>
   </div>
 </div>
