@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    redirect_to log_in_path, notice: "Goodbye"
+    redirect_to login_path, notice: "Goodbye"
   end
 end
