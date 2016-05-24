@@ -1,5 +1,5 @@
 class SalesSummariesController < ApplicationController
-  before_action :set_sales_summary, only: [:show, :edit, :update, :destroy]
+  before_action :set_sales_summary, only: [:edit, :update, :destroy]
 
   # GET /sales_summaries
   # GET /sales_summaries.json
@@ -10,13 +10,37 @@ class SalesSummariesController < ApplicationController
   # GET /sales_summaries/1
   # GET /sales_summaries/1.json
   def show
+
+    if params[:date].present?
+      month = params[:date][:month]
+      year = params[:date][:year]
+      sales_summary = SalesSummary.find(params[:id])
+      @sales_summary = SalesSummary.where(month: month, year: year, tasting_room: sales_summary.tasting_room ).first
+    else #if params[:id].present?
+      @sales_summary = SalesSummary.find(params[:id])
+    end
+
+    if @sales_summary.blank?
+      date = Date.new(year.to_i, month.to_i)
+      if date <= Date.today
+        redirect_to new_sales_summary_path(year: year, month: month, tasting_room: sales_summary.tasting_room)
+      else
+        redirect_to :back, notice: "Month not available yet"
+      end
+    end
   end
 
   # GET /sales_summaries/new
   def new
     @sales_summary = SalesSummary.new
-    @sales_summary.month = Date.today.month
-    @sales_summary.year = Date.today.year
+    @tasting_room = TastingRoom.find(params[:tasting_room]) if params[:tasting_room].present?
+    if params[:year].present? && params[:month].present?
+      @sales_summary.month = params[:month]
+      @sales_summary.year = params[:year]
+    else
+      @sales_summary.month = Date.today.month
+      @sales_summary.year = Date.today.year
+    end
   end
 
   # GET /sales_summaries/1/edit

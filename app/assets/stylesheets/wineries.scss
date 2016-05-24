@@ -8,4 +8,19 @@
   max-width: 100%;
   padding: 1rem;
   height: auto;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.link-title {
+  a {
+    color: rgb(55,58,60);
+    text-decoration: none;
+  }
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: .5em;
+  right: .5em;
 }

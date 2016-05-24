@@ -1,0 +1,41 @@
+<div class="col-md-4 col-lg-3">
+  <%= image_tag attachment_url(winery, :profile_image, :fill, 620, 244, format: "jpg", fallback: random_wine_image), class: 'profile-image-wide' %>
+  <br>
+  <h3 class="link-title" style="line-height:1.6em;margin-left:.25em;"><%= link_to winery.name, winery %></h3>
+  <% if @tasting_room.present? %>
+      <div class="winery-info">
+        <h4>@ <%= @tasting_room.region.name %></h4>
+          <strong>Since:</strong>
+          <%= @tasting_room.year_established %>
+        </p>
+        <p>
+          <strong>Num of employees:</strong>
+          <%= @tasting_room.num_of_employees %>
+          <br>
+          <strong>Estate:</strong>
+          <%= @tasting_room.estate %>
+        </p>
+        <div class='bottom-right'>
+          <%= link_to 'Edit', edit_tasting_room_path(@tasting_room), class: 'btn btn-sm btn-secondary' %>
+        </div>
+      </div>
+  <% end %>
+  <div class="winery-info">
+    <p>
+      <strong><%= winery.name %> tasting rooms:</strong><br>
+      <% winery.tasting_rooms.each do |tr| %>
+        <%= link_to tr.region.name, tr %><br>
+      <% end %>
+    </p>
+    <strong>Year established:</strong>
+    <%= winery.year_established %>
+    <br>
+    <strong>Num of employees:</strong>
+    <%= winery.num_of_employees %>
+    <div class='bottom-right'>
+      <%= link_to 'Edit', edit_winery_path(winery), class: 'btn btn-sm btn-secondary' %>
+    </div>
+  </div>
+  <br>
+
+</div>

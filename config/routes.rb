@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :sales_summaries
+  get 'sales_summary/show_by_date' => 'sales_summaries#show_by_date'
   resources :tasting_rooms
   resources :wineries
   resources :regions
@@ -18,6 +19,6 @@ Rails.application.routes.draw do
   get 'send_new_activation_email' => 'users#send_new_activation_email'
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

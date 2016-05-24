@@ -10,7 +10,21 @@
 
 
 <div style="width: 100%;max-width:40rem;" class="container-regular table-responsive">
-  <h3><%= Date::MONTHNAMES[sales_summary.month] %> <%= sales_summary.year %></h3>
+
+    <h3>
+      <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
+        <div class="styled_select">
+          <%= select_month(@sales_summary.month, :field_name => 'month', class: "form-control" ) %>
+        </div>
+        <div class="styled_select">
+          <%= select_year(@sales_summary.year, field_name: 'year', class: 'form-control') %>
+        </div>
+        <%= submit_tag "View", class: "btn btn-success-outline", style: "position:relative;" %>
+        <% end %>
+          <%# Date::MONTHNAMES[sales_summary.month] %> <%# sales_summary.year %>
+      </h3>
+
+
   <table class="table-summary table-hover">
     <thead>
       <tr>
