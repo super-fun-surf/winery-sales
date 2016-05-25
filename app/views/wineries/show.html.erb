@@ -1,7 +1,8 @@
 <% provide(:title, @winery.name) %>
 <div class="row">
   <%= render partial: 'wineries/side_profile', locals: {winery: @winery} %>
-  <div class="col-md-12 col-lg-9">
+  <div class="col-md-9 col-lg-9">
+    <%# render partial: 'tasting_rooms/sales_graph', locals: {tasting_room: @winery.tasting_rooms.order(:name).first } %>
     <% @winery.tasting_rooms.each do |tr| %>
       <%= render partial: 'tasting_rooms/sales_table', locals: {tasting_room: tr} %>
       <br>

@@ -1,21 +1,10 @@
 <% provide(:title, @tasting_room.winery.name) %>
 <div class="row">
   <%= render partial: 'wineries/side_profile', locals: {winery: @tasting_room.winery} %>
-  <div class="col-md-12 col-lg-9">
-    <%= pluralize(@tasting_room.missing_months_this_year, 'Month') %> to enter for this years sales.
-    <% cur_month = Date.today.month - 1 %>
-    <% for i in 1..cur_month do %>
-      <% ss = @tasting_room.sales_summaries_this_year.where(month: i) %>
-      <% if ss.count < 1 %>
-        <%= link_to Date::MONTHNAMES[i], new_sales_summary_path(tasting_room: @tasting_room, month: i, year: Date.today.year), class: 'btn btn-sm btn-info' %>
-      <% end %>
-    <% end %>
-    <%# for @tasting_room.sales_summaries_this_year.each do |tr| %>
+  <div class="col-sm-12 col-md-9 col-lg-9">
+    <%= render partial: 'sales_summaries/missing_months_this_year', locals: {tasting_room: @tasting_room} %>
 
-    <%# end %>
-
-    <br>
-    <%# render partial: 'tasting_rooms/sales_graph', locals: {tasting_room: @tasting_room} %>
+    <%= render partial: 'tasting_rooms/sales_graph', locals: {tasting_room: @tasting_room} %>
     <%= render partial: 'tasting_rooms/sales_table', locals: {tasting_room: @tasting_room} %>
   </div>
 </div>

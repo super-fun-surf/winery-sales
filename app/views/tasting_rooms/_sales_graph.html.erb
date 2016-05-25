@@ -1,119 +1,99 @@
+
+<div class="" style="position:relative;width:100%;margin-bottom: 1em;">
+  <div class="seventh">
+    <%= link_to '<span></span>'.html_safe, '#' %>
+    Tasters
+  </div>
+  <div class="seventh">
+    <%= link_to '<span></span>'.html_safe, root_path %>
+    Tasters that purchased
+  </div>
+  <div class="seventh active">
+    <%= link_to '<span></span>'.html_safe, '#' %>
+    Tasting Room Sales
+  </div>
+  <div class="seventh">
+    <%= link_to '<span></span>'.html_safe, '#' %>
+    Club Memberships
+  </div>
+  <div class="seventh">
+    <%= link_to '<span></span>'.html_safe, '#' %>
+  Purchase Conversion
+  </div>
+  <div class="seventh">
+    <%= link_to '<span></span>'.html_safe, '#' %>
+    Club Conversion
+  </div>
+  <div class="seventh">
+    <%= link_to '<span></span>'.html_safe, '#' %>
+    Salers Per Taster
+  </div>
+</div>
+
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 
-  <script type="text/javascript">
-        // Load the Visualization API and the corechart package.
-        google.charts.load('current', {'packages':['corechart']});
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawChart);
+<script type="text/javascript">
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', {'packages':['corechart']});
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.charts.setOnLoadCallback(drawChart);
 
-        // Callback that creates and populates a data table,
-        // instantiates the pie chart, passes in the data and
-        // draws it.
-        function drawChart() {
+  // Callback that creates and populates a data table,
+  // instantiates the pie chart, passes in the data and
+  // draws it.
+  function drawChart() {
+    // Create the data table.
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Month');
+    data.addColumn('number', '<%= tasting_room.region.name %>');
+    data.addColumn('number', 'You');
+    <% @end_month = Date.today.month - 1 if @end_month.blank? %>
+    data.addRows([
+      <% for i in 1..@end_month do %>
+        <%
+        sales_you = tasting_room.sales_summaries_this_year.where(month: i).first
+        if sales_you.present?
+          dollars = sales_you.sales_in_dollars
+          else
+          dollars = 0.0
+          end
+        them_dollars = tasting_room.region.avg_sales_in_dollars(i, Date.today.year)
+        %>
+        // Data Points Label and then points
+        [ "<%= escape_javascript Date::MONTHNAMES[i] %>",
+        <%= escape_javascript( (them_dollars).to_s ) %>,
+        <%= escape_javascript( (dollars).to_s ) %>
+        ],
+      <% end %>
+    ]);
 
-          // Create the data table.
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Month');
-          data.addColumn('number', '<%= tasting_room.region.name %>');
-          data.addColumn('number', 'You');
-
-          data.addRows([
-            <% for i in 1..@end_month do %>
-
-            <%
-            sales_you = tasting_room.sales_summaries_this_year.where(month: i).first
-            if sales_you.present?
-              dollars = sales_you.sales_in_dollars
-            else
-              dollars = 0.0
-            end
-            them_dollars = tasting_room.region.avg_sales_in_dollars(i, Date.today.year)
-            %>
-            [ "<%= escape_javascript Date::MONTHNAMES[i] %>",
-            <%= escape_javascript( (them_dollars).to_s ) %>,
-              <%= escape_javascript( (dollars).to_s ) %>
-            ],
-
-            <% end %>
-
-          ]);
-
-          // Set chart options
-          var options = {'title':'Sales',
-            backgroundColor: "rgb(213, 213, 213)",
-            curveType: 'function',
-            animation: {
-              duration: 123,
-              startup: 'true',
-              eashing: 'in'
-            },
-            vAxis:{
-              viewWindow: {
-                min: -100
-              }
-            },
-            colors:['rgb(150, 189, 190)', 'rgb(240, 133, 50)' ],
-            chartArea:{left:'8%',top:'15%',width:'77%',height:'72%'},
-            };
-
-          // Instantiate and draw our chart, passing in some options.
-          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-          chart.draw(data, options);
+    // Set chart options
+    var options = {'title':'Sales',
+      backgroundColor: "rgb(213, 213, 213)",
+      curveType: 'function',
+      animation: {
+        duration: 123,
+        startup: 'true',
+        eashing: 'in'
+      },
+      vAxis:{
+        viewWindow: {
+          min: -100
         }
-        window.addEventListener("resize", drawChart);
+      },
+      colors:['rgb(150, 189, 190)', 'rgb(240, 133, 50)' ],
+      chartArea:{left:'8%',top:'15%',width:'77%',height:'72%'},
+      };
 
-  </script>
+    // Instantiate and draw our chart, passing in some options.
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+window.addEventListener("resize", drawChart);
+</script>
 
-  <div id="chart_div" style="border-radius:.66em;margin:.15em;overflow:hidden;width:auto;height:400px"></div>
+<div id="chart_div" class="chart-container" style=""></div>
 
-
-
-
-
-
-
-<h1>
-  Sales Summaries: <%= tasting_room.region.name %> <%= link_to 'New Sales Entry', new_sales_summary_path(tasting_room: tasting_room.id), class: 'btn btn-success' %>
-</h1>
-<div class="table-responsive">
-<table class="table table-sm table-inverse table-hover-inverse table-bordered">
-  <thead>
-    <tr>
-      <!--th>Tasting room</th-->
-      <th>Num of tasters</th>
-      <th>Num of purchasers</th>
-      <th>Percent That Purchased</th>
-      <th>Num of club signups</th>
-      <th>Percentage of club signups</th>
-      <th>Sales in dollars</th>
-      <th>Year</th>
-      <th>Month</th>
-
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% tasting_room.sales_summaries.order(year: :desc, month: :desc ).each do |sales_summary| %>
-      <tr>
-        <!--td><%# sales_summary.tasting_room.region.name %></td-->
-        <td><%= sales_summary.num_of_tasters %></td>
-        <td><%= sales_summary.num_of_purchasers %></td>
-        <td><%= number_to_percentage sales_summary.percent_tasters_purcahased, precision: 1 %></td>
-        <td><%= sales_summary.num_of_club_signups %></td>
-        <td><%= number_to_percentage sales_summary.percent_club_signup, precision: 1 %></td>
-        <td><%= number_to_currency sales_summary.sales_in_dollars %></td>
-        <td><%= sales_summary.year %></td>
-        <td><%= Date::MONTHNAMES[sales_summary.month] %></td>
-        <%# sales_summary.day %>
-        <td><%= link_to 'Show', sales_summary, class: 'btn btn-success' %></td>
-        <td><%= link_to 'Edit', edit_sales_summary_path(sales_summary), class: 'btn btn-info' %></td>
-        <td><%= link_to 'X', sales_summary, method: :delete, data: { confirm: 'Destroy this Record. Are you sure?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
 <script>
-$(document).on('turbolinks:load', drawChart);
+  $(document).on('turbolinks:load', drawChart);
 </script>

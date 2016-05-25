@@ -11,6 +11,9 @@ class WineriesController < ApplicationController
   # GET /wineries/1
   # GET /wineries/1.json
   def show
+    if @winery.tasting_rooms.count == 1
+      redirect_to @winery.tasting_rooms.first
+    end
   end
 
   # GET /wineries/new

@@ -60,7 +60,7 @@ body {
 footer {
   position:fixed;
   left: 0;
-  bottom: -.2em;
+  bottom: 0; //-.2em;
   width:100%;
 
   padding-left: .618em;
@@ -71,16 +71,17 @@ footer {
   padding-bottom: 0;
   line-height: 1em;
   height: $footer_xs;
+  font-size: .83em;
 
   @include media-breakpoint-up(sm) {
     padding-left: 1em;
-    padding-right: 2em;
+    padding-right: 1em;
     margin-top: 0;
-    padding-top: .618em;
+    padding-top: .25em;
     margin-bottom: 0;
     padding-bottom: 0;
 
-    height: $footer_sm;
+    //height: $footer_sm;
   }
 
   background-color: $footer-color;

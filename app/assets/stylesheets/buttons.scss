@@ -12,3 +12,43 @@
   }
   border-color: rgb(80,80,80);
 }
+
+.btn-grey {
+
+}
+
+.seventh {
+  height: 100%;
+  font-size: .82em;
+  font-weight: 800;
+  background-color: #D5D5D5;
+  position: relative;
+  a {
+    color: #4F4F4F;
+    span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+  &.active {
+    background-color: rgb(235, 233, 240);
+    border-color: #EC7D2C;
+  }
+  width: 13.6%;
+  display: inline-block;
+  text-align: center;
+
+  border: 1px solid;
+  border-color: #95989A;
+  padding-bottom: .2em;
+  border-radius: .3em;
+  padding-right: .33em;
+  padding-left: .33em;
+  padding-top: auto;
+  padding-bottom: auto;
+  overflow:hidden;
+
+}

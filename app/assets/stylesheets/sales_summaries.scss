@@ -22,13 +22,23 @@
 }
 .variance_pos {
   font-size: 1.45em;
-  background-color: rgb(29,232,0);
+  background-color: rgba(29,232,0,.8);
   border-radius: .4em;
 
 }
 .variance_neg {
   font-size: 1.35em;
-  background-color: rgb(239,28,0);
+  background-color: rgba(239,28,0,.8);
   border-radius: .4em;
 
+}
+
+.chart-container {
+  border-radius:.66em;
+  margin: 0;
+  //margin-top: 1em;
+  margin-bottom: 2em;
+  overflow:hidden;
+  width:auto;
+  height:400px
 }
