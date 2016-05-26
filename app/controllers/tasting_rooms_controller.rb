@@ -12,6 +12,53 @@ class TastingRoomsController < ApplicationController
   def show
     #@start_time_this_year = Date.today.beginning_of_year
     @end_month = Date.today.month - 1
+    @you = Array.new
+    @them = []
+    for i in 1..@end_month do
+      sales_you = @tasting_room.sales_summaries_this_year.where(month: i).first
+      if sales_you.present?
+        if params[:tasters].present?
+          @you[i] = sales_you.num_of_tasters
+          #@them[i] = sales_you.avg_tasters
+        elsif params[:purchasers].present?
+          @you[i] = sales_you.num_of_purchasers
+          #@them[i] = sales_you.avg_purchasers
+        elsif params[:club_signup].present?
+          @you[i] = sales_you.num_of_club_signups
+          #@them[i] = sales_you.avg_club_signups
+        elsif params[:conversion].present?
+          @you[i] = sales_you.percent_tasters_purcahased
+          #@them[i] = sales_you.avg_tasters_purchased
+        elsif params[:club_conversion].present?
+          @you[i] = sales_you.percent_club_signup
+          #@them[i] = sales_you.avg_club_conversion
+        elsif params[:sales_per_taster].present?
+          @you[i] = sales_you.sales_per_taster
+          #@them[i] = sales_you.avg_sales_per_taster
+        else
+          @you[i] = sales_you.sales_in_dollars
+        end
+      else
+        @you[i] = 0.0
+      end
+      if params[:tasters].present?
+        @them[i] = @tasting_room.region.avg_tasters(i, Date.today.year)
+      elsif params[:purchasers].present?
+        @them[i] = @tasting_room.region.avg_purchasers(i, Date.today.year)
+      elsif params[:club_signup].present?
+        @them[i] = @tasting_room.region.avg_club_signups(i, Date.today.year)
+      elsif params[:conversion].present?
+        @them[i] = @tasting_room.region.avg_tasters_purchased(i, Date.today.year)
+      elsif params[:club_conversion].present?
+        @them[i] = @tasting_room.region.avg_club_conversion(i, Date.today.year)
+      elsif params[:sales_per_taster].present?
+        @them[i] = @tasting_room.region.avg_sales_per_taster(i, Date.today.year)
+      else
+        @them[i] = @tasting_room.region.avg_sales_in_dollars(i, Date.today.year)
+        params[:sales] = true
+      end
+
+     end
   end
 
   # GET /tasting_rooms/new

@@ -23,6 +23,20 @@
   font-weight: 800;
   background-color: #D5D5D5;
   position: relative;
+  width: 13.5%;
+
+  display: inline-block;
+  text-align: center;
+  border: 1px solid;
+  border-color: #95989A;
+  padding-bottom: .2em;
+  border-radius: .3em;
+  padding-right: .33em;
+  padding-left: .33em;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  overflow:hidden;
+
   a {
     color: #4F4F4F;
     span {
@@ -36,19 +50,6 @@
   &.active {
     background-color: rgb(235, 233, 240);
     border-color: #EC7D2C;
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,.3);
   }
-  width: 13.6%;
-  display: inline-block;
-  text-align: center;
-
-  border: 1px solid;
-  border-color: #95989A;
-  padding-bottom: .2em;
-  border-radius: .3em;
-  padding-right: .33em;
-  padding-left: .33em;
-  padding-top: auto;
-  padding-bottom: auto;
-  overflow:hidden;
-
 }

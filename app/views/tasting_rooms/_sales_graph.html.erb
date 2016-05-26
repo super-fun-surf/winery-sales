@@ -1,31 +1,31 @@
 
-<div class="" style="position:relative;width:100%;margin-bottom: 1em;">
-  <div class="seventh">
-    <%= link_to '<span></span>'.html_safe, '#' %>
+<div class="" style="position:relative;width:101%;margin-bottom: 1em;">
+  <div class="seventh <%= 'active' if params[:tasters].present? %>">
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(tasters: true) %>
     Tasters
   </div>
-  <div class="seventh">
-    <%= link_to '<span></span>'.html_safe, root_path %>
+  <div class="seventh <%= 'active' if params[:purchasers].present? %>">
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(purchasers: true) %>
     Tasters that purchased
   </div>
-  <div class="seventh active">
-    <%= link_to '<span></span>'.html_safe, '#' %>
+  <div class="seventh <%= 'active' if params[:sales].present? %>">
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(sales: true) %>
     Tasting Room Sales
   </div>
-  <div class="seventh">
-    <%= link_to '<span></span>'.html_safe, '#' %>
+  <div class="seventh <%= 'active' if params[:club_signup].present? %>">
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(club_signup: true) %>
     Club Memberships
   </div>
-  <div class="seventh">
-    <%= link_to '<span></span>'.html_safe, '#' %>
+  <div class="seventh <%= 'active' if params[:conversion].present? %>">
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(conversion: true) %>
   Purchase Conversion
   </div>
-  <div class="seventh">
-    <%= link_to '<span></span>'.html_safe, '#' %>
+  <div class="seventh <%= 'active' if params[:club_conversion].present? %>">
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(club_conversion: true) %>
     Club Conversion
   </div>
-  <div class="seventh">
-    <%= link_to '<span></span>'.html_safe, '#' %>
+  <div class="seventh <%= 'active' if params[:sales_per_taster].present? %>">
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_taster: true) %>
     Salers Per Taster
   </div>
 </div>
@@ -50,19 +50,10 @@
     <% @end_month = Date.today.month - 1 if @end_month.blank? %>
     data.addRows([
       <% for i in 1..@end_month do %>
-        <%
-        sales_you = tasting_room.sales_summaries_this_year.where(month: i).first
-        if sales_you.present?
-          dollars = sales_you.sales_in_dollars
-          else
-          dollars = 0.0
-          end
-        them_dollars = tasting_room.region.avg_sales_in_dollars(i, Date.today.year)
-        %>
         // Data Points Label and then points
         [ "<%= escape_javascript Date::MONTHNAMES[i] %>",
-        <%= escape_javascript( (them_dollars).to_s ) %>,
-        <%= escape_javascript( (dollars).to_s ) %>
+        <%= escape_javascript( (@them[i]).to_s ) %>,
+        <%= escape_javascript( (@you[i]).to_s ) %>
         ],
       <% end %>
     ]);
@@ -78,7 +69,7 @@
       },
       vAxis:{
         viewWindow: {
-          min: -100
+          min: 0
         }
       },
       colors:['rgb(150, 189, 190)', 'rgb(240, 133, 50)' ],
