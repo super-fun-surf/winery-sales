@@ -1,3 +1,4 @@
+<!--script src="https://www.gstatic.com/charts/loader.js"></script-->
 
 <div class="" style="position:relative;width:101%;margin-bottom: 1em;">
   <div class="seventh <%= 'active' if params[:tasters].present? %>">
@@ -30,7 +31,7 @@
   </div>
 </div>
 
-<script src="https://www.gstatic.com/charts/loader.js"></script>
+
 
 <script type="text/javascript">
   // Load the Visualization API and the corechart package.
@@ -83,8 +84,8 @@
 window.addEventListener("resize", drawChart);
 </script>
 
-<div id="chart_div" class="chart-container" style=""></div>
+<div id="chart_div" class="chart-container" style="" ></div>
 
 <script>
-  $(document).on('turbolinks:load', drawChart);
+  $(document).on('ready turbolinks:load', drawChart);  
 </script>
