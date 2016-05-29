@@ -1,5 +1,8 @@
 class TastingRoomsController < ApplicationController
   before_action :set_tasting_room, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index]
+  before_action :admin_user, only: [:index]
+  before_action :correct_user
 
   # GET /tasting_rooms
   # GET /tasting_rooms.json
@@ -111,6 +114,15 @@ class TastingRoomsController < ApplicationController
   end
 
   private
+    def correct_user
+      if current_user.admin?
+        #good to go
+      #elsif current_user.id
+
+      else
+        redirect_back(fallback_location: root_url)
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_tasting_room
       @tasting_room = TastingRoom.find(params[:id])

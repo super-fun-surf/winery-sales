@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519021712) do
+ActiveRecord::Schema.define(version: 20160527162428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,16 @@ ActiveRecord::Schema.define(version: 20160519021712) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  create_table "winer_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "winery_id"
+    t.integer  "permissions", default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["user_id"], name: "index_winer_users_on_user_id", using: :btree
+    t.index ["winery_id"], name: "index_winer_users_on_winery_id", using: :btree
+  end
+
   create_table "wineries", force: :cascade do |t|
     t.string   "name"
     t.integer  "year_established"
@@ -92,4 +102,6 @@ ActiveRecord::Schema.define(version: 20160519021712) do
   add_foreign_key "sales_summaries", "tasting_rooms"
   add_foreign_key "tasting_rooms", "regions"
   add_foreign_key "tasting_rooms", "wineries"
+  add_foreign_key "winer_users", "users"
+  add_foreign_key "winer_users", "wineries"
 end

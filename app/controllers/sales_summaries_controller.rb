@@ -1,5 +1,8 @@
 class SalesSummariesController < ApplicationController
   before_action :set_sales_summary, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index]
+  before_action :admin_user, only: [:index]
+  before_action :correct_user
 
   # GET /sales_summaries
   # GET /sales_summaries.json
@@ -90,6 +93,15 @@ class SalesSummariesController < ApplicationController
   end
 
   private
+    def correct_user
+      if current_user.admin?
+        #good to go
+      #elsif current_user.id
+
+      else
+        redirect_back(fallback_location: root_url)
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_sales_summary
       @sales_summary = SalesSummary.find(params[:id])

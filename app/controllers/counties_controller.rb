@@ -1,5 +1,8 @@
 class CountiesController < ApplicationController
   before_action :set_county, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index]
+  before_action :admin_user, only: [:index]
+  before_action :correct_user
 
   # GET /counties
   # GET /counties.json
@@ -41,7 +44,7 @@ class CountiesController < ApplicationController
   # PATCH/PUT /counties/1.json
   def update
     respond_to do |format|
-      if @county.update(county_params)        
+      if @county.update(county_params)
         format.html { redirect_to @county, notice: 'County was successfully updated.' }
         format.json { render :show, status: :ok, location: @county }
       else
@@ -62,6 +65,15 @@ class CountiesController < ApplicationController
   end
 
   private
+    def correct_user
+      if current_user.admin?
+        #good to go
+      #elsif current_user.id
+
+      else
+        redirect_back(fallback_location: root_url)
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_county
       @county = County.find(params[:id])
