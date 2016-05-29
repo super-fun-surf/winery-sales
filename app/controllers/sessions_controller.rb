@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   def new
-    if logged_in?
+    if logged_in? && !admin?
+      redirect_to current_user.wineries.first
+    elsif admin?
       redirect_to wineries_path
     end
   end
