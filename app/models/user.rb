@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   include UserMailgun
   attr_accessor :remember_token, :activation_token, :reset_token
+  has_many :winery_users
+  has_many :wineries, through: :winery_users
+
   before_save :downcase_email
   before_create :create_activation_digest
   validates :name, presence: true, length: {maximum: 50}

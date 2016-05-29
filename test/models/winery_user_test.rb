@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WinerUserTest < ActiveSupport::TestCase
+class WineryUserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @winery_user.user %>
+</p>
+
+<p>
+  <strong>Winery:</strong>
+  <%= @winery_user.winery %>
+</p>
+
+<p>
+  <strong>Permissions:</strong>
+  <%= @winery_user.permissions %>
+</p>
+
+<%= link_to 'Edit', edit_winery_user_path(@winery_user) %> |
+<%= link_to 'Back', winery_users_path %>

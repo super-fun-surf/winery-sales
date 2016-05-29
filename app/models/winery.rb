@@ -3,4 +3,6 @@ class Winery < ApplicationRecord
   has_many :tasting_rooms
   has_many :regions, through: :tasting_rooms
   has_many :counties, through: :regions
+  has_many :winery_users
+  has_many :users, through: :winery_users
 end

@@ -1,8 +1,8 @@
 class SalesSummariesController < ApplicationController
-  before_action :set_sales_summary, only: [:edit, :update, :destroy]
+  before_action :set_sales_summary, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:index]
   before_action :admin_user, only: [:index]
-  before_action :correct_user
+  before_action :correct_user, only: [:new, :create, :show, :edit, :update, :destroy]
 
   # GET /sales_summaries
   # GET /sales_summaries.json
@@ -94,14 +94,22 @@ class SalesSummariesController < ApplicationController
 
   private
     def correct_user
+      #debugger
       if current_user.admin?
         #good to go
-      #elsif current_user.id
+      elsif @sales_summary.present? && @sales_summary.winery.users.include?(current_user)
 
+      elsif params[:tasting_room].present?
+        @tasting_room = TastingRoom.find(params[:tasting_room])
+        redirect_back(fallback_location: root_url) if !@tasting_room.winery.users.include?(current_user)
+      elsif params[:sales_summary].present? && params[:sales_summary][:tasting_room_id].present?
+        @tasting_room = TastingRoom.find(params[:sales_summary][:tasting_room_id])
+        redirect_back(fallback_location: root_url) if !@tasting_room.winery.users.include?(current_user)
       else
         redirect_back(fallback_location: root_url)
       end
     end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_sales_summary
       @sales_summary = SalesSummary.find(params[:id])

@@ -1,5 +1,11 @@
-<h1>New Tasting Room</h1>
+<% provide(:title, "New Tasting Room") %>
 
-<%= render 'form', tasting_room: @tasting_room %>
-
-<%= link_to 'Back', tasting_rooms_path %>
+<div class="row">
+  <div class="col-md-2 col-lg-3 col-xl-4"></div>
+  <div class="col-md-8 col-lg-6 col-xl-4">
+    <div class="card card-block">
+      <h1>New Tasting Room</h1>
+      <%= render 'form', tasting_room: @tasting_room %>
+    </div>
+  </div>
+</div>  

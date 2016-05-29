@@ -1,10 +1,10 @@
-<%= form_for(winer_user) do |f| %>
-  <% if winer_user.errors.any? %>
+<%= form_for(winery_user) do |f| %>
+  <% if winery_user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(winer_user.errors.count, "error") %> prohibited this winer_user from being saved:</h2>
+      <h2><%= pluralize(winery_user.errors.count, "error") %> prohibited this winery_user from being saved:</h2>
 
       <ul>
-      <% winer_user.errors.full_messages.each do |message| %>
+      <% winery_user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

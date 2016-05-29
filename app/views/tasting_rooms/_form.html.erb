@@ -1,6 +1,6 @@
 <%= form_for(tasting_room) do |f| %>
   <%= render 'shared/error_messages', donkey: f.object %>
-
+  <%= f.hidden_field :winery_id, value: params[:winery] %>
   <div class="form-group">
     <%= f.label :name_of_tasting_room, class: "form-label" %>
     <%= f.text_field :name, class: "form-control" %>

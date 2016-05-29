@@ -2,7 +2,7 @@ class WineriesController < ApplicationController
   before_action :set_winery, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:index]
   before_action :admin_user, only: [:index]
-  before_action :correct_user
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   # GET /wineries
   # GET /wineries.json
@@ -30,10 +30,14 @@ class WineriesController < ApplicationController
   # POST /wineries
   # POST /wineries.json
   def create
+
     @winery = Winery.new(winery_params)
 
     respond_to do |format|
       if @winery.save
+        if params[:user].present?
+          WineryUser.create(user_id: params[:user], winery_id: @winery.id)
+        end
         format.html { redirect_to @winery, notice: 'Winery was successfully created.' }
         format.json { render :show, status: :created, location: @winery }
       else
@@ -71,7 +75,7 @@ class WineriesController < ApplicationController
     def correct_user
       if current_user.admin?
         #good to go
-      #elsif current_user.id
+      elsif @winery.users.include?(current_user)
 
       else
         redirect_back(fallback_location: root_url)

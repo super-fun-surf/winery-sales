@@ -28,7 +28,11 @@ class SalesSummary < ApplicationRecord
         total += ss.num_of_tasters
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      0
+    end
   end
 
   def num_of_purchasers_percent_different
@@ -46,7 +50,11 @@ class SalesSummary < ApplicationRecord
         total += ss.num_of_purchasers
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      0
+    end
   end
 
   def num_of_club_signups_percent_different
@@ -64,7 +72,11 @@ class SalesSummary < ApplicationRecord
         total += ss.num_of_club_signups
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      0
+    end
   end
 
   def sales_in_dollars_percent_different
@@ -82,7 +94,11 @@ class SalesSummary < ApplicationRecord
         total += ss.sales_in_dollars
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      0
+    end
   end
 
   def conversion_percent_different
@@ -100,7 +116,11 @@ class SalesSummary < ApplicationRecord
         total += ss.percent_tasters_purcahased
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      0
+    end
   end
 
   def club_conversion_percent_different
@@ -118,7 +138,11 @@ class SalesSummary < ApplicationRecord
         total += ss.percent_club_signup
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      0
+    end
   end
 
   def sales_per_taster_percent_different
@@ -136,6 +160,10 @@ class SalesSummary < ApplicationRecord
         total += ss.sales_per_taster
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      0
+    end
   end
 end

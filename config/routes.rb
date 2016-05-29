@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :winer_users
+  resources :winery_users
   resources :sales_summaries
   get 'sales_summary/show_by_date' => 'sales_summaries#show_by_date'
   resources :tasting_rooms

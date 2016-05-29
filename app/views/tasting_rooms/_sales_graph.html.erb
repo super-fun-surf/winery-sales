@@ -1,4 +1,4 @@
-<!--script src="https://www.gstatic.com/charts/loader.js"></script-->
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 
 <div class="" style="position:relative;width:101%;margin-bottom: 1em;">
   <div class="seventh <%= 'active' if params[:tasters].present? %>">
@@ -87,5 +87,5 @@ window.addEventListener("resize", drawChart);
 <div id="chart_div" class="chart-container" style="" ></div>
 
 <script>
-  $(document).on('ready turbolinks:load', drawChart);  
+  $(document).on('ready turbolinks:load', drawChart);
 </script>

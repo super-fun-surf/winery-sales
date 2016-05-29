@@ -13,7 +13,11 @@ class Region < ApplicationRecord
         total += ss.num_of_tasters
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      0
+    end
   end
 
   def avg_purchasers(month, year)
@@ -26,7 +30,11 @@ class Region < ApplicationRecord
         total += ss.num_of_purchasers
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      0
+    end
   end
 
   def avg_club_signups(month, year)
@@ -39,7 +47,11 @@ class Region < ApplicationRecord
         total += ss.num_of_club_signups
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      total
+    end
   end
 
   def avg_sales_in_dollars(month, year)
@@ -68,7 +80,11 @@ class Region < ApplicationRecord
         total += ss.percent_tasters_purcahased
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      total
+    end
   end
 
   def avg_club_conversion(month, year)
@@ -80,7 +96,11 @@ class Region < ApplicationRecord
         total += ss.percent_club_signup
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      total
+    end
   end
 
   def avg_sales_per_taster(month, year)
@@ -92,7 +112,11 @@ class Region < ApplicationRecord
         total += ss.sales_per_taster
       end
     end
-    avg = total / count
+    if count > 0
+      avg = total / count
+    else
+      total
+    end
   end
 
 
