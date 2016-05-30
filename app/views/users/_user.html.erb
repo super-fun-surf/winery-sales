@@ -10,8 +10,11 @@
      </p>
    </div>
    <ul class="list-group list-group-flush">
-     <li class="list-group-item">CFO @ The Winery Co.</li>
-
+     <% user.winery_users.each do |wu| %>
+      <li class="list-group-item">
+        <%= wu.position %> @ <%= wu.winery.name %>
+      </li>
+     <% end %>
    </ul>
    <div class="card-block">
      <%= link_to 'Edit', edit_user_path(user), class: "card-link" %>

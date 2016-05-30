@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Primary', '#', class: 'btn btn-primary' %> |
+<%= link_to 'Secondary', '#', class: 'btn btn-secondary' %> |
+<%= link_to 'Success', '#', class: 'btn btn-success' %> |
+<%= link_to 'Info', '#', class: 'btn btn-info' %> |
+<%= link_to 'Warning', '#', class: 'btn btn-warning' %> |
+<%= link_to 'Danger', '#', class: 'btn btn-danger' %> |
+<br><br>
 <h1>Winery Users</h1>
 
 <table>
@@ -15,8 +22,8 @@
   <tbody>
     <% @winery_users.each do |winery_user| %>
       <tr>
-        <td><%= winery_user.user %></td>
-        <td><%= winery_user.winery %></td>
+        <td><%= render partial: winery_user.user %></td>
+        <td><%= render partial: winery_user.winery %></td>
         <td><%= winery_user.permissions %></td>
         <td><%= link_to 'Show', winery_user %></td>
         <td><%= link_to 'Edit', edit_winery_user_path(winery_user) %></td>

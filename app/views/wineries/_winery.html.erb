@@ -6,19 +6,22 @@
    <div class="card-block">
      <h4 class="card-title"><%= link_to winery.name, winery %></h4>
      <p class="card-text">
-       <strong>Tasting Rooms:</strong><br>
-        <% winery.tasting_rooms.each do |tr| %>
-          <%= link_to tr.region.name, tr %><br>
-          <% end %>
-       Est. <%= winery.year_established %><br>
-       <strong>Num of employees:</strong>
-       <%= winery.num_of_employees %><br>
+       <strong>Since</strong> <%= winery.year_established %><br>
+
+       <%= pluralize(winery.num_of_employees, "Employee") %><br>
+
+
+
 
      </p>
    </div>
-   <ul class="list-group list-group-flush">
-     <li class="list-group-item">Something about the numbers</li>
-
+   <ul class="list-group ">
+     <div style="background-color:rgba(0,0,0,.1);padding-left:1em;padding-top:.5em;padding-bottom:.5em;border-radius:.2em 0 0 .2em;"><strong><%= pluralize(winery.tasting_rooms.count, "Tasting Room") %>:</strong></div>
+     <% winery.tasting_rooms.each do |tr| %>
+       <li class="list-group-item">
+         <%= link_to tr.region.name, tr %>
+       </li>
+       <% end %>
    </ul>
    <div class="card-block">
      <%= link_to 'Edit', edit_winery_path(winery), class: "card-link" %>

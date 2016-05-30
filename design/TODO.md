@@ -9,7 +9,7 @@
 * make a way of reporting the missing sales months for the tasting rooms
 * winery profile sidebar Partial
   * for incorporation into individual month sales summaries
-  
+
 
 ## Phase 1
 * #### Winery
@@ -73,6 +73,7 @@
   * reference winery
   * reference user
   * permissions level **number**
+  * position **string**
 
 * #### Administrator Models & Resources
   * County

@@ -1,6 +1,8 @@
 class WineryUsersController < ApplicationController
   before_action :set_winery_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :logged_in_user
+  before_action :admin_user
+  
   # GET /winery_users
   # GET /winery_users.json
   def index
@@ -69,6 +71,6 @@ class WineryUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def winery_user_params
-      params.require(:winery_user).permit(:user_id, :winery_id, :permissions)
+      params.require(:winery_user).permit(:user_id, :winery_id, :permissions, :position)
     end
 end
