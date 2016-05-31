@@ -14,9 +14,12 @@
       <% winery.tasting_rooms.each do |tr| %>
         <%= link_to tr.region.name, tr %><br>
       <% end %>
-      <%= link_to 'Open New Tasting Room', new_tasting_room_path(winery: winery), class: 'btn btn-sm btn-success' %>
-    </p>
 
+    </p>
+    <br>
+    <div class='bottom-left'>
+      <%= link_to 'Open New Tasting Room', new_tasting_room_path(winery: winery), class: 'btn btn-sm btn-success' %>
+    </div>
     <div class='bottom-right'>
       <%= link_to 'Edit', edit_winery_path(winery), class: 'btn btn-sm btn-secondary' %>
     </div>

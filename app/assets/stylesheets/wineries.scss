@@ -9,6 +9,7 @@
   padding: 1rem;
   height: auto;
   margin-bottom: 1em;
+  margin-top: 1em;
   position: relative;
 }
 
@@ -19,6 +20,11 @@
   }
 }
 
+.bottom-left {
+  position: absolute;
+  bottom: .5em;
+  left: .5em;
+}
 .bottom-right {
   position: absolute;
   bottom: .5em;
