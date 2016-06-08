@@ -62,6 +62,13 @@ class TastingRoomsController < ApplicationController
       end
 
      end
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tasting_room.as_csv,
+                :type => 'text/csv',
+                :filename => @tasting_room.winery.name + '-' + @tasting_room.region.name + '.csv',
+                :disposition => 'attachment' }
+    end
   end
 
   # GET /tasting_rooms/new

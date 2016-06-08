@@ -1,7 +1,7 @@
 <h1>
   Sales Summaries: <%= tasting_room.region.name %>
   <%= link_to 'New Sales Entry', new_sales_summary_path(tasting_room: tasting_room.id), class: 'btn btn-success' %>
-  <%= link_to 'Download CSV', '#', class: 'btn btn-sm btn-secondary btn-disabled' %>
+  <%= link_to 'Download CSV', tasting_room_path(tasting_room, :csv), class: 'btn btn-sm btn-secondary btn-disabled' %>
 </h1>
 <div class="table-responsive">
 <table class="table table-sm table-inverse table-hover-inverse table-bordered">
