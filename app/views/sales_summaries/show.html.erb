@@ -6,19 +6,23 @@
 <div class="row">
   <%= render partial: 'wineries/side_profile', locals: {winery: @sales_summary.winery} %>
   <div class="col-md-12 col-lg-9">
-    <div style="width: 100%;max-width:40rem;" class="container-regular table-responsive">
-      <h3>
+    <div style="width: 100%;max-width:40rem;margin-top:0;" class="container-regular table-responsive">
+      <strong>
+
         <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
-          <div class="styled_select">
-            <%= select_month(@sales_summary.month, :field_name => 'month', class: "form-control" ) %>
-          </div>
-          <div class="styled_select">
-            <%= select_year(@sales_summary.year, field_name: 'year', class: 'form-control') %>
-          </div>
+          <!--div class="styled_select"-->
+          Select date to view Benchmark
+            <%= select_month(@sales_summary.month, :field_name => 'month', class: "form-control", onchange:'this.form.submit()' ) %>
+          <!--/div-->
+            <%# select_tag 'month', options_for_select(Date::MONTHNAMES), selected: @sales_summary.month, onchange:'this.form.submit()' %>
+
+            <%= select_year(@sales_summary.year, field_name: 'year', class: 'form-control', onchange: 'if(this.value != 0) { this.form.submit(); }') %>
+
           <%= submit_tag "View", class: "btn btn-success-outline", style: "position:relative;" %>
         <% end %>
         <%# Date::MONTHNAMES[sales_summary.month] %> <%# sales_summary.year %>
-      </h3>
+      </strong>
+      <hr>
       <table class="table-summary table-hover">
         <thead>
           <tr>

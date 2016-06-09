@@ -3,11 +3,17 @@
   <% if logged_in? %>
     <% if current_user.wineries.present? %>
       <%= link_to "Home", current_user.wineries.first, class: "btn btn-sm btn-secondary" %>
+      <% if current_user.wineries.first.tasting_rooms.present? %>
+        <%= link_to "Benchmark", current_user.wineries.first.tasting_rooms.first.sales_summaries.order(month: :asc).last, class: "btn btn-sm btn-secondary" %>
+        <%= link_to "Enter new Month's Data", new_sales_summary_path(tasting_room: current_user.wineries.first.tasting_rooms.first.id), class: 'btn btn-success btn-sm' %>
+      <% end %>
+
+
     <% else %>
       <%= link_to "Home", user_path(current_user), class: "btn btn-sm btn-secondary" %>
     <% end %>
-    <div class="nav pull-right" style="padding-right: 1em;">
-      <%= link_to current_user.name, user_path(current_user), class: 'btn btn-sm btn-secondary' %>
+    <div class="links nav pull-right" style="padding-right: 1em;">
+      <%= link_to current_user.name, user_path(current_user), class: '' %>
       |
       <%= link_to "Edit Profile", edit_user_path(current_user) %>
       |

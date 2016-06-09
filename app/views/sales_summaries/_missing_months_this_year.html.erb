@@ -1,6 +1,6 @@
 <div style="width:100%; margin-bottom: 1em;">
 <% if tasting_room.missing_months_this_year > 0 %>
-  <%= pluralize(tasting_room.missing_months_this_year, 'Month') %> missing for this year's sales.
+  <%= pluralize(tasting_room.missing_months_this_year, 'Month') %> missing. Click a month to enter data.
   <% cur_month = Date.today.month - 1 %>
   <% for i in 1..cur_month do %>
     <% ss = tasting_room.sales_summaries_this_year.where(month: i) %>

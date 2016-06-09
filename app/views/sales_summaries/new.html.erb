@@ -1,9 +1,9 @@
-<h2>
+<h3 align="center">
   New Sales Summary
   <% if @tasting_room.present? %>
     for <%= @tasting_room.winery.name %> @ <%= @tasting_room.region.name %>
   <% end %>
-</h2>
+</h3>
 
 <%= render 'form', sales_summary: @sales_summary %>
 

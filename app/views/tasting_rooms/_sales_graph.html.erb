@@ -1,6 +1,6 @@
 <script src="https://www.gstatic.com/charts/loader.js"></script>
 
-<div class="" style="position:relative;width:101%;margin-bottom: 1em;">
+<div id="the_graph" class="" style="position:relative;width:100%;margin-bottom: 1em;">
   <div class="seventh <%= 'active' if params[:tasters].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(tasters: true) %>
     Tasters
@@ -29,6 +29,10 @@
     <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_taster: true) %>
     Salers Per Taster
   </div>
+  <div class="seventh <%= 'active' if params[:sales_per_taster].present? %>">
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_taster: true) %>
+    Salers Per Purchase
+  </div>
 </div>
 
 
@@ -53,14 +57,14 @@
       <% for i in 1..@end_month do %>
         // Data Points Label and then points
         [ "<%= escape_javascript Date::MONTHNAMES[i] %>",
-        <%= escape_javascript( (@them[i]).to_s ) %>,
-        <%= escape_javascript( (@you[i]).to_s ) %>
+        <%= escape_javascript( (@them[i]).round(2).to_s ) %>,
+        <%= escape_javascript( (@you[i]).round(2).to_s ) %>
         ],
       <% end %>
     ]);
 
     // Set chart options
-    var options = {'title':'Sales',
+    var options = {'title':'',
       backgroundColor: "rgb(213, 213, 213)",
       curveType: 'function',
       animation: {
@@ -81,11 +85,11 @@
     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
     chart.draw(data, options);
   }
-window.addEventListener("resize", drawChart);
 </script>
 
 <div id="chart_div" class="chart-container" style="" ></div>
 
 <script>
+  window.addEventListener("resize", drawChart);
   $(document).on('ready turbolinks:load', drawChart);
 </script>

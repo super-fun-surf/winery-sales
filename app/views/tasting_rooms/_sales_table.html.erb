@@ -1,6 +1,6 @@
 <h1>
   Sales Summaries: <%= tasting_room.region.name %>
-  <%= link_to 'New Sales Entry', new_sales_summary_path(tasting_room: tasting_room.id), class: 'btn btn-success' %>
+  <%= link_to "New Month's Data", new_sales_summary_path(tasting_room: tasting_room.id), class: 'btn btn-success' %>
   <%= link_to 'Download CSV', tasting_room_path(tasting_room, :csv), class: 'btn btn-sm btn-secondary btn-disabled' %>
 </h1>
 <div class="table-responsive">
@@ -17,7 +17,7 @@
       <th>Year</th>
       <th>Month</th>
 
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -34,9 +34,9 @@
         <td><%= sales_summary.year %></td>
         <td><%= Date::MONTHNAMES[sales_summary.month] %></td>
         <%# sales_summary.day %>
-        <td><%= link_to 'Show', sales_summary, class: 'btn btn-success' %></td>
+        <td><%= link_to 'Benchmark', sales_summary, class: 'btn btn-success' %></td>
         <td><%= link_to 'Edit', edit_sales_summary_path(sales_summary), class: 'btn btn-info' %></td>
-        <td><%= link_to 'X', sales_summary, method: :delete, data: { confirm: 'Destroy this Record. Are you sure?' }, class: 'btn btn-danger' %></td>
+        <%# link_to 'X', sales_summary, method: :delete, data: { confirm: 'Destroy this Record. Are you sure?' }, class: 'btn btn-danger' %>
       </tr>
     <% end %>
   </tbody>
