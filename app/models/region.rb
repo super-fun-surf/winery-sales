@@ -119,5 +119,21 @@ class Region < ApplicationRecord
     end
   end
 
+  def avg_sales_per_purchase(month, year)
+    total = 0
+    count = 0
+    self.tasting_rooms.each do |tr|
+      tr.sales_summaries.where(month: month, year: year).each do |ss|
+        count += 1
+        total += ss.sales_per_purchase
+      end
+    end
+    if count > 0
+      avg = total / count
+    else
+      total
+    end
+  end
+
 
 end

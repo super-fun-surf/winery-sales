@@ -134,6 +134,20 @@
             </td>
             <td><%= number_to_currency sales_summary.avg_sales_per_taster, precision: 1 %></td>
           </tr>
+          <tr>
+            <td class="right">Sales Per Purchase</td>
+            <td><%= number_to_currency sales_summary.sales_per_purchase %></td>
+            <td><span class="btn
+              <% if sales_summary.sales_per_purchase_percent_different >= 0 %>
+              variance_pos
+              <% else %>
+              variance_neg
+              <% end %>
+              ">
+              <%= number_to_percentage sales_summary.sales_per_purchase_percent_different, precision: 1 %></span>
+            </td>
+            <td><%= number_to_currency sales_summary.avg_sales_per_purchase, precision: 1 %></td>
+          </tr>
         </tbody>
       </table>
     </div>

@@ -42,6 +42,8 @@ class TastingRoomsController < ApplicationController
         elsif params[:sales_per_taster].present?
           @you[i] = sales_you.sales_per_taster
           #@them[i] = sales_you.avg_sales_per_taster
+        elsif params[:sales_per_purchase].present?
+          @you[i] = sales_you.sales_per_purchase
         else
           @you[i] = sales_you.num_of_tasters
         end
@@ -60,6 +62,8 @@ class TastingRoomsController < ApplicationController
         @them[i] = @tasting_room.region.avg_club_conversion(i, Date.today.year)
       elsif params[:sales_per_taster].present?
         @them[i] = @tasting_room.region.avg_sales_per_taster(i, Date.today.year)
+      elsif params[:sales_per_purchase].present?
+        @them[i] = @tasting_room.region.avg_sales_per_purchase(i, Date.today.year)
       elsif params[:sales].present?
         @them[i] = @tasting_room.region.avg_sales_in_dollars(i, Date.today.year)
       else

@@ -5,6 +5,10 @@ body {
   position: relative;
   top: 3.2em;
   padding-top: 1em;
+  padding-right: 1em;
+  @include media-breakpoint-up(sm) {
+    padding-right: 6em;
+  }
 }
 
 .table-hover-inverse {

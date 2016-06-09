@@ -29,8 +29,8 @@
     <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_taster: true) %>
     Salers Per Taster
   </div>
-  <div class="seventh <%= 'active' if params[:sales_per_taster].present? %>">
-    <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_taster: true) %>
+  <div class="seventh <%= 'active' if params[:sales_per_purchase].present? %>">
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_purchase: true) %>
     Salers Per Purchase
   </div>
 </div>
