@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530163506) do
+ActiveRecord::Schema.define(version: 20160610181932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,13 @@ ActiveRecord::Schema.define(version: 20160530163506) do
     t.integer  "region_id"
     t.integer  "winery_id"
     t.integer  "year_established"
-    t.integer  "num_of_employees"
     t.string   "profile_image_id"
     t.boolean  "estate"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
+    t.decimal  "tasting_fee",                    precision: 8, scale: 2
+    t.decimal  "non_wine_sales_percent_of_room", precision: 8, scale: 2
+    t.boolean  "seated_tastings",                                        default: false
     t.index ["region_id"], name: "index_tasting_rooms_on_region_id", using: :btree
     t.index ["winery_id"], name: "index_tasting_rooms_on_winery_id", using: :btree
   end
@@ -83,8 +85,10 @@ ActiveRecord::Schema.define(version: 20160530163506) do
     t.integer  "num_of_employees"
     t.string   "profile_image_id"
     t.jsonb    "reminder_days"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "cases_sold_2015"
+    t.integer  "wine_club_members"
     t.index ["reminder_days"], name: "index_wineries_on_reminder_days", using: :gin
   end
 

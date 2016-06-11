@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "All Wineries" ) %>
 
-<h1>Wineries</h1>
+<h1>Wineries <%= link_to 'New Winery', new_winery_path, class: 'btn btn-success' %></h1>
 
 <%= render @wineries %>
 <table>
@@ -36,5 +36,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Winery', new_winery_path %>

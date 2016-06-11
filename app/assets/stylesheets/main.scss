@@ -7,7 +7,7 @@ body {
   padding-top: 1em;
   padding-right: 1em;
   @include media-breakpoint-up(sm) {
-    padding-right: 6em;
+    padding-right: 3em;
   }
 }
 
@@ -70,18 +70,19 @@ footer {
   padding-left: .618em;
   padding-right: .618em;
   margin-top: 0em;
-  padding-top: 0em;
+  padding-top: .5em;
   margin-bottom: 0;
   padding-bottom: 0;
   line-height: 1em;
   height: $footer_xs;
-  font-size: .83em;
+  font-size: 1em;
+  font-weight: 600;
 
   @include media-breakpoint-up(sm) {
     padding-left: 1em;
     padding-right: 1em;
     margin-top: 0;
-    padding-top: .25em;
+    padding-top: .5em;
     margin-bottom: 0;
     padding-bottom: 0;
 

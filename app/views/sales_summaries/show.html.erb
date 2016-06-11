@@ -7,7 +7,8 @@
   <%= render partial: 'wineries/side_profile', locals: {winery: @sales_summary.winery} %>
   <div class="col-md-12 col-lg-9">
     <div style="width: 100%;max-width:40rem;margin-top:0;" class="container-regular table-responsive">
-      <strong>
+      <h4>Sales Benchmark for <%= Date::MONTHNAMES[@sales_summary.month] %></h4>
+
 
         <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
           <!--div class="styled_select"-->
@@ -18,10 +19,10 @@
 
             <%= select_year(@sales_summary.year, field_name: 'year', class: 'form-control', onchange: 'if(this.value != 0) { this.form.submit(); }') %>
 
-          <%= submit_tag "View", class: "btn btn-success-outline", style: "position:relative;" %>
+          <%= submit_tag "View", class: "btn btn-success", style: "position:relative;" %>
         <% end %>
         <%# Date::MONTHNAMES[sales_summary.month] %> <%# sales_summary.year %>
-      </strong>
+
       <hr>
       <table class="table-summary table-hover">
         <thead>

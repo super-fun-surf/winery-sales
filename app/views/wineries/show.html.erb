@@ -3,9 +3,12 @@
   <%= render partial: 'wineries/side_profile', locals: {winery: @winery} %>
   <div class="col-md-9 col-lg-9">
     <%# render partial: 'tasting_rooms/sales_graph', locals: {tasting_room: @winery.tasting_rooms.order(:name).first } %>
+    <% if @winery.tasting_rooms.blank? %>
+      <%= link_to 'Create a New Tasting Room', new_tasting_room_path(winery: @winery), class: 'btn btn-lg btn-success' %>
+    <% end %>
     <% @winery.tasting_rooms.each do |tr| %>
       <%= render partial: 'tasting_rooms/sales_table', locals: {tasting_room: tr} %>
       <br>
-    <% end %>    
+    <% end %>
   </div>
 </div>

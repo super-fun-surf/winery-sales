@@ -16,9 +16,16 @@
     <%= f.label :year_established, class: "form-label" %>
     <%= f.number_field :year_established, class: "form-control"  %>
   </div>
-
   <div class="form-group">
-    <%= f.label :num_of_employees, class: "form-label" %>
+    <%= f.label :cases_sold_2015, "2015 DTC Cases Sold", class: "form-label" %>
+    <%= f.number_field :cases_sold_2015, class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :wine_club_members, "Current Wine Club Members", class: "form-label" %>
+    <%= f.number_field :wine_club_members, class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :num_of_employees, "Number of Employees (FTE)", class: "form-label" %>
     <%= f.number_field :num_of_employees, class: "form-control"  %>
   </div>
 

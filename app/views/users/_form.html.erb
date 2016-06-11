@@ -6,22 +6,22 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :name, class: "form-label" %><br>
+    <%= f.label :name, "Your Name", class: "form-label" %><br>
     <%= f.text_field :name, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :email, class: "form-label" %><br>
+    <%= f.label :email, "Your Email", class: "form-label" %><br>
     <%= f.email_field :email, size: 50, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password, class: "form-label"  %><br>
+    <%= f.label :password, "Create a password", class: "form-label"  %><br>
     <%= f.password_field :password, size: 50, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation, "Confirmation", class: "form-label"  %><br>
+    <%= f.label :password_confirmation, "Confirm password", class: "form-label"  %><br>
     <%= f.password_field :password_confirmation, size: 50, class: "form-control" %>
   </div>
 
@@ -34,7 +34,7 @@
 
 
   <div class="form-group">
-    <%= f.submit 'Save', class: 'btn btn-primary' %>
+    <%= f.submit 'Signup', class: 'btn btn-primary' %>
   </div>
 
 <% end %>

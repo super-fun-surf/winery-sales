@@ -14,6 +14,9 @@ class TastingRoomsController < ApplicationController
   # GET /tasting_rooms/1.json
   def show
     #@start_time_this_year = Date.today.beginning_of_year
+    if @tasting_room.sales_summaries.blank?
+      redirect_to new_sales_summary_path(tasting_room: @tasting_room, month: Date.today.month - 1 , year: Date.today.year)
+    end
     @end_month = Date.today.month - 1
     @you = Array.new
     @them = []
@@ -110,8 +113,10 @@ class TastingRoomsController < ApplicationController
   # PATCH/PUT /tasting_rooms/1
   # PATCH/PUT /tasting_rooms/1.json
   def update
+
     respond_to do |format|
       if @tasting_room.update(tasting_room_params)
+        
         format.html { redirect_to @tasting_room, notice: 'Tasting room was successfully updated.' }
         format.json { render :show, status: :ok, location: @tasting_room }
       else
@@ -149,6 +154,7 @@ class TastingRoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tasting_room_params
-      params.require(:tasting_room).permit(:name, :region_id, :winery_id, :year_established, :num_of_employees, :profile_image, :estate)
+      params.require(:tasting_room).permit(:name, :region_id, :winery_id, :year_established, :num_of_employees,
+      :profile_image, :estate, :tasting_fee, :non_wine_sales_percent_of_room, :seated_tastings)
     end
 end

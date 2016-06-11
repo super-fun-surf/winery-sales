@@ -27,15 +27,23 @@
   <% if @tasting_room.present? %>
       <div class="winery-info">
         <h4>@ <%= @tasting_room.region.name %></h4>
+
           <strong>Since:</strong>
           <%= @tasting_room.year_established %>
-        </p>
+
         <p>
-          <strong>Num of employees:</strong>
-          <%= @tasting_room.num_of_employees %>
+          <strong>Tasting Fee:</strong>
+          <%= number_to_currency @tasting_room.tasting_fee %>
           <br>
           <strong>Estate:</strong>
           <%= @tasting_room.estate %>
+          <br>
+          <strong>Seated Tastings:</strong>
+          <%= @tasting_room.seated_tastings %>
+          <br>
+          <strong>Non-wine sales:</strong>
+          <%= number_to_percentage @tasting_room.non_wine_sales_percent_of_room, precision: 2 %>
+          <br>
         </p>
         <div class='bottom-right'>
           <%= link_to 'Edit', edit_tasting_room_path(@tasting_room), class: 'btn btn-sm btn-secondary' %>

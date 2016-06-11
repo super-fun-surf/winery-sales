@@ -52,7 +52,7 @@ class WineriesController < ApplicationController
   def update
     respond_to do |format|
       if @winery.update(winery_params)
-        format.html { redirect_to @winery, notice: 'Winery was successfully updated.' }
+        format.html { redirect_to @winery, notice: 'Yahoo! You created a new Winery.' }
         format.json { render :show, status: :ok, location: @winery }
       else
         format.html { render :edit }
@@ -88,6 +88,7 @@ class WineriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def winery_params
-      params.require(:winery).permit(:name, :region_id, :year_established, :num_of_employees, :profile_image, :estate, :reminder_days)
+      params.require(:winery).permit(:name, :region_id, :year_established, :num_of_employees, :profile_image,
+      :estate, :reminder_days, :cases_sold_2015, :wine_club_members)
     end
 end

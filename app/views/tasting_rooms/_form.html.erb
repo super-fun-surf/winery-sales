@@ -1,6 +1,8 @@
 <%= form_for(tasting_room) do |f| %>
   <%= render 'shared/error_messages', donkey: f.object %>
-  <%= f.hidden_field :winery_id, value: params[:winery] %>
+  <% if params[:winery].present? %>
+    <%= f.hidden_field :winery_id, value: params[:winery] %>
+  <% end %>
   <div class="form-group">
     <%= f.label :name_of_tasting_room, class: "form-label" %>
     <%= f.text_field :name, class: "form-control" %>
@@ -25,22 +27,45 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :num_of_employees, class: "form-label" %>
-    <%= f.number_field :num_of_employees, class: "form-control" %>
+    <%= f.label :tasting_fee, "What is your tasting fee?", class: "form-label" %>
+    <%= f.number_field :tasting_fee, class: "form-control" %>
   </div>
-
-  <div class="field">
-    <%# f.label :profile_image_id, class: "form-label" %>
-    <%# f.text_field :profile_image_id %>
+  <div class="form-group">
+    <%= f.label :non_wine_sales_percent_of_room, "Estimated percent of non-wine sales in your tasting room?", class: "form-label" %>
+    <%= f.number_field :non_wine_sales_percent_of_room, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :estate, class: "form-label checkbox inline" do %>
-      <%= f.check_box :estate, class: '', style: "position:relative;margin-left:0;" %>
-      <span>Estate?</span>
-    <% end %>
+    <span>Located on the estate/vineyard?</span>
+    <%= f.radio_button(:estate, true) %>
+    <%= f.label(:estate_yes, "Yes") %>
+    <%= f.radio_button(:estate, false) %>
+    <%= f.label(:estate_no, "No") %>
   </div>
 
+  <div class="form-group">
+    <span>Do you offer formally seated tastings?</span>
+    <%= f.radio_button(:seated_tastings, true) %>
+    <%= f.label(:seated_tastings_yes, "Yes") %>
+    <%= f.radio_button(:seated_tastings, false) %>
+    <%= f.label(:seated_tastings_no, "No") %>
+  </div>
+<!--
+
+  <div class="form-group">
+    <%# f.label :estate, "Located on the estate/vineyard?", class: "form-label checkbox inline" do %>
+      <%# f.check_box :estate, class: '', style: "position:relative;margin-left:0;" %>
+
+    <%# end %>
+  </div>
+
+  <div class="form-group">
+    <%# f.label :seated_tastings, "Do you offer formally seated tastings?", class: "form-label checkbox inline" do %>
+      <%# f.check_box :seated_tastings, class: '', style: "position:relative;margin-left:0;" %>
+      <span>Do you offer formally seated tastings?</span>
+    <%# end %>
+  </div>
+-->
   <div class="actions">
     <%= f.submit "Save", class: 'btn btn-success', onclick: "this.style.backgroundColor='rgb(0, 135, 153)';this.style.color='#FFFFFF';this.innerHTML='Uploading #{fa_icon('spinner spin')}';" %>
   </div>
