@@ -57,8 +57,8 @@
       <% for i in 1..@end_month do %>
         // Data Points Label and then points
         [ "<%= escape_javascript Date::MONTHNAMES[i] %>",
-        <%= escape_javascript( (@them[i]).round(2).to_s ) %>,
-        <%= escape_javascript( (@you[i]).round(2).to_s ) %>
+        {v: <%= escape_javascript( (@them[i]).round(2).to_s ) %>, f:"<%= escape_javascript( (@them_formatted[i]).to_s ) %>" },
+        {v: <%= escape_javascript( (@you[i]).round(2).to_s ) %>, f:"<%= escape_javascript( (@you_formatted[i]).to_s ) %>"}
         ],
       <% end %>
     ]);
