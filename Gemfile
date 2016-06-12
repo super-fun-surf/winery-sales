@@ -7,6 +7,9 @@ gem 'rails', '>= 5.0.0.rc1', '< 5.1'
 gem 'sinatra', github: 'sinatra/sinatra'
 #gem 'rack', '~> 2.0.0.rc1'
 
+#monitoring
+gem "skylight"
+
 #spreadsheets
 gem 'roo', '~> 2.1.0'
 gem 'roo-xls', '~> 1.0.0'
