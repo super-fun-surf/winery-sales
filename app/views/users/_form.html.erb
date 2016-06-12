@@ -32,9 +32,79 @@
     <%# f.label :image, 'Heading Image', class: 'form-label' %>
     <%# f.attachment_field :image, direct: true, class: 'form-control' %>
 
-
-  <div class="form-group">
-    <%= f.submit 'Signup', class: 'btn btn-primary' %>
-  </div>
-
+  <% if action_name == 'new' %>
+    <div class="card" style="background-color:rgba(5,5,5,.2);border-radius:.3em;height:12em;overflow:scroll;font-size:.7em;padding:.7em;">
+      <h5>Terms of Service: (scroll down to read)</h5>
+<p>
+“Client” means Winery
+“Client Data” means all information stored in the software pertaining by Client.
+</p>
+<p>
+By using the West Company ("Services"), you (“Client”) are agreeing to be bound by the following terms and conditions ("Terms of Service")
+</p>
+<p>
+West Company ("Company") reserves the right to update and change these Terms of Service without notice.
+Account Client is responsible for maintaining the security of username and password. Client is responsible for all content posted and activity that occurs under your account
+</p>
+<p>
+<strong>Confidentiality & Non-Disclosure.</strong> Company will not disclose or use, either during or anytime after the termination of this Agreement, any proprietary or confidential information of Company without Company’s prior written permission.
+</p>
+<p>
+<strong>Proprietary or Confidential Information Includes:</strong>
+</p>
+<ul>
+<li>Client Data entered during use of Services.</li>
+<li>Original, non-public written, printed, graphic or electronically recorded materials furnished by Client for Company to use</li>
+<li>Information belonging to customers and suppliers of Client about whom Company gained knowledge as a result of Company’s services to Client.</li>
+</ul>
+<p>
+<strong>Modifications.</strong> The Company can modify the Services as the group of Clients and Company mutually agree for the benefit of the Services.  However, Company reserves the right at any time and from time to time to modify or discontinue, temporarily or permanently, any part of the Service with or without notice.  The Company shall not be liable to you or to any third party for any modification, price change, suspension or discontinuance of the Service.
+</p>
+<p>
+Intellectual Property.  Rights to any of the Services provided to Client by Company under this Agreement shall be solely the property of Company.  Client hereby assigns all right, title and interest in and to and exclusive ownership of any of the Services under the Statement of Work to the Company.
+</p>
+<p>
+Client shall reserve all right, title, and interest to and exclusive ownership all Client Data.
+</p>
+<p>
+The Client and Company acknowledge that they will not use the name or logos or any other trademark owned by Client or Company for any purpose without the prior written consent of the owner thereof. .
+</p>
+<p>
+<strong>Limitation of Liability.</strong>  Company's liability to Client with regard to any of the Services or other Company service is limited to the amount paid to and received by Company for the Services or other Company service (see Termination provision). In no event shall Company be liable to any end user or any other entity for any special, consequential, or other damages.
+Client will take all necessary measures to preclude Company from being made a party to any lawsuit or claim regarding any Company Services provided to Client.
+</p>
+<p>
+<strong>Third Party Vendors & Partners.</strong>  Client understands that the Company uses third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run the Service.
+Mediation and Possible Arbitration. If a dispute arises, the parties will try in good faith to settle it through mediation conducted by a mediator to be mutually selected.  The parties will share the costs of the mediator equally. Each party will cooperate fully and fairly with the mediator and will attempt to reach a mutually satisfactory compromise to the dispute. If the dispute is not resolved within 30 days after it is referred to the mediator, it will be arbitrated by an arbitrator to be mutually selected. Judgment on the arbitration award may be entered in any court that has jurisdiction over the matter. Costs of arbitration, including lawyers' fees, will be allocated by the arbitrator.
+</p>
+<p>
+<strong>Governing Law.</strong> This Agreement shall be governed by and construed in accordance with the laws of California.
+</p>
+<p>
+<strong>Force Majeure.</strong> The parties hereto shall not be responsible for any failure or delay in the performance of any obligations hereunder by acts of God, fire, flood, war, riot or public enemy.
+</p>
+<p>
+<strong>Severability.</strong>  If any term or provision of this Agreement or the application thereof to any person or circumstance shall to any extent be invalid or unenforceable, the remainder of this Agreement or the application of such term or provision to persons or circumstances other than those to which it is held invalid or unenforceable shall not be affected thereby, and each term and provision of the Agreement shall be valid and enforceable to the fullest extent permitted by law.
+</p>
+<p>
+<strong>Termination.</strong>  This Agreement may not be canceled, modified, or terminated except in writing signed by Client and Company.  In case of such termination in writing by the Client, Client shall be responsible for any portion of the compensation owed to Company for any Services or Services provided up to the day that notice of termination is delivered and that no work be performed thereafter without the express written permission from Client. If either Party commits a material breach of any provision of this Agreement, the other Party may terminate this Agreement, in whole or in part, after providing fifteen (15) days’ prior written notice and an opportunity to cure; provided, however, that, in addition to the other legal and equitable remedies that either party may pursue to redress such breach, Company shall promptly reimburse Client the fees paid by Client to Company proportional to the deficient Services or services giving rise to such breach.
+</p>
+<p>
+<strong>Entire Agreement.</strong>  This agreement contains the entire agreement of the Client and Company and no terms may be modified or waived except by the mutual written consent of both Client and the Company.
+</p>
+<p>
+Questions about the Terms of Service should be sent to <strong>john@westcompany.org</strong>
+</p>
+<p>
+Any new features that augment or enhance the current Service, including the release of new tools and resources, shall be subject to the Terms of Service. Continued use of the Service after any such changes shall constitute your consent to such changes.
+</p>
+    </div>
+    <div class="form-group">
+      <%= f.submit 'Agree & Signup', class: 'btn btn-primary' %>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= f.submit 'Save', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 <% end %>

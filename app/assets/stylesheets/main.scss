@@ -75,8 +75,8 @@ footer {
   padding-bottom: 0;
   line-height: 1em;
   height: $footer_xs;
-  font-size: 1em;
-  font-weight: 600;
+  font-size: .96em;
+  font-weight: 400;
 
   @include media-breakpoint-up(sm) {
     padding-left: 1em;

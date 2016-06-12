@@ -43,7 +43,9 @@ class SalesSummariesController < ApplicationController
       @sales_summary.month = params[:month]
       @sales_summary.year = params[:year]
     else
-      @sales_summary.month = Date.today.month
+      m = Date.today.month - 1
+      m = 1 if m == 0
+      @sales_summary.month = m
       @sales_summary.year = Date.today.year
     end
   end

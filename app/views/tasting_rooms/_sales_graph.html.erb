@@ -7,7 +7,7 @@
   </div>
   <div class="seventh <%= 'active' if params[:purchasers].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(purchasers: true) %>
-    Tasters that purchased
+    Purchases
   </div>
   <div class="seventh <%= 'active' if params[:sales].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(sales: true) %>
@@ -15,7 +15,7 @@
   </div>
   <div class="seventh <%= 'active' if params[:club_signup].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(club_signup: true) %>
-    Club Memberships
+    Club Signups
   </div>
   <div class="seventh <%= 'active' if params[:conversion].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(conversion: true) %>

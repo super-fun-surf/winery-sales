@@ -13,7 +13,7 @@
         <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
           <!--div class="styled_select"-->
           Select date to view Benchmark
-            <%= select_month(@sales_summary.month, :field_name => 'month', class: "form-control", onchange:'this.form.submit()' ) %>
+            <%= select_month(@sales_summary.month, :field_name => 'month', class: "form-control", html: {onchange:'this.form.submit();'} ) %>
           <!--/div-->
             <%# select_tag 'month', options_for_select(Date::MONTHNAMES), selected: @sales_summary.month, onchange:'this.form.submit()' %>
 
