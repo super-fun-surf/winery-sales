@@ -13,7 +13,11 @@ class SalesSummary < ApplicationRecord
     sales_in_dollars / num_of_tasters.to_f
   end
   def sales_per_purchase
-    sales_in_dollars / num_of_purchasers.to_f
+    if num_of_purchasers > 0
+      sales_in_dollars / num_of_purchasers.to_f
+    else
+      sales_in_dollars
+    end
   end
 
   def avg_tasters
