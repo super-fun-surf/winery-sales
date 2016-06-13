@@ -16,11 +16,14 @@
 //= require turbolinks
 
 //= require tether
-//= require bootstrap-sprockets
+//= require bootstrap
+//-sprockets
 //= require refile
-
 //= require_tree .
 
+//jQuery( function($) {
+//    $('a').tooltip();
+//});
 
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
@@ -33,3 +36,7 @@ $(document).ready(function(){
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+//$(document).on('ready turbolinks:load', {
+//  $('[data-toggle="tooltip"]').tooltip()
+//});

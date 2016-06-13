@@ -26,43 +26,56 @@
         </div>
 
         <div class="form-group row">
-          <%= f.label :num_of_tasters, ("Number of tasters " + fa_icon("question-circle", :data => { toggle: "tooltip",
+          <%# f.label :num_of_tasters, ("Number of tasters " + fa_icon("question-circle", :data => { toggle: "tooltip",
             title: "This is the number of people who tasted your wine.  If a couple comes in and shares a tasting/glass this counts as 2 tasters.  If there is a designated driver or someone who walks in, but does not taste wine, this does not count as a taster."} )).html_safe, style: 'text-align:right', class: "form-control-label col-sm-5" %>
+          <label class="form-control-label col-sm-5" style='text-align:right'>
+            Number of tasters
+            <%= link_to fa_icon("question-circle"), "#", class: "darklink", data: { toggle: "tooltip", title: "This is the number of people who tasted your wine.  If a couple comes in and shares a tasting/glass this counts as 2 tasters.  If there is a designated driver or someone who walks in, but does not taste wine, this does not count as a taster." } %>
+          </label>
           <div class="col-sm-7">
             <%= f.number_field :num_of_tasters, class: 'form-control ' %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :num_of_tasters_that_purchased, ("Num of purchasers " + fa_icon("question-circle", :data => { toggle: "tooltip",
+          <%# f.label :num_of_tasters_that_purchased, ("Num of purchasers " + fa_icon("question-circle", :data => { toggle: "tooltip",
              title: "This should just be the number of purchases transacted in your tasting room as calculated from your POS.  If a wine club member purchases for a group, that will count as one transaction.  If someone purchases a non-wine item, that should be counted as a purchase."} )).html_safe, style: 'text-align:right', class: "form-control-label col-sm-5" %>
-          <%# f.label :num_of_tasters_that_purchased, style: 'text-align:right', class: "form-control-label col-sm-5" %>
+           <label class="form-control-label col-sm-5" style='text-align:right'>
+             Num of purchasers
+             <%= link_to fa_icon("question-circle"), "#", class: "darklink", data: { toggle: "tooltip", title: "This should just be the number of purchases transacted in your tasting room as calculated from your POS.  If a wine club member purchases for a group, that will count as one transaction.  If someone purchases a non-wine item, that should be counted as a purchase." } %>
+           </label>
           <div class="col-sm-7">
             <%= f.number_field :num_of_purchasers, class: 'form-control' %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :num_of_club_signups, ("Number of Wine Club Signups " + fa_icon("question-circle", :data => { toggle: "tooltip",
+          <%# f.label :num_of_club_signups, ("Number of Wine Club Signups " + fa_icon("question-circle", :data => { toggle: "tooltip",
             title: "Per the Number of Purchases per month, if a couple signs up for one wine club, this will be reported as one signup."} )).html_safe, style: 'text-align:right', class: "form-control-label col-sm-5" %>
-          <%# f.label :num_of_club_signups, style: 'text-align:right', class: "form-control-label col-sm-5" %>
+          <label class="form-control-label col-sm-5" style='text-align:right'>
+            Number of Wine Club Signups
+            <a class="darklink" href="#" data-toggle="tooltip" title="Per the Number of Purchases per month, if a couple signs up for one wine club, this will be reported as one signup.">
+              <i class="fa fa-question-circle"></i>
+            </a>
+          </label>
           <div class="col-sm-7">
             <%= f.number_field :num_of_club_signups, class: 'form-control' %>
           </div>
         </div>
 
         <div class="form-group row">
-          <%= f.label :sales_in_dollars, ("Tasting Room Sales " + fa_icon("question-circle", :data => { toggle: "tooltip",
+          <%# f.label :sales_in_dollars, ("Tasting Room Sales " + fa_icon("question-circle", :data => { toggle: "tooltip",
             title: "This is the total dollars sold in your tasting room.  This should include non-wine sales but not include internet and/or wine club sales."} )).html_safe, style: 'text-align:right', class: "form-control-label col-sm-5" %>
-          <%# f.label :sales_in_dollars, style: 'text-align:right', class: "form-control-label col-sm-5" %>
+          <label class="form-control-label col-sm-5" style='text-align:right'>
+            Tasting Room Sales
+            <a class="darklink" href="#" data-toggle="tooltip" title="This is the total dollars sold in your tasting room.  This should include non-wine sales but not include internet and/or wine club sales.">
+              <i class="fa fa-question-circle"></i>
+            </a>
+          </label>
           <div class="col-sm-7">
             <%= f.text_field :sales_in_dollars, class: 'form-control' %>
           </div>
         </div>
-
-
-
-
 
         <div class="form-group">
           <%# f.label :day, class: "form-label" %>
@@ -78,3 +91,9 @@
   </div>
   <div class="col-md-1 col-lg-2 col-xl-2"></div>
 </div>
+
+
+<script>
+$('a').tooltip();
+
+</script>
