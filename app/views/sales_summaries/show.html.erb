@@ -8,8 +8,6 @@
   <div class="col-md-12 col-lg-9">
     <div style="width: 100%;max-width:40rem;margin-top:0;" class="container-regular table-responsive">
       <h4>Sales Benchmark for <%= Date::MONTHNAMES[@sales_summary.month] %></h4>
-
-
         <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
           <!--div class="styled_select"-->
           Select date to view Benchmark
@@ -22,15 +20,14 @@
           <%= submit_tag "View", class: "btn btn-success", style: "position:relative;" %>
         <% end %>
         <%# Date::MONTHNAMES[sales_summary.month] %> <%# sales_summary.year %>
-
       <hr>
       <table class="table-summary table-hover">
         <thead>
           <tr>
             <th></th>
-            <th><strong style="font-size:1.1em;"><%= @sales_summary.tasting_room.winery.name %></strong>: <%= @sales_summary.tasting_room.region.name %></th>
+            <th><strong style="font-size:1.1em;"><%= @sales_summary.tasting_room.winery.name %></strong> @ <%= @sales_summary.tasting_room.region.name %></th>
             <th>Variance</th>
-            <th>Region Average</th>
+            <th>Region Average: <small><%= pluralize(@sales_summary.tasting_room.region.tasting_rooms.count, 'Winery') %> reporting</small></th>
           </tr>
         </thead>
         <tbody>
