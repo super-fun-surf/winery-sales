@@ -14,7 +14,7 @@ module UserMailgun
     donkey = donkey.gsub("\n", "")
     #debugger
     message_params =  {
-      from: "Thought-Post <lukeallen@gmail.com>",
+      from: "john@westcompany.org",
       to:   email,
       subject: 'Account Activation | Winery Sales Improvment Project',
       html: donkey,
@@ -29,7 +29,7 @@ module UserMailgun
   end
 
   # render_to_string(:action => "users/profile", :layout => false)
-  
+
   def user_activation_html(user)
     render_to_string partial: 'user_email/account_activation', locals: {user: user}
   end
@@ -43,7 +43,7 @@ module UserMailgun
     mail = mail.gsub("\n", "")
     #debugger
     message_params =  {
-      from: "Thought-Post <lukeallen@gmail.com>",
+      from: "john@westcompany.org",
       to:   email,
       subject: 'Reset Password | Winery Sales Improvment Project',
       html: mail,

@@ -1,22 +1,23 @@
 <h1>
   Sales Summaries: <%= tasting_room.region.name %>
-  <%= link_to "Enter new Month's Data", new_sales_summary_path(tasting_room: tasting_room.id), class: 'btn btn-success btn-sm' %>
+  <%= link_to "Enter New Month's Data", new_sales_summary_path(tasting_room: tasting_room.id), class: 'btn btn-success btn-sm' %>
   <%= link_to 'Download CSV', tasting_room_path(tasting_room, :csv), class: 'btn btn-sm btn-secondary btn-disabled' %>
 </h1>
-<div class="table-responsive">
+<div class="table-responsive" style="font-size:.9em;">
 <table class="table table-sm table-inverse table-hover-inverse table-bordered">
   <thead>
     <tr>
       <!--th>Tasting room</th-->
-      <th>Num of tasters</th>
-      <th>Num of purchasers</th>
-      <th>Percent That Purchased</th>
-      <th>Num of club signups</th>
-      <th>Percentage of club signups</th>
-      <th>Sales in dollars</th>
       <th>Year</th>
       <th>Month</th>
-
+      <th>Tasters</th>
+      <th>Purchases</th>
+      <th>Tasting Room Sales</th>
+      <th>Club Signups</th>
+      <th>Purchase Conversion</th>
+      <th>Club Conversion</th>
+      <th>Sales Per Taster</th>
+      <th>Sales Per Purchase</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -25,17 +26,18 @@
     <% tasting_room.sales_summaries.order(year: :desc, month: :desc ).each do |sales_summary| %>
       <tr>
         <!--td><%# sales_summary.tasting_room.region.name %></td-->
-        <td><%= sales_summary.num_of_tasters %></td>
-        <td><%= sales_summary.num_of_purchasers %></td>
-        <td><%= number_to_percentage sales_summary.percent_tasters_purcahased, precision: 1 %></td>
-        <td><%= sales_summary.num_of_club_signups %></td>
-        <td><%= number_to_percentage sales_summary.percent_club_signup, precision: 1 %></td>
-        <td><%= number_to_currency sales_summary.sales_in_dollars %></td>
         <td><%= sales_summary.year %></td>
         <td><%= Date::MONTHNAMES[sales_summary.month] %></td>
-        <%# sales_summary.day %>
-        <td><%= link_to 'Benchmark', sales_summary, class: 'btn btn-success' %></td>
-        <td><%= link_to 'Edit', edit_sales_summary_path(sales_summary), class: 'btn btn-info' %></td>
+        <td><%= sales_summary.num_of_tasters %></td>
+        <td><%= sales_summary.num_of_purchasers %></td>
+        <td><%= number_to_currency sales_summary.sales_in_dollars %></td>
+        <td><%= sales_summary.num_of_club_signups %></td>
+        <td><%= number_to_percentage sales_summary.percent_tasters_purcahased, precision: 1 %></td>
+        <td><%= number_to_percentage sales_summary.percent_club_signup, precision: 1 %></td>
+        <td><%= number_to_currency sales_summary.sales_per_taster %></td>
+        <td><%= number_to_currency sales_summary.sales_per_purchase %></td>
+        <td><%= link_to 'Benchmark', sales_summary, class: 'btn btn-success btn-sm' %></td>
+        <td><%= link_to 'Edit', edit_sales_summary_path(sales_summary), class: 'btn btn-info btn-sm' %></td>
         <%# link_to 'X', sales_summary, method: :delete, data: { confirm: 'Destroy this Record. Are you sure?' }, class: 'btn btn-danger' %>
       </tr>
     <% end %>

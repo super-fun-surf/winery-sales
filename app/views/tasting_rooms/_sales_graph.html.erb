@@ -11,7 +11,7 @@
   </div>
   <div class="seventh <%= 'active' if params[:sales].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(sales: true) %>
-    Tasting Room Sales
+      Tasting Room Sales
   </div>
   <div class="seventh <%= 'active' if params[:club_signup].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(club_signup: true) %>
@@ -19,7 +19,7 @@
   </div>
   <div class="seventh <%= 'active' if params[:conversion].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(conversion: true) %>
-  Purchase Conversion
+    Purchase Conversion
   </div>
   <div class="seventh <%= 'active' if params[:club_conversion].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(club_conversion: true) %>
@@ -27,11 +27,11 @@
   </div>
   <div class="seventh <%= 'active' if params[:sales_per_taster].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_taster: true) %>
-    Salers Per Taster
+    Sales Per Taster
   </div>
   <div class="seventh <%= 'active' if params[:sales_per_purchase].present? %>">
     <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_purchase: true) %>
-    Salers Per Purchase
+    Sales Per Purchase
   </div>
 </div>
 
@@ -64,7 +64,7 @@
     ]);
 
     // Set chart options
-    var options = {'title':'<%= pluralize(tasting_room.region.tasting_rooms.count, 'Winery') %> reporting:',
+    var options = {'title':'<%= pluralize(tasting_room.region.tasting_rooms.count, 'winery') %> reporting:',
       backgroundColor: "rgb(213, 213, 213)",
       curveType: 'function',
       animation: {

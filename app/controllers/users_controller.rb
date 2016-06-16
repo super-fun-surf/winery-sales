@@ -29,7 +29,8 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       send_user_activation_mail(@user, "Wineries - New User Registration")
-      redirect_to @user, notice: "User account created: Welcome!"
+      #redirect_to @user, notice: "User account created: Welcome!"
+      redirect_to new_winery_path(user: @user), notice: "User account created. Now Create a Winery."
     else
       render 'new'
     end

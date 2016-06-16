@@ -38,7 +38,8 @@ class WineriesController < ApplicationController
         if params[:user].present?
           WineryUser.create(user_id: params[:user], winery_id: @winery.id)
         end
-        format.html { redirect_to @winery, notice: 'Winery was successfully created.' }
+        #format.html { redirect_to @winery, notice: 'Winery was successfully created.' }
+        format.html { redirect_to new_tasting_room_path(winery: @winery), notice: 'Winery was successfully created. Now Create a Tasting Room.' }
         format.json { render :show, status: :created, location: @winery }
       else
         format.html { render :new }

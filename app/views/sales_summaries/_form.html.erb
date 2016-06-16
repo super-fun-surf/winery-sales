@@ -2,7 +2,7 @@
   <div class="col-md-1 col-lg-2 col-xl-2"></div>
   <div class="col-md-10 col-lg-8 col-xl-8">
     <div class="container-regular">
-      <h2 align="center">Enter Sales for the Month</h2>
+      <h2 align="center">Tasting Room Data For the Month of:</h2>
       <%= form_for(sales_summary, html: {class: ""}) do |f| %>
         <%= render 'shared/error_messages', donkey: f.object %>
         <% if params[:tasting_room].present? %>
@@ -12,6 +12,7 @@
         <div class="form-inline form-group" align="center">
           <%# f.label :month, class: "form-control-label" %>
           <!--div class="styled_select"-->
+          Select Month
             <%= select_month(@sales_summary.month, :field_name => 'month', :prefix => 'sales_summary', class: "form-control") %>
 
           <%# f.label :year, class: "form-control-label" %>
@@ -29,8 +30,8 @@
           <%# f.label :num_of_tasters, ("Number of tasters " + fa_icon("question-circle", :data => { toggle: "tooltip",
             title: "This is the number of people who tasted your wine.  If a couple comes in and shares a tasting/glass this counts as 2 tasters.  If there is a designated driver or someone who walks in, but does not taste wine, this does not count as a taster."} )).html_safe, style: 'text-align:right', class: "form-control-label col-sm-5" %>
           <label class="form-control-label col-sm-5" style='text-align:right'>
-            Number of tasters
-            <%= link_to fa_icon("question-circle"), "#", class: "darklink", data: { toggle: "tooltip", title: "This is the number of people who tasted your wine.  If a couple comes in and shares a tasting/glass this counts as 2 tasters.  If there is a designated driver or someone who walks in, but does not taste wine, this does not count as a taster." } %>
+            Number of Tasters
+            <%= link_to fa_icon("question-circle"), "#", class: "darklink", data: { toggle: "tooltip", title: "<p align='left'>This is the number of people who tasted your wine.  If a couple comes in and shares a tasting/glass this counts as 2 tasters.  If there is a designated driver or someone who walks in, but does not taste wine, this does not count as a taster.</p>" } %>
           </label>
           <div class="col-sm-7">
             <%= f.number_field :num_of_tasters, class: 'form-control ' %>
@@ -41,8 +42,8 @@
           <%# f.label :num_of_tasters_that_purchased, ("Num of purchasers " + fa_icon("question-circle", :data => { toggle: "tooltip",
              title: "This should just be the number of purchases transacted in your tasting room as calculated from your POS.  If a wine club member purchases for a group, that will count as one transaction.  If someone purchases a non-wine item, that should be counted as a purchase."} )).html_safe, style: 'text-align:right', class: "form-control-label col-sm-5" %>
            <label class="form-control-label col-sm-5" style='text-align:right'>
-             Num of purchasers
-             <%= link_to fa_icon("question-circle"), "#", class: "darklink", data: { toggle: "tooltip", title: "This should just be the number of purchases transacted in your tasting room as calculated from your POS.  If a wine club member purchases for a group, that will count as one transaction.  If someone purchases a non-wine item, that should be counted as a purchase." } %>
+             Number of Purchasers
+             <%= link_to fa_icon("question-circle"), "#", class: "darklink", data: { toggle: "tooltip", title: "<p align='left'>This should just be the number of purchases transacted in your tasting room as calculated from your POS.  If a wine club member purchases for a group, that will count as one transaction.  If someone purchases a non-wine item, that should be counted as a purchase.</p>" } %>
            </label>
           <div class="col-sm-7">
             <%= f.number_field :num_of_purchasers, class: 'form-control' %>
@@ -54,7 +55,7 @@
             title: "Per the Number of Purchases per month, if a couple signs up for one wine club, this will be reported as one signup."} )).html_safe, style: 'text-align:right', class: "form-control-label col-sm-5" %>
           <label class="form-control-label col-sm-5" style='text-align:right'>
             Number of Wine Club Signups
-            <a class="darklink" href="#" data-toggle="tooltip" title="Per the Number of Purchases per month, if a couple signs up for one wine club, this will be reported as one signup.">
+            <a class="darklink" href="#" data-toggle="tooltip" title="<p align='left'>Per the Number of Purchases per month, if a couple signs up for one wine club, this will be reported as one signup.</p>">
               <i class="fa fa-question-circle"></i>
             </a>
           </label>
@@ -68,7 +69,7 @@
             title: "This is the total dollars sold in your tasting room.  This should include non-wine sales but not include internet and/or wine club sales."} )).html_safe, style: 'text-align:right', class: "form-control-label col-sm-5" %>
           <label class="form-control-label col-sm-5" style='text-align:right'>
             Tasting Room Sales
-            <a class="darklink" href="#" data-toggle="tooltip" title="This is the total dollars sold in your tasting room.  This should include non-wine sales but not include internet and/or wine club sales.">
+            <a class="darklink" href="#" data-toggle="tooltip" title="<p align='left'>This is the total dollars sold in your tasting room.  This should include non-wine sales but not include internet and/or wine club sales.</p>">
               <i class="fa fa-question-circle"></i>
             </a>
           </label>
@@ -94,6 +95,7 @@
 
 
 <script>
-$('a').tooltip();
+$('a').tooltip({
+  html: true});
 
 </script>

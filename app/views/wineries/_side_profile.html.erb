@@ -7,10 +7,16 @@
     <strong>Since:</strong>
     <%= winery.year_established %>
     <br>
-    <strong>Num of employees:</strong>
+    <strong>Employees: </strong>
     <%= winery.num_of_employees %>
+    <br>
+    <strong>2015 DTC Cases Sold: </strong>
+    <%= winery.cases_sold_2015 %>
+    <br>
+    <strong>Wine Club Members: </strong>
+    <%= winery.wine_club_members %>
     <p>
-      <strong><%= winery.name %> tasting rooms:</strong><br>
+      <strong>Tasting Rooms:</strong><br>
       <% winery.tasting_rooms.each do |tr| %>
         <%= link_to tr.region.name, tr %><br>
       <% end %>
@@ -18,7 +24,7 @@
     </p>
     <br>
     <div class='bottom-left'>
-      <%= link_to 'Open New Tasting Room', new_tasting_room_path(winery: winery), class: 'btn btn-sm btn-success' %>
+      <%= link_to 'Create a New Tasting Room', new_tasting_room_path(winery: winery), class: 'btn btn-sm btn-success' %>
     </div>
     <div class='bottom-right'>
       <%= link_to 'Edit', edit_winery_path(winery), class: 'btn btn-sm btn-secondary' %>
@@ -36,10 +42,10 @@
           <%= number_to_currency @tasting_room.tasting_fee %>
           <br>
           <strong>Estate:</strong>
-          <%= @tasting_room.estate %>
+          <%= @tasting_room.estate_yn %>
           <br>
           <strong>Seated Tastings:</strong>
-          <%= @tasting_room.seated_tastings %>
+          <%= @tasting_room.seated_tastings_yn %>
           <br>
           <strong>Non-wine sales:</strong>
           <%= number_to_percentage @tasting_room.non_wine_sales_percent_of_room, precision: 2 %>

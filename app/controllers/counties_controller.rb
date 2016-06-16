@@ -28,7 +28,7 @@ class CountiesController < ApplicationController
   # POST /counties.json
   def create
     @county = County.new(county_params)
-    debugger
+  
     respond_to do |format|
       if @county.save
         format.html { redirect_to @county, notice: 'County was successfully created.' }

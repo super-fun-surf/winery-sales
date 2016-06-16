@@ -5,7 +5,7 @@
       <%= link_to "Home", current_user.wineries.first, class: "btn btn-sm btn-secondary" %>
       <% if @tasting_room.present? %>
         <%= link_to "Benchmark", @tasting_room.sales_summaries.order(year: :asc, month: :asc).last, class: "btn btn-sm btn-info" %>
-        <%= link_to "Enter new Month's Data", new_sales_summary_path(tasting_room: @tasting_room.id), class: 'btn btn-success btn-sm' %>
+        <%= link_to "Enter New Month's Data", new_sales_summary_path(tasting_room: @tasting_room.id), class: 'btn btn-success btn-sm' %>
       <% elsif current_user.wineries.first.tasting_rooms.present? %>
         <%= link_to "Benchmark", current_user.wineries.first.tasting_rooms.first.sales_summaries.order(year: :asc, month: :asc).last, class: "btn btn-sm btn-secondary" %>
         <%= link_to "Enter new Month's Data", new_sales_summary_path(tasting_room: current_user.wineries.first.tasting_rooms.first.id), class: 'btn btn-success btn-sm' %>
@@ -21,10 +21,12 @@
       <%= link_to "Edit Profile", edit_user_path(current_user) %>
       |
       <%= link_to "Log out", logout_path, method: :delete %>
+      |
+      <%= link_to "Support", "mailto:john@westcompany.org", class: '' %>
     </div>
     <% if admin? %>
-      <%= link_to "All Users", users_path, class: "btn btn-sm btn-secondary" %>
-      <%= link_to "All Wineries", wineries_path, class: "btn btn-sm btn-secondary" %>
+      <%= link_to "Users", users_path, class: "btn btn-sm btn-secondary" %>
+      <%= link_to "Wineries", wineries_path, class: "btn btn-sm btn-secondary" %>
       <%= link_to 'Counties', counties_path, class: 'btn btn-sm btn-secondary' %>
       <%= link_to 'Regions', regions_path, class: 'btn btn-sm btn-secondary' %>
     <% end %>
@@ -32,6 +34,7 @@
     <div class="nav pull-right" style="padding-right: 1em;">
       <%= link_to "Log in", login_path, class: 'btn btn-primary' %>
       <%= link_to "Sign Up!", signup_path, class: 'btn btn-success' %>
+      <%= link_to "Support", "mailto:john@westcompany.org", class: 'btn btn-warning' %>
     </div>
   <% end %>
 
