@@ -10,9 +10,10 @@
      </p>
    </div>
    <ul class="list-group list-group-flush">
+     
      <% user.winery_users.each do |wu| %>
       <li class="list-group-item">
-        <%= wu.position %> @ <%= wu.winery.name %>
+        <%# wu.position %> <%= link_to wu.winery.name, wu.winery %>
       </li>
      <% end %>
    </ul>
