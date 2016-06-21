@@ -4,13 +4,13 @@
    <div class="card-block">
      <h4 class="card-title"><%= link_to user.name, user %></h4>
      <p class="card-text">
-       Last Login: <%= pluralize(rand(31), "day") %> ago.<br>
-       <%= pluralize(rand(5), "Month") %> behind entering data.<br>
+       <!-- Last Login: <%# pluralize(rand(31), "day") %> ago.<br>
+       <%# pluralize(rand(5), "Month") %> behind entering data.<br> -->
        <small><%= mail_to user.email %></small>
      </p>
    </div>
    <ul class="list-group list-group-flush">
-     
+
      <% user.winery_users.each do |wu| %>
       <li class="list-group-item">
         <%# wu.position %> <%= link_to wu.winery.name, wu.winery %>

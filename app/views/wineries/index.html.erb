@@ -1,6 +1,16 @@
 <% provide(:title, "All Wineries" ) %>
 
-<h1>Wineries <%= link_to 'New Winery', new_winery_path, class: 'btn btn-success' %></h1>
+<h1>Wineries <%= link_to 'New Winery', new_winery_path, class: 'btn btn-success' %>
+   <%# link_to "CSV",wineries_path(format: :csv) , class: "btn btn-sm btn-secondary" %>
+</h1>
+<%= form_tag(wineries_path(format: :csv), method: :get, id: "select_month_for_csv", class: "form-inline") do %>
+  <%= select_month(Date.today.month, :field_name => 'month', class: "form-control" ) %>
+  <%# select_tag 'month', options_for_select(Date::MONTHNAMES), selected: @sales_summary.month, onchange:'this.form.submit()' %>
+  <%= select_year(Date.today.year, field_name: 'year', class: 'form-control') %>
+  <%= submit_tag "CSV", class: "btn btn-secondary", style: "position:relative;" %>
+<% end %>
+<br>
+
 
 <%# render @wineries %>
 <table class="table table-sm table-inverse table-hover-inverse table-bordered">
@@ -21,7 +31,7 @@
         <td><%= link_to winery.name, winery %></td>
         <td>
           <% winery.tasting_rooms.each do |tr| %>
-            <%= link_to tr.name, tr %>: <%= tr.missing_months_this_year %><br>
+            <%= link_to tr.region.name, tr %>: <%= tr.missing_months_this_year %><br>
           <% end %>
         </td>
         <td><%= mail_to winery.users.first.email if winery.users.present? %></td>

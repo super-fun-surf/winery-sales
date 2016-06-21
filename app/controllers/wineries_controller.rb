@@ -8,6 +8,21 @@ class WineriesController < ApplicationController
   # GET /wineries.json
   def index
     @wineries = Winery.all
+    respond_to do |format|
+      format.html
+      format.csv  {        
+        if params[:date].present?
+          month = params[:date][:month]
+          year = params[:date][:year]
+        else
+          month = Date.today.month
+          year = Date.today.year
+        end
+        send_data @wineries.as_csv(month, year),
+                :type => 'text/csv',
+                :filename => "Winery_Summary_" + month.to_s + '_' + year.to_s + '.csv',
+                :disposition => 'attachment' }
+    end
   end
 
   # GET /wineries/1
