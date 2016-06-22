@@ -28,28 +28,28 @@ class TastingRoomsController < ApplicationController
       sales_you = @tasting_room.sales_summaries_this_year.where(month: i).first
       if sales_you.present?
         if params[:tasters].present?
-          @you[i] = sales_you.num_of_tasters
+          @you[i] = sales_you.num_of_tasters || 0
           @you_formatted[i] = sales_you.num_of_tasters.to_s
         elsif params[:purchasers].present?
-          @you[i] = sales_you.num_of_purchasers
+          @you[i] = sales_you.num_of_purchasers || 0
           @you_formatted[i] = sales_you.num_of_purchasers.to_s
         elsif params[:sales].present?
-          @you[i] = sales_you.sales_in_dollars
+          @you[i] = sales_you.sales_in_dollars || 0
           @you_formatted[i] = number_to_currency sales_you.sales_in_dollars
         elsif params[:club_signup].present?
-          @you[i] = sales_you.num_of_club_signups
+          @you[i] = sales_you.num_of_club_signups || 0
           @you_formatted[i] = sales_you.num_of_club_signups
         elsif params[:conversion].present?
-          @you[i] = sales_you.percent_tasters_purcahased
+          @you[i] = sales_you.percent_tasters_purcahased || 0
           @you_formatted[i] = number_to_percentage sales_you.percent_tasters_purcahased, precision: 2
         elsif params[:club_conversion].present?
-          @you[i] = sales_you.percent_club_signup
+          @you[i] = sales_you.percent_club_signup || 0
           @you_formatted[i] = number_to_percentage sales_you.percent_club_signup, precision: 2
         elsif params[:sales_per_taster].present?
-          @you[i] = sales_you.sales_per_taster
+          @you[i] = sales_you.sales_per_taster || 0
           @you_formatted[i] = number_to_currency sales_you.sales_per_taster
         elsif params[:sales_per_purchase].present?
-          @you[i] = sales_you.sales_per_purchase
+          @you[i] = sales_you.sales_per_purchase || 0
           @you_formatted[i] = number_to_currency sales_you.sales_per_purchase
         else
           @you[i] = sales_you.num_of_tasters
