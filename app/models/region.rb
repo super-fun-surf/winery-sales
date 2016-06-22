@@ -10,7 +10,7 @@ class Region < ApplicationRecord
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
         count += 1
-        total += ss.num_of_tasters
+        total += ss.num_of_tasters if ss.num_of_tasters.present?
       end
     end
     if count > 0
@@ -27,7 +27,7 @@ class Region < ApplicationRecord
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
         count += 1
-        total += ss.num_of_purchasers
+        total += ss.num_of_purchasers if ss.num_of_purchasers.present?
       end
     end
     if count > 0
@@ -44,7 +44,7 @@ class Region < ApplicationRecord
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
         count += 1
-        total += ss.num_of_club_signups
+        total += ss.num_of_club_signups if ss.num_of_club_signups.present?
       end
     end
     if count > 0
@@ -60,7 +60,7 @@ class Region < ApplicationRecord
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
         count += 1
-        total += ss.sales_in_dollars
+        total += ss.sales_in_dollars if ss.sales_in_dollars.present?
       end
     end
     if count > 0
@@ -77,7 +77,7 @@ class Region < ApplicationRecord
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
         count += 1
-        total += ss.percent_tasters_purcahased
+        total += ss.percent_tasters_purcahased if ss.percent_tasters_purcahased.present?
       end
     end
     if count > 0
@@ -93,7 +93,7 @@ class Region < ApplicationRecord
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
         count += 1
-        total += ss.percent_club_signup
+        total += ss.percent_club_signup if ss.percent_club_signup.present?
       end
     end
     if count > 0
@@ -109,7 +109,7 @@ class Region < ApplicationRecord
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
         count += 1
-        total += ss.sales_per_taster
+        total += ss.sales_per_taster if ss.sales_per_taster.present?
       end
     end
     if count > 0
@@ -125,7 +125,7 @@ class Region < ApplicationRecord
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
         count += 1
-        total += ss.sales_per_purchase
+        total += ss.sales_per_purchase if ss.sales_per_purchase.present?
       end
     end
     if count > 0
