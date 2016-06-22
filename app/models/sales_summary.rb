@@ -11,11 +11,11 @@ class SalesSummary < ApplicationRecord
     num_of_club_signups.to_f / num_of_tasters.to_f * 100.0
   end
   def sales_per_taster
-    (sales_in_dollars ||= 0) / num_of_tasters.to_f
+    (sales_in_dollars.to_f ||= 0) / num_of_tasters.to_f
   end
   def sales_per_purchase
     if num_of_purchasers.present? && num_of_purchasers > 0
-      sales_in_dollars / num_of_purchasers.to_f
+      sales_in_dollars.to_f / num_of_purchasers.to_f
     else
       sales_in_dollars ||= 0
     end
@@ -43,7 +43,7 @@ class SalesSummary < ApplicationRecord
     if self.num_of_tasters.blank?
       0
     else
-      (num_of_tasters / avg_tasters).to_f * 100.0
+      (num_of_tasters.to_f / avg_tasters.to_f).to_f * 100.0
     end
   end
   def num_of_tasters_variance
@@ -73,7 +73,7 @@ class SalesSummary < ApplicationRecord
     if self.num_of_purchasers.blank?
       0
     else
-      (num_of_purchasers / avg_purchasers).to_f * 100.0
+      (num_of_purchasers.to_f / avg_purchasers.to_f).to_f * 100.0
     end
   end
   def num_of_purchasers_variance
@@ -102,7 +102,7 @@ class SalesSummary < ApplicationRecord
     if self.num_of_club_signups.blank?
       0
     else
-      (num_of_club_signups / avg_club_signups).to_f * 100.0
+      (num_of_club_signups.to_f / avg_club_signups.to_f).to_f * 100.0
     end
   end
   def num_of_club_signups_variance
@@ -131,7 +131,7 @@ class SalesSummary < ApplicationRecord
     if sales_in_dollars.blank?
       0
     else
-      (sales_in_dollars / avg_sales_in_dollars).to_f * 100.0
+      (sales_in_dollars.to_f / avg_sales_in_dollars.to_f).to_f * 100.0
     end
   end
   def sales_in_dollars_variance
@@ -160,7 +160,7 @@ class SalesSummary < ApplicationRecord
     if self.percent_tasters_purcahased.blank?
       0
     else
-      (percent_tasters_purcahased / avg_tasters_purchased).to_f * 100.0
+      (percent_tasters_purcahased.to_f / avg_tasters_purchased.to_f).to_f * 100.0
     end
   end
   def conversion_variance
@@ -189,7 +189,7 @@ class SalesSummary < ApplicationRecord
     if percent_club_signup.blank?
       0
     else
-      (percent_club_signup / avg_club_conversion).to_f * 100.0
+      (percent_club_signup.to_f / avg_club_conversion.to_f).to_f * 100.0
     end
   end
   def club_conversion_variance
@@ -218,7 +218,7 @@ class SalesSummary < ApplicationRecord
     if sales_per_taster.blank?
       0
     else
-      (sales_per_taster / avg_sales_per_taster).to_f * 100.0
+      (sales_per_taster.to_f / avg_sales_per_taster.to_f).to_f * 100.0
     end
   end
   def sales_per_taster_variance
@@ -247,7 +247,7 @@ class SalesSummary < ApplicationRecord
     if self.sales_per_purchase.blank?
       0
     else
-      (sales_per_purchase / avg_sales_per_purchase).to_f * 100.0
+      (sales_per_purchase.to_f / avg_sales_per_purchase.to_f).to_f * 100.0
     end
   end
   def sales_per_purchase_variance

@@ -14,11 +14,8 @@
           <!--div class="styled_select"-->
           Select Month
             <%= select_month(@sales_summary.month, :field_name => 'month', :prefix => 'sales_summary', class: "form-control") %>
-
           <%# f.label :year, class: "form-control-label" %>
-
             <%= select_year(@sales_summary.year, field_name: 'year', prefix: 'sales_summary', class: 'form-control') %>
-
         </div>
         <hr>
         <div class="form-group">
