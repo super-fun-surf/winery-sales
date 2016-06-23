@@ -5,8 +5,8 @@
       <h2 align="center">Tasting Room Data For the Month of:</h2>
       <%= form_for(sales_summary, html: {class: ""}) do |f| %>
         <%= render 'shared/error_messages', donkey: f.object %>
-        <% if params[:tasting_room].present? %>
-          <%= f.hidden_field :tasting_room_id, :value => params[:tasting_room] %>
+        <% if @tasting_room.present? %>
+          <%= f.hidden_field :tasting_room_id, :value => @tasting_room %>
         <% end %>
 
         <div class="form-inline form-group" align="center">

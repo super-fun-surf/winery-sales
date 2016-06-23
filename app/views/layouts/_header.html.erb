@@ -2,7 +2,7 @@
 
   <% if logged_in? %>
     <% if current_user.wineries.present? %>
-      <%= link_to "Home", current_user.wineries.first, class: "btn btn-sm btn-secondary" %>
+      <%= link_to "Profile & Graph", current_user.wineries.first, class: "btn btn-sm btn-secondary" %>
       <% if @tasting_room.present? %>
         <%= link_to "Benchmark", @tasting_room.sales_summaries.order(year: :asc, month: :asc).last, class: "btn btn-sm btn-info" %>
         <%= link_to "Enter New Month's Data", new_sales_summary_path(tasting_room: @tasting_room.id), class: 'btn btn-success btn-sm' %>
@@ -18,8 +18,8 @@
     <div class="links nav pull-right" style="padding-right: 1em;">
       <%= link_to current_user.name, user_path(current_user), class: '' %>
       |
-      <%= link_to "Edit Profile", edit_user_path(current_user) %>
-      |
+      <%# link_to "Edit Profile", edit_user_path(current_user) %>
+
       <%= link_to "Log out", logout_path, method: :delete %>
       |
       <%= link_to "Support", "mailto:john@westcompany.org", class: '' %>

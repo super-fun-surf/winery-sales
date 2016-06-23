@@ -1,6 +1,9 @@
 <% provide(:title, @user.name) %>
 <div class="row">
   <div class="col-sm-6 col-md-4 card card-block">
+    <div class="pull-right">
+      <%= link_to "Edit Profile", edit_user_path(current_user), class: 'btn btn-sm btn-secondary' %>
+    </div>
     <h2>
       <%= gravatar_for @user.email %>
       <%= @user.name %>
@@ -29,9 +32,11 @@
       <br>
     </div>
     <% end %>
+    <div class="card-group" style="">
     <% @user.wineries.each do |winery| %>
       <%= render partial: 'wineries/winery', locals: {winery: winery} %>
     <% end %>
+    </div>
 
   </div>
 </div>

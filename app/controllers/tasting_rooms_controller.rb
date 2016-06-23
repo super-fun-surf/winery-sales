@@ -1,6 +1,6 @@
 class TastingRoomsController < ApplicationController
   before_action :set_tasting_room, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:index]
+  before_action :logged_in_user
   before_action :admin_user, only: [:index]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
   include ActionView::Helpers::NumberHelper
@@ -155,7 +155,7 @@ class TastingRoomsController < ApplicationController
       if current_user.admin?
         #good to go
       elsif @tasting_room.winery.users.include?(current_user)
-
+        #good to go
       else
         redirect_back(fallback_location: root_url)
       end

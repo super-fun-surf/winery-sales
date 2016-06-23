@@ -37,7 +37,7 @@
             <td><%= sales_summary.num_of_tasters %></td>
             <td><%= sales_summary.avg_tasters %></td>
             <td><span class="btn
-              <% if sales_summary.num_of_tasters_percent_different >= 0 %>
+              <% if sales_summary.num_of_tasters_percent_different >= 100 %>
               variance_pos
               <% else %>
               variance_neg
@@ -53,7 +53,7 @@
             <td><%= sales_summary.num_of_purchasers %></td>
             <td><%= sales_summary.avg_purchasers %></td>
             <td><span class="btn
-              <% if sales_summary.num_of_purchasers_percent_different >= 0 %>
+              <% if sales_summary.num_of_purchasers_percent_different >= 100 %>
               variance_pos
               <% else %>
               variance_neg
@@ -68,7 +68,7 @@
             <td><%= sales_summary.num_of_club_signups %></td>
             <td><%= sales_summary.avg_club_signups %></td>
             <td><span class="btn
-              <% if sales_summary.num_of_club_signups_percent_different >= 0 %>
+              <% if sales_summary.num_of_club_signups_percent_different >= 100 %>
               variance_pos
               <% else %>
               variance_neg
@@ -83,7 +83,7 @@
             <td><%= number_to_currency sales_summary.sales_in_dollars, precision: 0 %></td>
             <td><%= number_to_currency sales_summary.avg_sales_in_dollars, precision: 0 %></td>
             <td><span class="btn
-              <% if sales_summary.sales_in_dollars_percent_different >= 0 %>
+              <% if sales_summary.sales_in_dollars_percent_different >= 100 %>
               variance_pos
               <% else %>
               variance_neg
@@ -100,7 +100,7 @@
             <td><%= number_to_percentage sales_summary.percent_tasters_purcahased, precision: 1 %></td>
             <td><%= number_to_percentage sales_summary.avg_tasters_purchased, precision: 1 %></td>
             <td><span class="btn
-              <% if sales_summary.conversion_percent_different >= 0 %>
+              <% if sales_summary.conversion_percent_different >= 100 %>
               variance_pos
               <% else %>
               variance_neg
@@ -115,7 +115,7 @@
             <td><%= number_to_percentage sales_summary.percent_club_signup, precision: 1 %></td>
             <td><%= number_to_percentage sales_summary.avg_club_conversion, precision: 1 %></td>
             <td><span class="btn
-              <% if sales_summary.club_conversion_percent_different >= 0 %>
+              <% if sales_summary.club_conversion_percent_different >= 100 %>
               variance_pos
               <% else %>
               variance_neg
@@ -130,7 +130,7 @@
             <td><%= number_to_currency sales_summary.sales_per_taster %></td>
             <td><%= number_to_currency sales_summary.avg_sales_per_taster, precision: 1 %></td>
             <td><span class="btn
-              <% if sales_summary.sales_per_taster_percent_different >= 0 %>
+              <% if sales_summary.sales_per_taster_percent_different >= 100 %>
               variance_pos
               <% else %>
               variance_neg
@@ -144,7 +144,7 @@
             <td><%= number_to_currency sales_summary.sales_per_purchase %></td>
             <td><%= number_to_currency sales_summary.avg_sales_per_purchase, precision: 1 %></td>
             <td><span class="btn
-              <% if sales_summary.sales_per_purchase_percent_different >= 0 %>
+              <% if sales_summary.sales_per_purchase_percent_different >= 100 %>
               variance_pos
               <% else %>
               variance_neg

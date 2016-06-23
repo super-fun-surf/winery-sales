@@ -52,6 +52,7 @@ class SalesSummariesController < ApplicationController
 
   # GET /sales_summaries/1/edit
   def edit
+    @tasting_room = TastingRoom.find(params[:tasting_room]) if params[:tasting_room].present?
   end
 
   # POST /sales_summaries
@@ -95,6 +96,9 @@ class SalesSummariesController < ApplicationController
   end
 
   private
+    def get_params
+
+    end
     def correct_user
       #debugger
       if current_user.admin?
