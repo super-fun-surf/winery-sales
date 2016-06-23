@@ -6,7 +6,7 @@
       <%= form_for(sales_summary, html: {class: ""}) do |f| %>
         <%= render 'shared/error_messages', donkey: f.object %>
         <% if @tasting_room.present? %>
-          <%= f.hidden_field :tasting_room_id, :value => @tasting_room %>
+          <%= f.hidden_field :tasting_room_id, :value => @tasting_room.id %>
         <% end %>
 
         <div class="form-inline form-group" align="center">
