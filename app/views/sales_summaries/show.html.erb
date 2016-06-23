@@ -6,12 +6,15 @@
 <div class="row">
   <%= render partial: 'wineries/side_profile', locals: {winery: @sales_summary.winery} %>
   <div class="col-md-12 col-lg-9">
+    <div style="margin-left:1em;margin-right:1em;">
+      <%= render partial: 'sales_summaries/missing_months_this_year', locals: {tasting_room: @sales_summary.tasting_room} %>
+    </div>
     <div style="width: 100%;max-width:40rem;margin-top:0;" class="container-regular table-responsive">
       <h4>Sales Benchmark for <%= Date::MONTHNAMES[@sales_summary.month] %></h4>
         <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
           <!--div class="styled_select"-->
           Select date to view Benchmark
-            <%= select_month(@sales_summary.month, :field_name => 'month', class: "form-control", html: {onchange:'this.form.submit();'} ) %>
+            <%= select_month(@sales_summary.month, :field_name => 'month', class: "form-control" ) %>
           <!--/div-->
             <%# select_tag 'month', options_for_select(Date::MONTHNAMES), selected: @sales_summary.month, onchange:'this.form.submit()' %>
 
