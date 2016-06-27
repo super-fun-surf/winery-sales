@@ -2,7 +2,7 @@ class TastingRoom < ApplicationRecord
   attachment :profile_image
   belongs_to :region
   belongs_to :winery
-  has_many :sales_summaries
+  has_many :sales_summaries, dependent: :destroy
 
   #scope :sales_summaries_this_year, -> {
 #      where('orders.id >= ?', 220000)

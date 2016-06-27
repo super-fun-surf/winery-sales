@@ -1,12 +1,12 @@
 class User < ApplicationRecord
   include UserMailgun
   attr_accessor :remember_token, :activation_token, :reset_token
-  has_many :winery_users
+  has_many :winery_users, dependent: :destroy
   has_many :wineries, through: :winery_users
 
   before_save :downcase_email
   before_create :create_activation_digest
-  before_destroy :remove_winery_users
+  #before_destroy :remove_winery_users
   validates :name, presence: true, length: {maximum: 50}
   validates :email, presence: true, length: {maximum: 255},
                   format: { with: $VALID_EMAIL_REGEX },
