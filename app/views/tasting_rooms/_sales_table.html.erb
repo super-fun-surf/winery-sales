@@ -1,5 +1,5 @@
 <h1>
-  Sales Summaries: <%= tasting_room.region.name %>
+  <%= link_to tasting_room.name, tasting_room %> @ <%= tasting_room.region.name %>
   <%= link_to "Enter New Month's Data", new_sales_summary_path(tasting_room: tasting_room.id), class: 'btn btn-success btn-sm' %>
   <%= link_to 'Download CSV', tasting_room_path(tasting_room, :csv), class: 'btn btn-sm btn-secondary btn-disabled' %>
 </h1>

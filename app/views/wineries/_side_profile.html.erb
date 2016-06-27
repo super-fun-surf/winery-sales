@@ -18,7 +18,7 @@
     <p>
       <strong>Tasting Rooms:</strong><br>
       <% winery.tasting_rooms.each do |tr| %>
-        <%= link_to tr.region.name, tr %><br>
+        <%= link_to tr.name, tr %> @ <%= tr.region.name %><br>
       <% end %>
 
     </p>
