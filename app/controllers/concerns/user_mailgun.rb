@@ -22,7 +22,7 @@ module UserMailgun
       # "o:testmode" => 'true'
     }
 
-    response = @mail_client.send_message('mg.thoughtpost.io', message_params)
+    response = @mail_client.send_message('communitybenchmark.org', message_params)
 
   rescue Mailgun::CommunicationError => error
     return '500'
@@ -51,7 +51,7 @@ module UserMailgun
       # "o:testmode" => 'true'
     }
 
-    response = @mail_client.send_message('mg.thoughtpost.io', message_params)
+    response = @mail_client.send_message('communitybenchmark.org', message_params)
   #rescue Mailgun::CommunicationError => error
   #  return '500'
 end
