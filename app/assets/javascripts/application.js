@@ -18,7 +18,7 @@
 //= require tether
 //= require bootstrap
 //-sprockets
-//= require loader
+
 //= require refile
 //= require_tree .
 
