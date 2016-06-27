@@ -1,9 +1,9 @@
 class Winery < ApplicationRecord
   attachment :profile_image
-  has_many :tasting_rooms
+  has_many :tasting_rooms, dependent: :destroy
   has_many :regions, through: :tasting_rooms
   has_many :counties, through: :regions
-  has_many :winery_users
+  has_many :winery_users, dependent: :destroy
   has_many :users, through: :winery_users
 
   def self.as_csv(month = Date.today.month, year = Date.today.year)

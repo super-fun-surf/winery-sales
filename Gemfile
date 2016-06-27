@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.rc1', '< 5.1'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 #gem 'rack', github: 'rack/rack'
 gem 'sinatra', github: 'sinatra/sinatra'
 #gem 'rack', '~> 2.0.0.rc1'
