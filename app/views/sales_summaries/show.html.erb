@@ -10,6 +10,9 @@
       <%= render partial: 'sales_summaries/missing_months_this_year', locals: {tasting_room: @sales_summary.tasting_room} %>
     </div>
     <div style="width: 100%;max-width:40rem;margin-top:0;" class="container-regular table-responsive">
+      <div class="pull-right">
+        <%= link_to 'Edit', edit_sales_summary_path(@sales_summary), class: 'btn btn-sm btn-secondary' %>
+      </div>
       <h4>Sales Benchmark for <%= Date::MONTHNAMES[@sales_summary.month] %></h4>
         <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
           <!--div class="styled_select"-->
@@ -23,6 +26,7 @@
           <%= submit_tag "View", class: "btn btn-success", style: "position:relative;" %>
         <% end %>
         <%# Date::MONTHNAMES[sales_summary.month] %> <%# sales_summary.year %>
+
       <hr>
       <table class="table-summary table-hover">
         <thead>
