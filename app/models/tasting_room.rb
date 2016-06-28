@@ -4,6 +4,11 @@ class TastingRoom < ApplicationRecord
   belongs_to :winery
   has_many :sales_summaries, dependent: :destroy
 
+  # Clean up the URLs a bit
+  # def to_param
+  #  "#{id}-#{name.parameterize}"
+  #end
+
   #scope :sales_summaries_this_year, -> {
 #      where('orders.id >= ?', 220000)
 #   }

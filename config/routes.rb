@@ -17,6 +17,11 @@ Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
   resources :users
+
+  get '/users/:name' => 'users#id', constraints: {
+  name:       /\d{4}/
+
+  }
   get 'send_new_activation_email' => 'users#send_new_activation_email'
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
