@@ -32,7 +32,7 @@
         <thead>
           <tr>
             <th></th>
-            <th><strong style="font-size:1.1em;"><%= @sales_summary.tasting_room.winery.name %></strong> @ <%= @sales_summary.tasting_room.region.name %></th>
+            <th><strong style="font-size:1.1em;"><%= @sales_summary.tasting_room.name %></strong> @ <%= @sales_summary.tasting_room.region.name %></th>
             <th><%= @sales_summary.tasting_room.region.name %> Average: <br><small><%= pluralize(@sales_summary.tasting_room.region.tasting_rooms.count, 'winery') %> reporting</small></th>
             <th>Variance</th>
           </tr>
