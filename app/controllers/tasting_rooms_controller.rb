@@ -26,19 +26,40 @@ class TastingRoomsController < ApplicationController
     @them_formatted = []
     for i in 1..@end_month do
       sales_you = @tasting_room.sales_summaries_this_year.where(month: i).first
+      
       if sales_you.present?
         if params[:tasters].present?
-          @you[i] = sales_you.num_of_tasters || 0
-          @you_formatted[i] = sales_you.num_of_tasters.to_s
+          if !sales_you.num_of_tasters.blank?
+            @you[i] = sales_you.num_of_tasters
+            @you_formatted[i] = sales_you.num_of_tasters.to_s
+          else
+            @you[i] = 0
+            @you_formatted[i] = "0"
+          end
         elsif params[:purchasers].present?
-          @you[i] = sales_you.num_of_purchasers || 0
-          @you_formatted[i] = sales_you.num_of_purchasers.to_s
+          if sales_you.num_of_purchasers.present?
+            @you[i] = sales_you.num_of_purchasers
+            @you_formatted[i] = sales_you.num_of_purchasers.to_s
+          else
+            @you[i] = 0
+            @you_formatted[i] = "0"
+          end
         elsif params[:sales].present?
-          @you[i] = sales_you.sales_in_dollars || 0
-          @you_formatted[i] = number_to_currency sales_you.sales_in_dollars
+          if sales_you.sales_in_dollars.present?
+            @you[i] = sales_you.sales_in_dollars
+            @you_formatted[i] = number_to_currency sales_you.sales_in_dollars
+          else
+            @you[i] = 0
+            @you_formatted[i] = number_to_currency 0
+          end
         elsif params[:club_signup].present?
-          @you[i] = sales_you.num_of_club_signups || 0
-          @you_formatted[i] = sales_you.num_of_club_signups
+          if sales_you.num_of_club_signups.present?
+            @you[i] = sales_you.num_of_club_signups
+            @you_formatted[i] = sales_you.num_of_club_signups
+          else
+            @you[i] = 0
+            @you_formatted[i] = "0"
+          end
         elsif params[:conversion].present?
           @you[i] = sales_you.percent_tasters_purcahased || 0
           @you_formatted[i] = number_to_percentage sales_you.percent_tasters_purcahased, precision: 2
@@ -52,8 +73,13 @@ class TastingRoomsController < ApplicationController
           @you[i] = sales_you.sales_per_purchase || 0
           @you_formatted[i] = number_to_currency sales_you.sales_per_purchase
         else
-          @you[i] = sales_you.num_of_tasters
-          @you_formatted[i] = sales_you.num_of_tasters.to_s
+          if !sales_you.num_of_tasters.blank?
+            @you[i] = sales_you.num_of_tasters
+            @you_formatted[i] = sales_you.num_of_tasters.to_s
+          else
+            @you[i] = 0
+            @you_formatted[i] = "0"
+          end
         end
       else
         @you[i] = 0.0
