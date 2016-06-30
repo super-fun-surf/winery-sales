@@ -13,6 +13,15 @@ class UsersController < ApplicationController
   end
 
   def new
+    if logged_in? && !admin?
+      if current_user.wineries.present?
+        redirect_to current_user.wineries.first
+      else
+        redirect_to current_user
+      end
+    elsif logged_in? && admin?
+      redirect_to wineries_path
+    end
     @user = User.new
   end
 

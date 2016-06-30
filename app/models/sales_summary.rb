@@ -5,13 +5,26 @@ class SalesSummary < ApplicationRecord
   #validates :num_of_tasters, presence: true
 
   def percent_tasters_purcahased
-    (num_of_purchasers.to_f ||= 0) / num_of_tasters.to_f * 100.0
+    if num_of_purchasers.present?
+      num_of_purchasers.to_f / num_of_tasters.to_f * 100.0
+    else
+      0.0
+    end
   end
   def percent_club_signup
-    (num_of_club_signups.to_f ||= 0) / num_of_tasters.to_f * 100.0
+    if num_of_club_signups.present? && num_of_tasters.present?
+      num_of_club_signups.to_f / num_of_tasters.to_f * 100.0
+    else
+      0.0
+    end
   end
   def sales_per_taster
-    (sales_in_dollars.to_f ||= 0) / num_of_tasters.to_f
+    if sales_in_dollars.present? && num_of_tasters.present?
+      sales_in_dollars.to_f / num_of_tasters.to_f
+
+    else
+      0.0
+    end
   end
   def sales_per_purchase
     if num_of_purchasers.present? && num_of_purchasers > 0
