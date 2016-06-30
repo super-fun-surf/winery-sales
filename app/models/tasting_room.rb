@@ -10,8 +10,8 @@ class TastingRoom < ApplicationRecord
   #end
 
   #scope :sales_summaries_this_year, -> {
-#      where('orders.id >= ?', 220000)
-#   }
+  #       where('orders.id >= ?', 220000)
+  #   }
 
   def sales_summaries_this_year
     cur_year = Date.today.year

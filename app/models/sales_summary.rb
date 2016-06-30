@@ -5,7 +5,7 @@ class SalesSummary < ApplicationRecord
   #validates :num_of_tasters, presence: true
 
   def percent_tasters_purcahased
-    if num_of_purchasers.present?
+    if num_of_tasters.present? && num_of_purchasers.present?
       num_of_purchasers.to_f / num_of_tasters.to_f * 100.0
     else
       0.0
@@ -21,16 +21,17 @@ class SalesSummary < ApplicationRecord
   def sales_per_taster
     if sales_in_dollars.present? && num_of_tasters.present?
       sales_in_dollars.to_f / num_of_tasters.to_f
-
     else
       0.0
     end
   end
   def sales_per_purchase
-    if num_of_purchasers.present? && num_of_purchasers > 0
+    if sales_in_dollars.present? && num_of_purchasers.present? && num_of_purchasers > 0
       sales_in_dollars.to_f / num_of_purchasers.to_f
+    #elsif sales_in_dollars.present?
+    #  sales_in_dollars
     else
-      sales_in_dollars ||= 0
+      0.0
     end
   end
 
@@ -166,7 +167,7 @@ class SalesSummary < ApplicationRecord
     if count > 0
       avg = total / count
     else
-      0
+      0.0
     end
   end
   def conversion_percent_different

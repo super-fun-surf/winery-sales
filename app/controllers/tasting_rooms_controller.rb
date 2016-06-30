@@ -14,7 +14,6 @@ class TastingRoomsController < ApplicationController
   # GET /tasting_rooms/1
   # GET /tasting_rooms/1.json
   def show
-
     #@start_time_this_year = Date.today.beginning_of_year
     if @tasting_room.sales_summaries.blank?
       redirect_to new_sales_summary_path(tasting_room: @tasting_room, month: Date.today.month - 1 , year: Date.today.year)
@@ -24,9 +23,10 @@ class TastingRoomsController < ApplicationController
     @you_formatted = []
     @them = []
     @them_formatted = []
+    @them_reporting = []
     for i in 1..@end_month do
       sales_you = @tasting_room.sales_summaries_this_year.where(month: i).first
-      
+
       if sales_you.present?
         if params[:tasters].present?
           if !sales_you.num_of_tasters.blank?
@@ -87,30 +87,39 @@ class TastingRoomsController < ApplicationController
       if params[:tasters].present?
         @them[i] = @tasting_room.region.avg_tasters(i, Date.today.year)
         @them_formatted[i] = @them[i]
+        @them_reporting[i] = @tasting_room.region.reporting_tasters(i, Date.today.year)
       elsif params[:purchasers].present?
         @them[i] = @tasting_room.region.avg_purchasers(i, Date.today.year)
         @them_formatted[i] = @them[i]
+        @them_reporting[i] = @tasting_room.region.reporting_purchasers(i, Date.today.year)
       elsif params[:club_signup].present?
         @them[i] = @tasting_room.region.avg_club_signups(i, Date.today.year)
         @them_formatted[i] = @them[i]
+        @them_reporting[i] = @tasting_room.region.reporting_club_signups(i, Date.today.year)
       elsif params[:conversion].present?
         @them[i] = @tasting_room.region.avg_tasters_purchased(i, Date.today.year)
         @them_formatted[i] = number_to_percentage @them[i], precision: 2
+        @them_reporting[i] = @tasting_room.region.reporting_tasters_purchased(i, Date.today.year)
       elsif params[:club_conversion].present?
         @them[i] = @tasting_room.region.avg_club_conversion(i, Date.today.year)
         @them_formatted[i] = number_to_percentage @them[i], precision: 2
+        @them_reporting[i] = @tasting_room.region.reporting_club_conversion(i, Date.today.year)
       elsif params[:sales_per_taster].present?
         @them[i] = @tasting_room.region.avg_sales_per_taster(i, Date.today.year)
         @them_formatted[i] = number_to_currency @them[i]
+        @them_reporting[i] = @tasting_room.region.reporting_sales_per_taster(i, Date.today.year)
       elsif params[:sales_per_purchase].present?
         @them[i] = @tasting_room.region.avg_sales_per_purchase(i, Date.today.year)
         @them_formatted[i] = number_to_currency @them[i]
+        @them_reporting[i] = @tasting_room.region.reporting_sales_per_purchase(i, Date.today.year)
       elsif params[:sales].present?
         @them[i] = @tasting_room.region.avg_sales_in_dollars(i, Date.today.year)
         @them_formatted[i] = number_to_currency @them[i]
+        @them_reporting[i] = @tasting_room.region.reporting_sales_in_dollars(i, Date.today.year)
       else
         @them[i] = @tasting_room.region.avg_tasters(i, Date.today.year)
         @them_formatted[i] = @them[i]
+        @them_reporting[i] = @tasting_room.region.reporting_tasters(i, Date.today.year)
         params[:tasters] = true
       end
 
