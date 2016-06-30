@@ -7,10 +7,10 @@ class WineriesController < ApplicationController
   # GET /wineries
   # GET /wineries.json
   def index
-    @wineries = Winery.all
+    @wineries = Winery.order(name: :asc)
     respond_to do |format|
       format.html
-      format.csv  {        
+      format.csv  {
         if params[:date].present?
           month = params[:date][:month]
           year = params[:date][:year]
