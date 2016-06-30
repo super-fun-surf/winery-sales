@@ -45,7 +45,9 @@
             <td class="num-reporting-td">
               <%= sales_summary.avg_tasters %>
               <br>
-              <span class="num-reporting"><%= pluralize(sales_summary.region.reporting_tasters(sales_summary.month, sales_summary.year), 'Winery') %> Reporting</span>
+              <span class="num-reporting">
+                <%= link_to "(" + sales_summary.region.reporting_tasters(sales_summary.month, sales_summary.year).to_s + ")", "", class: "darklink", data: { toggle: "tooltip", title: "Number of Wineries Reporting" } %>
+              </span>
             </td>
             <td><span class="btn
               <% if sales_summary.num_of_tasters_percent_different >= 100 %>
@@ -65,7 +67,9 @@
             <td class="num-reporting-td">
               <%= sales_summary.avg_purchasers %>
               <br>
-              <span class="num-reporting"><%= pluralize(sales_summary.region.reporting_purchasers(sales_summary.month, sales_summary.year), 'Winery') %> Reporting</span>
+              <span class="num-reporting">
+                <%= link_to "(" + sales_summary.region.reporting_purchasers(sales_summary.month, sales_summary.year).to_s + ")", "", class: "darklink", data: { toggle: "tooltip", title: "Number of Wineries Reporting" } %>
+              </span>
             </td>
             <td><span class="btn
               <% if sales_summary.num_of_purchasers_percent_different >= 100 %>
@@ -84,7 +88,9 @@
             <td class="num-reporting-td">
               <%= sales_summary.avg_club_signups %>
               <br>
-              <span class="num-reporting"><%= pluralize(sales_summary.region.reporting_club_signups(sales_summary.month, sales_summary.year), 'Winery') %> Reporting</span>
+              <span class="num-reporting">
+                <%= link_to "(" + sales_summary.region.reporting_club_signups(sales_summary.month, sales_summary.year).to_s + ")", "", class: "darklink", data: { toggle: "tooltip", title: "Number of Wineries Reporting" } %>
+              </span>
             </td>
             <td><span class="btn
               <% if sales_summary.num_of_club_signups_percent_different >= 100 %>
@@ -103,7 +109,9 @@
             <td class="num-reporting-td">
               <%= number_to_currency sales_summary.avg_sales_in_dollars, precision: 0 %>
               <br>
-              <span class="num-reporting"><%= pluralize(sales_summary.region.reporting_sales_in_dollars(sales_summary.month, sales_summary.year), 'Winery') %> Reporting</span>
+              <span class="num-reporting">
+                <%= link_to "(" + sales_summary.region.reporting_sales_in_dollars(sales_summary.month, sales_summary.year).to_s + ")", "", class: "darklink", data: { toggle: "tooltip", title: "Number of Wineries Reporting" } %>
+              </span>
             </td>
             <td><span class="btn
               <% if sales_summary.sales_in_dollars_percent_different >= 100 %>
@@ -124,7 +132,9 @@
             <td class="num-reporting-td">
               <%= number_to_percentage sales_summary.avg_tasters_purchased, precision: 1 %>
               <br>
-              <span class="num-reporting"><%= pluralize(sales_summary.region.reporting_tasters_purchased(sales_summary.month, sales_summary.year), 'Winery') %> Reporting</span>
+              <span class="num-reporting">
+                <%= link_to "(" + sales_summary.region.reporting_tasters_purchased(sales_summary.month, sales_summary.year).to_s + ")", "", class: "darklink", data: { toggle: "tooltip", title: "Number of Wineries Reporting" } %>
+              </span>
             </td>
             <td><span class="btn
               <% if sales_summary.conversion_percent_different >= 100 %>
@@ -143,7 +153,9 @@
             <td class="num-reporting-td">
               <%= number_to_percentage sales_summary.avg_club_conversion, precision: 1 %>
               <br>
-              <span class="num-reporting"><%= pluralize(sales_summary.region.reporting_club_conversion(sales_summary.month, sales_summary.year), 'Winery') %> Reporting</span>
+              <span class="num-reporting">
+                <%= link_to "(" + sales_summary.region.reporting_club_conversion(sales_summary.month, sales_summary.year).to_s + ")", "", class: "darklink", data: { toggle: "tooltip", title: "Number of Wineries Reporting" } %>
+              </span>
             </td>
             <td><span class="btn
               <% if sales_summary.club_conversion_percent_different >= 100 %>
@@ -162,7 +174,9 @@
             <td class="num-reporting-td">
               <%= number_to_currency sales_summary.avg_sales_per_taster, precision: 1 %>
               <br>
-              <span class="num-reporting"><%= pluralize(sales_summary.region.reporting_sales_per_taster(sales_summary.month, sales_summary.year), 'Winery') %> Reporting</span>
+              <span class="num-reporting">
+                <%= link_to "(" + sales_summary.region.reporting_sales_per_taster(sales_summary.month, sales_summary.year).to_s + ")", "", class: "darklink", data: { toggle: "tooltip", title: "Number of Wineries Reporting" } %>
+              </span>
             </td>
             <td><span class="btn
               <% if sales_summary.sales_per_taster_percent_different >= 100 %>
@@ -180,7 +194,9 @@
             <td class="num-reporting-td">
               <%= number_to_currency sales_summary.avg_sales_per_purchase, precision: 1 %>
               <br>
-              <span class="num-reporting"><%= pluralize(sales_summary.region.reporting_sales_per_purchase(sales_summary.month, sales_summary.year), 'Winery') %> Reporting</span>
+              <span class="num-reporting">
+                <%= link_to "(" + sales_summary.region.reporting_sales_per_purchase(sales_summary.month, sales_summary.year).to_s + ")", "", class: "darklink", data: { toggle: "tooltip", title: "Number of Wineries Reporting" } %>
+              </span>
             </td>
             <td><span class="btn
               <% if sales_summary.sales_per_purchase_percent_different >= 100 %>
