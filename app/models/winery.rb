@@ -19,7 +19,7 @@ class Winery < ApplicationRecord
         "Sales",
         "Clubs"
       ]
-      self.order(name: :desc).each do |winery|
+      self.order(name: :asc).each do |winery|
         winery.tasting_rooms.each do |tr|
           ss = tr.sales_summaries.where(year: year, month: month ).first
           if ss.present?
