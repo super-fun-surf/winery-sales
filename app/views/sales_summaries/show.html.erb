@@ -11,7 +11,7 @@
     </div>
     <div style="width: 100%;max-width:40rem;margin-top:0;" class="container-regular table-responsive">
       <div class="pull-right">
-        <%= link_to 'Edit', edit_sales_summary_path(@sales_summary), class: 'btn btn-sm btn-secondary' %>
+        <%# link_to 'Edit', edit_sales_summary_path(@sales_summary), class: 'btn btn-sm btn-secondary' %>
       </div>
       <h4>Sales Benchmark for <%= Date::MONTHNAMES[@sales_summary.month] %></h4>
         <%= form_tag(sales_summary_path, method: :get, id: "select_month", class: "form-inline") do %>
@@ -24,6 +24,7 @@
             <%= select_year(@sales_summary.year, field_name: 'year', class: 'form-control', onchange: 'if(this.value != 0) { this.form.submit(); }') %>
 
           <%= submit_tag "View", class: "btn btn-success", style: "position:relative;" %>
+          <%= submit_tag "Edit", class: "btn btn-info", style: "position:relative;" %>
         <% end %>
         <%# Date::MONTHNAMES[sales_summary.month] %> <%# sales_summary.year %>
 

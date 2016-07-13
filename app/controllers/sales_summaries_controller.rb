@@ -13,7 +13,6 @@ class SalesSummariesController < ApplicationController
   # GET /sales_summaries/1
   # GET /sales_summaries/1.json
   def show
-
     if params[:date].present?
       month = params[:date][:month]
       year = params[:date][:year]
@@ -30,8 +29,11 @@ class SalesSummariesController < ApplicationController
       else
         redirect_to :back, notice: "Month not available yet"
       end
-    else
+    else #not blank
       @tasting_room = @sales_summary.tasting_room
+      if params[:commit].present? && params[:commit] == 'Edit'
+        redirect_to edit_sales_summary_path(@sales_summary)
+      end
     end
   end
 
