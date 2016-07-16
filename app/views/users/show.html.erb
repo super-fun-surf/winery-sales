@@ -12,7 +12,8 @@
       <%= @user.email %>
     </h3>
     <h4>
-      <% if admin? %>
+      
+      <% if @user.admin? %>
         Adminsitrator User
       <% else %>
       <% end %>
