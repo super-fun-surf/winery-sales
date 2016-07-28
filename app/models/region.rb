@@ -188,7 +188,7 @@ class Region < ApplicationRecord
     count = 0
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
-        count += 1 if ss.sales_per_taster.present?
+        count += 1 if ss.sales_per_taster.present? #sales_in_dollars.present? && num_of_tasters.present? #
       end
     end
     count

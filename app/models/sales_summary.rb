@@ -4,25 +4,26 @@ class SalesSummary < ApplicationRecord
   has_one :winery, through: :tasting_room
   #validates :num_of_tasters, presence: true
 
+  # These are used to calculate the Sales Data
   def percent_tasters_purcahased
     if num_of_tasters.present? && num_of_purchasers.present?
       num_of_purchasers.to_f / num_of_tasters.to_f * 100.0
     else
-      0.0
+      nil #0.0
     end
   end
   def percent_club_signup
     if num_of_club_signups.present? && num_of_tasters.present?
       num_of_club_signups.to_f / num_of_tasters.to_f * 100.0
     else
-      0.0
+      nil #0.0
     end
   end
   def sales_per_taster
     if sales_in_dollars.present? && num_of_tasters.present?
       sales_in_dollars.to_f / num_of_tasters.to_f
     else
-      0.0
+      nil #0.0
     end
   end
   def sales_per_purchase
@@ -31,7 +32,7 @@ class SalesSummary < ApplicationRecord
     #elsif sales_in_dollars.present?
     #  sales_in_dollars
     else
-      0.0
+      nil #0.0
     end
   end
 

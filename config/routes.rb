@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 
   get 'password_resets/edit'
 
-  #root 'sessions#new'
-  root 'users#new'
+  # *** Root / URL  
+  root 'sessions#new' # ** LOGIN
+  #root 'users#new' # ** SIGNUP
 
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'

@@ -12,8 +12,21 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 
 * Install ImageMagick
 
-* Copy over the env.yml into the folder config/ 
+* Copy over the env.yml into the folder config/
 
 * In Production Create the psql Database user "winery-sales" and set the password
 
 * run whenever -w (to write the chrontabs for the email reminders & ...)
+
+## Backup the DataBase DB DUMP
+* From the server in the App Directory run
+
+`sudo -u postgres pg_dump --oids --no-owner -Fc --disable-triggers --clean -f data.dump winery`
+
+* This will generate a data.dmp file.
+* Download the data.dmp file for backup for import into your dev environment
+
+## Restore the DB from a dump file
+* in the App Directory run
+
+`pg_restore --clean --no-owner -d winery data.dump`
