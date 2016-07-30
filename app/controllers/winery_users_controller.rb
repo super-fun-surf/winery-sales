@@ -1,8 +1,10 @@
 class WineryUsersController < ApplicationController
+  # RESTful
+  # controls permissions for users to access wineries
   before_action :set_winery_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
   before_action :admin_user
-  
+
   # GET /winery_users
   # GET /winery_users.json
   def index

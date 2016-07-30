@@ -1,4 +1,5 @@
 class TastingRoomsController < ApplicationController
+  # RESTful
   before_action :set_tasting_room, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user
   before_action :admin_user, only: [:index]

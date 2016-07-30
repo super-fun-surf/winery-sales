@@ -1,4 +1,5 @@
 class CountiesController < ApplicationController
+  # RESTful
   before_action :set_county, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:index]
   before_action :admin_user, only: [:index]
@@ -28,7 +29,7 @@ class CountiesController < ApplicationController
   # POST /counties.json
   def create
     @county = County.new(county_params)
-  
+
     respond_to do |format|
       if @county.save
         format.html { redirect_to @county, notice: 'County was successfully created.' }
