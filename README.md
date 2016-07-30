@@ -25,8 +25,6 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 
 * In Production Create the psql Database user "winery" and set your password
 
-* run whenever -w (to write the chrontabs for the email reminders & ...) (not yet implemented)
-
 # Database
 * More info on the database settings is in [config/database.yml](config/database.yml)
 

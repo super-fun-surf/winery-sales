@@ -1,12 +1,7 @@
-#
-#
-#
-#
-#
-
-# basic settings
 # using postgres on dev and production
 # so the db can be backed up or moved to from dev
+
+# basic settings
 
 default: &default
   timeout: 5000
