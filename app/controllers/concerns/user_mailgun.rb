@@ -1,15 +1,11 @@
 module UserMailgun
   extend ActiveSupport::Concern
-  #require 'sendgrid-ruby'
-  #require 'premailer'
   require 'mailgun'
 
 
   def send_user_activation_mail(user, tag = 'Donkey')
     @mail_client = Mailgun::Client.new(ENV['MAILGUN_KEY']) #unless @mail_client.present?
     email = user.email
-    #inlined = premailer.to_inline_css
-    #texted = premailer.to_plain_text
     donkey = user_activation_html(user)
     donkey = donkey.gsub("\n", "")
     #debugger

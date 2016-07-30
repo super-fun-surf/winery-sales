@@ -72,3 +72,8 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 ## Session
 The session controller creates login and logout.
 The Session Helper has functions for keeping the user active in the session after login.
+
+## Mailer
+* All mail is sent using the MailGun API
+* The mailer view is located in the view folder in user_email.
+* The view is rendered via render_to_string inside of "send_user_activation_mail" function located in controllers/concerns/user_mailgun.rb
