@@ -7,14 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!(name:  "Luke",
              email: "lukeallen@gmail.com",
-             password:              "donkey",
-             password_confirmation: "donkey",
+             password:              "password",
+             password_confirmation: "password",
              permissions: 10,
              activated_at: Time.zone.now)
  User.create!(name:  "John K",
               email: "john@westcompany.org",
-              password:              "geterdone",
-              password_confirmation: "geterdone",
+              password:              "password",
+              password_confirmation: "password",
               permissions: 10,
               activated_at: Time.zone.now)
 
@@ -34,7 +34,7 @@ end
 12.times do |n|
   name  = Faker::Name.name
   title = Faker::Name.title
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@example.com"
   password = "password"
   #w = Winery.all.count
   #winery = Winery.find(1..w)
