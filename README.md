@@ -1,29 +1,29 @@
-# README
+# Winery Sales
 
 Ruby on Rails Application for Wineries to Improve Sales by co-creating regional Sales Figures and Graphs
 
 * **The [todo list](design/TODO.md) and roadmap is in the design folder**
 
 ## Requirements
-* Ubuntu 14 or greater
+* Ubuntu 14+
 
-* Running Passenger and Nginx Web-Servers
+* Passenger v5.0.28 and Passenger Nginx module
 
 * Ruby version 2.3.1
 
 * Rails version 5.0.0
 
-* Database is using Postgresql
+* [PostgreSQL](https://www.postgresql.org/) v9.4.7
 
-* Install ImageMagick
+* [ImageMagick](https://github.com/ImageMagick/ImageMagick)
 
 ## Install
+1. Clone Winery Sales into App directory
+2. Copy env.yml into [config/](config) inside of App directory
+3. Install PostgreSQL `sudo apt install postgresql` and ImageMagick `sudo apt-get install imagemagick`
+4. Create production psql database with the user *winery* and set password
+5. run whenever -w (to write the chrontabs for the email reminders & ...) (not yet implemented)
 
-* Clone this Repo into the App Directory
-
-* Copy over the env.yml into the App Directory inside config/
-
-* In Production Create the psql Database user "winery" and set your password
 
 # Database
 * More info on the database settings is in [config/database.yml](config/database.yml)
