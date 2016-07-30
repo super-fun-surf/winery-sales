@@ -1,9 +1,13 @@
-# SQLite version 3.x
-#   gem install sqlite3
 #
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
 #
+#
+#
+#
+
+# basic settings
+# using postgres on dev and production
+# so the db can be backed up or moved to from dev
+
 default: &default
   timeout: 5000
   adapter: postgresql
@@ -27,7 +31,7 @@ test:
 
 production:
   <<: *default
-  #database: db/production.sqlite3
+  # setup instructions for creating the database user
   #sudo -u postgres createuser -s winery
   #sudo -u postgres psql
   #\password winery   #use same password as is in the env.yml

@@ -27,6 +27,8 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 
 * run whenever -w (to write the chrontabs for the email reminders & ...) (not yet implemented)
 
+# Database
+* More info on the database settings is in [config/database.yml]()
 
 ## Backup the DataBase / DB DUMP
 * From the server in the App Directory run
@@ -77,4 +79,4 @@ The Session Helper has functions for keeping the user active in the session afte
 ## Mailer
 * All mail is sent using the MailGun API
 * The mailer view is located in the views folder in user_email/
-* The view is rendered via render_to_string inside of "send_user_activation_mail" function located in controllers/concerns/user_mailgun.rb
+* The view is rendered via render_to_string inside of the function  "send_user_activation_mail" located in controllers/concerns/user_mailgun.rb
