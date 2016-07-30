@@ -26,26 +26,23 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 
 
 # Database
-* More info on the database settings is in [config/database.yml](config/database.yml)
+* Database settings located in [config/database.yml](config/database.yml)
 
-## Backup the DataBase / DB DUMP
-* From the server in the App Directory run
-
+## Backup the Database / DB DUMP
+Generate a database backup (data.dump) by running the following command in the project root:
 `sudo -u postgres pg_dump --oids --no-owner -Fc --disable-triggers --clean -f data.dump winery`
 
-* This will generate a data.dump file.
-* Download the data.dump file for backup for import into your dev environment
+Transfer the `data.dump` file to a secure location using your preferred tool (rsync, cp, ftp). Use the `data.dump` file for database backup or importing into development environment.
 
-## Restore the DB from a dump file
-* in the App Directory run
+## Restore the database from a `data.dump` file
+Run the following command in your project root:
 
 `pg_restore --clean --no-owner -d winery data.dump`
 
-
 # The Data Models
-## Models associated with storing the sales data
-### The heavy lifting for crunching that data is all in
-### sales_summary.rb model file and region.rb model file
+Models associated with storing the sales data.
+
+The heavy lifting for crunching that data is all in [sales_summary.rb](app/models/sales_summary.rb) and [region.rb](app/models/region.rb) model files.
 
 * ### Wineries
   * Describes a winery
@@ -63,7 +60,7 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
   * Belongs to a County
   * The model file has the methods for calculating the region averages
 
-## The other Models
+## Other Models
 * Counties
 * Users
 * WineryUsers
@@ -76,5 +73,5 @@ The Session Helper has functions for keeping the user active in the session afte
 
 ## Mailer
 * All mail is sent using the MailGun API
-* The mailer view is located in the views folder in user_email/
-* The view is rendered via render_to_string inside of the function  "send_user_activation_mail" located in controllers/concerns/user_mailgun.rb
+* The mailer view is located at [views/user_email](app/views/user_email/)
+* The view is rendered via render_to_string inside of the function *send_user_activation_mail* located at [controllers/concerns/user_mailgun.rb](app/controllers/concerns/user_mailgun.rb)
