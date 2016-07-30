@@ -28,7 +28,7 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 * run whenever -w (to write the chrontabs for the email reminders & ...) (not yet implemented)
 
 # Database
-* More info on the database settings is in [config/database.yml]()
+* More info on the database settings is in [config/database.yml](config/database.yml)
 
 ## Backup the DataBase / DB DUMP
 * From the server in the App Directory run
