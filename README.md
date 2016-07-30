@@ -54,7 +54,8 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
   * Has many SalesSummaries
   * Belongs to a Region
 * ### SalesSummaries
-  * The Winery's Data is stored here.
+  * The Winery's Monthly Sales Data is stored here.
+  * Entry per month
   * The Model File has the functions for calculating the fields not stored in the DB.
     * i.e. "Percent_tasters_purcahased"
 * ### Regions
