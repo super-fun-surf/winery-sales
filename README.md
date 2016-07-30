@@ -28,13 +28,13 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 * run whenever -w (to write the chrontabs for the email reminders & ...) (not yet implemented)
 
 
-## Backup the DataBase DB DUMP
+## Backup the DataBase / DB DUMP
 * From the server in the App Directory run
 
 `sudo -u postgres pg_dump --oids --no-owner -Fc --disable-triggers --clean -f data.dump winery`
 
-* This will generate a data.dmp file.
-* Download the data.dmp file for backup for import into your dev environment
+* This will generate a data.dump file.
+* Download the data.dump file for backup for import into your dev environment
 
 ## Restore the DB from a dump file
 * in the App Directory run
@@ -76,5 +76,5 @@ The Session Helper has functions for keeping the user active in the session afte
 
 ## Mailer
 * All mail is sent using the MailGun API
-* The mailer view is located in the view folder in user_email.
+* The mailer view is located in the views folder in user_email/
 * The view is rendered via render_to_string inside of "send_user_activation_mail" function located in controllers/concerns/user_mailgun.rb

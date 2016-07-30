@@ -21,3 +21,5 @@
 .byebug_history
 
 config/env.yml
+
+.DS_Store
