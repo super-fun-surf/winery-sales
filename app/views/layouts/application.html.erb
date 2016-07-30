@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=full_title(yield(:title)) %></title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <%## load the google charts %>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      //google.charts.load('current', {packages: ['corechart']});
-      //google.charts.setOnLoadCallback(drawChart);
-    </script>
   </head>
 
   <body>
@@ -21,9 +17,9 @@
     <div style='' class="container-fluid main">
       <%= yield %>
     </div>
+
     <%= render 'layouts/footer' %>
     <%# debug(params) if Rails.env.development? %>
     <%= render '/layouts/google_analytics' %>
-
   </body>
 </html>

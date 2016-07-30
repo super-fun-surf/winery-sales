@@ -12,7 +12,7 @@ module UsersHelper
     #image_tag(gravatar_url, alt:"Pofile Image", class: "gravatar")
   end
 
-
+  ## these functions test for permissions for the User
   def admin_user
       redirect_back_or root_url unless current_user.admin?
   end

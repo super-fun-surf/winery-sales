@@ -1,9 +1,15 @@
 class Region < ApplicationRecord
+  ## This File has most of the heavy lifting for finding the region averages
+  ## These methods reference the sales summaries for each region
+  ## and the sales summaries have functions for calculating values that calculated from the associated DB fields
+  ## this file so far has mainly 2 functions that are written specificically for each category/field of Sales Data.
+  ## the 2 functions are Average and Number Reporting.
   attachment :profile_image
   belongs_to :county
   has_many :tasting_rooms
   has_many :wineries, through: :tasting_rooms
 
+  ## the avg function returns the average of this category/field in this region for this time period
   def avg_tasters(month, year)
     total = 0
     count = 0
@@ -21,6 +27,7 @@ class Region < ApplicationRecord
       0
     end
   end
+  ## the reporting function returns the number of wineries that have reported data for this category/field
   def reporting_tasters(month, year)
     count = 0
     self.tasting_rooms.each do |tr|

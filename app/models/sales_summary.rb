@@ -4,7 +4,12 @@ class SalesSummary < ApplicationRecord
   has_one :winery, through: :tasting_room
   #validates :num_of_tasters, presence: true
 
-  # These are used to calculate the Sales Data
+  ## These are used to calculate the Sales Data
+  ##
+  ##
+  ##
+
+
   def percent_tasters_purcahased
     if num_of_tasters.present? && num_of_purchasers.present?
       num_of_purchasers.to_f / num_of_tasters.to_f * 100.0
@@ -36,6 +41,7 @@ class SalesSummary < ApplicationRecord
     end
   end
 
+  ## returns the average for the region
   def avg_tasters
     total = 0
     count = 0
@@ -55,6 +61,7 @@ class SalesSummary < ApplicationRecord
       0
     end
   end
+  ## returns the difference for this sales summary from the region average
   def num_of_tasters_percent_different
     #(family winery - average) / family winery
     if self.num_of_tasters.blank?
@@ -62,10 +69,6 @@ class SalesSummary < ApplicationRecord
     else
       (num_of_tasters.to_f / avg_tasters.to_f).to_f * 100.0
     end
-  end
-  def num_of_tasters_variance
-    #(family winery - average) / family winery
-    (num_of_tasters - avg_tasters).to_f / num_of_tasters.to_f * 100.0
   end
 
   def avg_purchasers
@@ -95,10 +98,7 @@ class SalesSummary < ApplicationRecord
       (num_of_purchasers.to_f / avg_purchasers.to_f).to_f * 100.0
     end
   end
-  def num_of_purchasers_variance
-    #(family winery - average) / family winery
-    (num_of_purchasers - avg_purchasers).to_f / num_of_purchasers.to_f * 100.0
-  end
+
 
   def avg_club_signups
     total = 0
@@ -126,10 +126,7 @@ class SalesSummary < ApplicationRecord
       (num_of_club_signups.to_f / avg_club_signups.to_f).to_f * 100.0
     end
   end
-  def num_of_club_signups_variance
-    #(family winery - average) / family winery
-    (num_of_club_signups - avg_club_signups).to_f / num_of_club_signups.to_f * 100.0
-  end
+
 
   def avg_sales_in_dollars
     total = 0
@@ -157,12 +154,9 @@ class SalesSummary < ApplicationRecord
       (sales_in_dollars.to_f / avg_sales_in_dollars.to_f).to_f * 100.0
     end
   end
-  def sales_in_dollars_variance
-    #(family winery - average) / family winery
-    (sales_in_dollars - avg_sales_in_dollars).to_f / sales_in_dollars.to_f * 100.0
-  end
 
-  def avg_tasters_purchased #conversion ratio
+  ## conversion ratio
+  def avg_tasters_purchased
     total = 0
     count = 0
     month = self.month
@@ -188,10 +182,7 @@ class SalesSummary < ApplicationRecord
       (percent_tasters_purcahased.to_f / avg_tasters_purchased.to_f).to_f * 100.0
     end
   end
-  def conversion_variance
-    #(family winery - average) / family winery
-    (percent_tasters_purcahased - avg_tasters_purchased).to_f / percent_tasters_purcahased.to_f * 100.0
-  end
+
 
   def avg_club_conversion
     total = 0
@@ -219,10 +210,7 @@ class SalesSummary < ApplicationRecord
       (percent_club_signup.to_f / avg_club_conversion.to_f).to_f * 100.0
     end
   end
-  def club_conversion_variance
-    #(family winery - average) / family winery
-    (percent_club_signup - avg_club_conversion).to_f / percent_club_signup.to_f * 100.0
-  end
+
 
   def avg_sales_per_taster
     total = 0
@@ -250,10 +238,7 @@ class SalesSummary < ApplicationRecord
       (sales_per_taster.to_f / avg_sales_per_taster.to_f).to_f * 100.0
     end
   end
-  def sales_per_taster_variance
-    #(family winery - average) / family winery
-    (sales_per_taster - avg_sales_per_taster).to_f / sales_per_taster.to_f * 100.0
-  end
+
 
   def avg_sales_per_purchase
     total = 0
@@ -281,10 +266,40 @@ class SalesSummary < ApplicationRecord
       (sales_per_purchase.to_f / avg_sales_per_purchase.to_f).to_f * 100.0
     end
   end
+
+
+  # variance. NOT USED
+  def num_of_tasters_variance
+    #(family winery - average) / family winery
+    (num_of_tasters - avg_tasters).to_f / num_of_tasters.to_f * 100.0
+  end
+  def num_of_purchasers_variance
+    #(family winery - average) / family winery
+    (num_of_purchasers - avg_purchasers).to_f / num_of_purchasers.to_f * 100.0
+  end
+  def num_of_club_signups_variance
+    #(family winery - average) / family winery
+    (num_of_club_signups - avg_club_signups).to_f / num_of_club_signups.to_f * 100.0
+  end
+  def sales_in_dollars_variance
+    #(family winery - average) / family winery
+    (sales_in_dollars - avg_sales_in_dollars).to_f / sales_in_dollars.to_f * 100.0
+  end
+  def conversion_variance
+    #(family winery - average) / family winery
+    (percent_tasters_purcahased - avg_tasters_purchased).to_f / percent_tasters_purcahased.to_f * 100.0
+  end
+  def club_conversion_variance
+    #(family winery - average) / family winery
+    (percent_club_signup - avg_club_conversion).to_f / percent_club_signup.to_f * 100.0
+  end
+  def sales_per_taster_variance
+    #(family winery - average) / family winery
+    (sales_per_taster - avg_sales_per_taster).to_f / sales_per_taster.to_f * 100.0
+  end
   def sales_per_purchase_variance
     #(family winery - average) / family winery
     (sales_per_purchase - avg_sales_per_purchase).to_f / sales_per_purchase.to_f * 100.0
   end
-
 
 end

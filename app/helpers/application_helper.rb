@@ -1,6 +1,6 @@
 module ApplicationHelper
   def full_title(page_title = '')
-    base_title = 'Winery Group'
+    base_title = 'Community Benchmark'
     if page_title.empty?
       base_title
     else
@@ -8,6 +8,8 @@ module ApplicationHelper
     end
   end
 
+  ## picks one of the winery images for cases when the user hasnt uploaded an image for the winery or tasting room
+  ## all these images are in /app/assets/images/
   def random_wine_image
       a = rand(1..8)
       if a == 1
@@ -28,6 +30,8 @@ module ApplicationHelper
         return asset_path "wine/8.jpg"
       end
   end
+  ## picks a random image for the Regions.
+  ## all these images are in /app/assets/images/
   def random_cali_image
       a = rand(5)
       if a == 0

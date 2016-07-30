@@ -1,4 +1,5 @@
 module SessionsHelper
+  ## these are the helpers for Login and logout and keeping a user active in the session
   def log_in(user)
     session[:user_id] = user.id
   end
@@ -19,6 +20,7 @@ module SessionsHelper
     @current_user = nil
   end
 
+  # returns the current logged in user from Session or Cookies
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
@@ -31,6 +33,7 @@ module SessionsHelper
     end
   end
 
+  ## Quick check
   def current_user?(user)
     user == current_user
   end
