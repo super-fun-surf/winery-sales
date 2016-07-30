@@ -19,9 +19,9 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
 
 ## Install
 
-* clone this Repo into the App Directory
+* Clone this Repo into the App Directory
 
-* Copy over the env.yml into the App Directory in config/
+* Copy over the env.yml into the App Directory inside config/
 
 * In Production Create the psql Database user "winery" and set your password
 
@@ -54,10 +54,11 @@ Ruby on Rails Application for Wineries to Improve Sales by co-creating regional 
   * Has many SalesSummaries
   * Belongs to a Region
 * ### SalesSummaries
+  * sales summaries are the main benchmark data.
   * The Winery's Monthly Sales Data is stored here.
   * Entry per month
-  * The Model File has the functions for calculating the fields not stored in the DB.
-    * i.e. "Percent_tasters_purcahased"
+  * The Model File has the functions for calculating the fields of the benchmark not stored in the DB.
+    * i.e. "percent_tasters_purcahased"
 * ### Regions
   * Belongs to a County
   * The model file has the methods for calculating the region averages
