@@ -9,6 +9,8 @@ class WineriesController < ApplicationController
   # GET /wineries.json
   def index
     @wineries = Winery.order(name: :asc)
+    @month_select = Date.today.month
+    @month_select = @month_select - 1 unless @month_select == 1
     respond_to do |format|
       format.html
       format.csv  {

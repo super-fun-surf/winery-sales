@@ -4,7 +4,8 @@
    <%# link_to "CSV",wineries_path(format: :csv) , class: "btn btn-sm btn-secondary" %>
 </h1>
 <%= form_tag(wineries_path(format: :csv), method: :get, id: "select_month_for_csv", class: "form-inline") do %>
-  <%= select_month(Date.today.month, :field_name => 'month', class: "form-control" ) %>
+
+  <%= select_month(@month_select, :field_name => 'month', class: "form-control" ) %>
   <%# select_tag 'month', options_for_select(Date::MONTHNAMES), selected: @sales_summary.month, onchange:'this.form.submit()' %>
   <%= select_year(Date.today.year, field_name: 'year', class: 'form-control') %>
   <%= submit_tag "CSV", class: "btn btn-secondary", style: "position:relative;" %>

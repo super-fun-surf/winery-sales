@@ -39,6 +39,35 @@ class TastingRoom < ApplicationRecord
     end
   end
 
+  ## calc the number of purchasers year to date
+  ##all sales summaries from this winery for this year upto the date of this sales summary
+  def ytd_num_of_tasters(year, month)
+    winery = self.winery
+    tasting_room = self
+    ytd_ss = tasting_room.sales_summaries.where('year = ? AND month <= ?', year, month)
+    total = 0
+    ytd_ss.each do |ss|
+      total += ss.num_of_tasters if ss.num_of_tasters.present?
+    end
+    return total
+  end
+
+  ## calc the number of purchasers year to date
+  ##all sales summaries from this winery for this year upto the date of this sales summary
+  def ytd_num_of_purchasers(year, month)
+    winery = self.winery
+    tasting_room = self    
+    ytd_ss = tasting_room.sales_summaries.where('year = ? AND month <= ?', year, month)
+    total = 0
+    ytd_ss.each do |ss|
+      total += ss.num_of_purchasers if ss.num_of_purchasers.present?
+    end
+    return total
+  end
+
+
+
+
   def as_csv
   CSV.generate do |csv|
     csv << ["Year",

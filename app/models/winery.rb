@@ -15,7 +15,9 @@ class Winery < ApplicationRecord
         "Employees",
         "Cases Sold 2015",
         "Tasters",
+        "Tasters YTD",
         "Purchases",
+        "Purchases YTD",
         "Sales",
         "Clubs"
       ]
@@ -29,7 +31,9 @@ class Winery < ApplicationRecord
             winery.num_of_employees,
             winery.cases_sold_2015,
             ss.num_of_tasters,
+            ss.ytd_num_of_tasters,
             ss.num_of_purchasers,
+            ss.ytd_num_of_purchasers,
             ss.sales_in_dollars,
             ss.num_of_club_signups
           ]
@@ -40,7 +44,9 @@ class Winery < ApplicationRecord
               winery.num_of_employees,
               winery.cases_sold_2015,
               "nil",
+              tr.ytd_num_of_tasters(year, month),
               "nil",
+              tr.ytd_num_of_purchasers(year, month),
               "nil",
               "nil"
             ]

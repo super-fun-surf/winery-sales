@@ -70,6 +70,19 @@ class SalesSummary < ApplicationRecord
       (num_of_tasters.to_f / avg_tasters.to_f).to_f * 100.0
     end
   end
+  ## all sales summaries from this winery for this year upto the date of this sales summary
+  def ytd_num_of_tasters
+    winery = self.winery
+    tasting_room = self.tasting_room
+    year = self.year
+    month = self.month
+    ytd_ss = tasting_room.sales_summaries.where('year = ? AND month <= ?', year, month)
+    total = 0
+    ytd_ss.each do |ss|
+      total += ss.num_of_tasters if ss.num_of_tasters.present?
+    end
+    return total
+  end
 
   def avg_purchasers
     total = 0
@@ -97,6 +110,21 @@ class SalesSummary < ApplicationRecord
     else
       (num_of_purchasers.to_f / avg_purchasers.to_f).to_f * 100.0
     end
+  end
+
+  ## calc the number of purchasers year to date
+  ##all sales summaries from this winery for this year upto the date of this sales summary
+  def ytd_num_of_purchasers
+    winery = self.winery
+    tasting_room = self.tasting_room
+    year = self.year
+    month = self.month
+    ytd_ss = tasting_room.sales_summaries.where('year = ? AND month <= ?', year, month)
+    total = 0
+    ytd_ss.each do |ss|
+      total += ss.num_of_purchasers if ss.num_of_purchasers.present?
+    end
+    return total
   end
 
 
