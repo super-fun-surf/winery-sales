@@ -38,7 +38,9 @@
         <td><%= number_to_currency sales_summary.sales_per_purchase %></td>
         <td><%= link_to 'Benchmark', sales_summary, class: 'btn btn-success btn-sm' %></td>
         <td><%= link_to 'Edit', edit_sales_summary_path(sales_summary), class: 'btn btn-info btn-sm' %></td>
-        <%# link_to 'X', sales_summary, method: :delete, data: { confirm: 'Destroy this Record. Are you sure?' }, class: 'btn btn-danger' %>
+        <% if root? %>
+          <td><%= link_to 'X', sales_summary, method: :delete, data: { confirm: 'Destroy this Record. Are you sure?' }, class: 'btn btn-danger' %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
