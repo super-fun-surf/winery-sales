@@ -35,7 +35,10 @@
             <%= link_to tr.region.name, tr %>: <%= tr.missing_months_this_year %><br>
           <% end %>
         </td>
-        <td><%= mail_to winery.users.first.email if winery.users.present? %></td>
+        <td><% winery.users.each do |user| %>
+              <%= mail_to user.email %><br>
+            <% end %>
+        </td>
         <td><%= winery.num_of_employees %></td>
         <td><%= winery.cases_sold_2015 %></td>
         <td><%= winery.wine_club_members %></td>
