@@ -113,7 +113,7 @@ class SalesSummary < ApplicationRecord
   end
 
   ## calc the number of purchasers year to date
-  ##all sales summaries from this winery for this year upto the date of this sales summary
+  ## all sales summaries from this winery for this year upto the date of this sales summary
   def ytd_num_of_purchasers
     winery = self.winery
     tasting_room = self.tasting_room
@@ -146,6 +146,18 @@ class SalesSummary < ApplicationRecord
     else
       0
     end
+  end
+  def ytd_num_of_club_signups
+    winery = self.winery
+    tasting_room = self.tasting_room
+    year = self.year
+    month = self.month
+    ytd = tasting_room.sales_summaries.where('year = ? AND month <= ?', year, month)
+    total = 0
+    ytd.each do |ss|
+      total += ss.num_of_club_signups if ss.num_of_club_signups.present?
+    end
+    return total
   end
   def num_of_club_signups_percent_different
     if self.num_of_club_signups.blank?
@@ -182,6 +194,19 @@ class SalesSummary < ApplicationRecord
       (sales_in_dollars.to_f / avg_sales_in_dollars.to_f).to_f * 100.0
     end
   end
+  def ytd_sales_in_dollars
+    winery = self.winery
+    tasting_room = self.tasting_room
+    year = self.year
+    month = self.month
+    ytd = tasting_room.sales_summaries.where('year = ? AND month <= ?', year, month)
+    total = 0
+    ytd.each do |ss|
+      total += ss.sales_in_dollars if ss.sales_in_dollars.present?
+    end
+    return total
+  end
+
 
   ## conversion ratio
   def avg_tasters_purchased

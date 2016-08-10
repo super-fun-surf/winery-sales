@@ -15,11 +15,13 @@ class Winery < ApplicationRecord
         "Employees",
         "Cases Sold 2015",
         "Tasters",
-        "Tasters YTD",
+        "YTD Tasters",
         "Purchases",
-        "Purchases YTD",
+        "YTD Purchases",
         "Sales",
-        "Clubs"
+        "YTD Sales",
+        "Club Signups",
+        "YTD Club Signups"
       ]
       self.order(name: :asc).each do |winery|
         winery.tasting_rooms.each do |tr|
@@ -35,7 +37,9 @@ class Winery < ApplicationRecord
             ss.num_of_purchasers,
             ss.ytd_num_of_purchasers,
             ss.sales_in_dollars,
-            ss.num_of_club_signups
+            ss.ytd_sales_in_dollars,
+            ss.num_of_club_signups,
+            ss.ytd_num_of_club_signups
           ]
           else
             csv << [ winery.name,
@@ -48,7 +52,9 @@ class Winery < ApplicationRecord
               "nil",
               tr.ytd_num_of_purchasers(year, month),
               "nil",
-              "nil"
+              tr.ytd_sales_in_dollars(year, month),
+              "nil",
+              tr.ytd_num_of_club_signups(year, month)
             ]
           end
         end

@@ -56,11 +56,33 @@ class TastingRoom < ApplicationRecord
   ##all sales summaries from this winery for this year upto the date of this sales summary
   def ytd_num_of_purchasers(year, month)
     winery = self.winery
-    tasting_room = self    
+    tasting_room = self
     ytd_ss = tasting_room.sales_summaries.where('year = ? AND month <= ?', year, month)
     total = 0
     ytd_ss.each do |ss|
       total += ss.num_of_purchasers if ss.num_of_purchasers.present?
+    end
+    return total
+  end
+
+  def ytd_sales_in_dollars(year, month)
+    winery = self.winery
+    tasting_room = self
+    ytd_ss = tasting_room.sales_summaries.where('year = ? AND month <= ?', year, month)
+    total = 0
+    ytd_ss.each do |ss|
+      total += ss.sales_in_dollars if ss.sales_in_dollars.present?
+    end
+    return total
+  end
+
+  def ytd_num_of_club_signups(year, month)
+    winery = self.winery
+    tasting_room = self
+    ytd_ss = tasting_room.sales_summaries.where('year = ? AND month <= ?', year, month)
+    total = 0
+    ytd_ss.each do |ss|
+      total += ss.num_of_club_signups if ss.num_of_club_signups.present?
     end
     return total
   end
