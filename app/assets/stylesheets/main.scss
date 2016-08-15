@@ -127,7 +127,12 @@ hr {
 
 .darklink {
   color: rgb(5,5,5);
+  &:hover {
+    text-decoration: none;
+  }
   a {
     color: rgb(5,5,5);
+
   }
+
 }

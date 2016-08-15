@@ -152,7 +152,7 @@ class Region < ApplicationRecord
     count = 0
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
-        if ss.percent_club_signup.present?
+        if ss.percent_club_signup.present? && ss.num_of_purchasers != 0
           count += 1
           total += ss.percent_club_signup
         end
@@ -168,7 +168,7 @@ class Region < ApplicationRecord
     count = 0
     self.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
-        count += 1 if ss.percent_club_signup.present?
+        count += 1 if ss.percent_club_signup.present? && ss.num_of_purchasers != 0
       end
     end
     count

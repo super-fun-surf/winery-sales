@@ -32,7 +32,7 @@
       <table class="table-summary table-hover">
         <thead>
           <tr>
-            <th></th>
+            <th style=""></th>
             <th><strong style="font-size:1.1em;"><%= @sales_summary.tasting_room.name %></strong> @ <%= @sales_summary.tasting_room.region.name %></th>
             <th><%= @sales_summary.tasting_room.region.name %> Average: <br><small><%# pluralize(@sales_summary.tasting_room.region.tasting_rooms.count, 'winery') %></small></th>
             <th>Variance</th>
@@ -128,7 +128,9 @@
           </tr>
 
           <tr>
-            <td class="right">Purchase Conversion</td>
+            <td class="right">
+              <%= link_to ("Purchase Conversion").html_safe, "",remote: true, class: "darklink", data: { toggle: "tooltip", title: "Purchases / Tasters" } %>
+            </td>
             <td><%= number_to_percentage sales_summary.percent_tasters_purcahased, precision: 1 %></td>
             <td class="num-reporting-td">
               <%= number_to_percentage sales_summary.avg_tasters_purchased, precision: 1 %>
@@ -149,7 +151,9 @@
           </tr>
 
           <tr>
-            <td class="right">Club Conversion</td>
+            <td class="right">
+              <%= link_to ("Club Conversion").html_safe, "",remote: true, class: "darklink", data: { toggle: "tooltip", title: "Club Signups / Purchases" } %>
+            </td>
             <td><%= number_to_percentage sales_summary.percent_club_signup, precision: 1 %></td>
             <td class="num-reporting-td">
               <%= number_to_percentage sales_summary.avg_club_conversion, precision: 1 %>
@@ -170,7 +174,9 @@
           </tr>
 
           <tr>
-            <td class="right">Sales Per Taster</td>
+            <td class="right">
+            <%= link_to ("Sales Per Taster").html_safe, "",remote: true, class: "darklink", data: { toggle: "tooltip", title: "Sales / Tasters" } %>
+          </td>
             <td><%= number_to_currency sales_summary.sales_per_taster %></td>
             <td class="num-reporting-td">
               <%= number_to_currency sales_summary.avg_sales_per_taster, precision: 1 %>
@@ -190,7 +196,9 @@
             </td>
           </tr>
           <tr>
-            <td class="right">Sales Per Purchase</td>
+            <td class="right">
+              <%= link_to ("Sales Per Purchase " ).html_safe, "",remote: true, class: "darklink", data: { toggle: "tooltip", title: "Sales / Purchases" } %>
+            </td>
             <td><%= number_to_currency sales_summary.sales_per_purchase %></td>
             <td class="num-reporting-td">
               <%= number_to_currency sales_summary.avg_sales_per_purchase, precision: 1 %>

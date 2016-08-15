@@ -18,8 +18,8 @@ class SalesSummary < ApplicationRecord
     end
   end
   def percent_club_signup
-    if num_of_club_signups.present? && num_of_tasters.present?
-      num_of_club_signups.to_f / num_of_tasters.to_f * 100.0
+    if num_of_club_signups.present? && num_of_purchasers.present?
+      num_of_club_signups.to_f / num_of_purchasers.to_f * 100.0
     else
       nil #0.0
     end
@@ -244,7 +244,8 @@ class SalesSummary < ApplicationRecord
     year = self.year
     region.tasting_rooms.each do |tr|
       tr.sales_summaries.where(month: month, year: year).each do |ss|
-        if ss.percent_club_signup.present?
+      
+        if ss.percent_club_signup.present? && ss.num_of_purchasers != 0
           count += 1
           total += ss.percent_club_signup
         end

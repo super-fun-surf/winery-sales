@@ -18,19 +18,19 @@
     Club Signups
   </div>
   <div class="seventh <%= 'active' if params[:conversion].present? %>">
-    <%= link_to '<span></span>'.html_safe, tasting_room_path(conversion: true) %>
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(conversion: true), data: { toggle: "tooltip", title: "Purchases / Tasters" } %>
     Purchase Conversion
   </div>
   <div class="seventh <%= 'active' if params[:club_conversion].present? %>">
-    <%= link_to '<span></span>'.html_safe, tasting_room_path(club_conversion: true) %>
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(club_conversion: true), data: { toggle: "tooltip", title: "Club Signups / Purchases" } %>
     Club Conversion
   </div>
   <div class="seventh <%= 'active' if params[:sales_per_taster].present? %>">
-    <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_taster: true) %>
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_taster: true), data: { toggle: "tooltip", title: "Sales / Tasters" } %>
     Sales Per Taster
   </div>
   <div class="seventh <%= 'active' if params[:sales_per_purchase].present? %>">
-    <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_purchase: true) %>
+    <%= link_to '<span></span>'.html_safe, tasting_room_path(sales_per_purchase: true), data: { toggle: "tooltip", title: "Sales / Purchases" } %>
     Sales Per Purchase
   </div>
 </div>
