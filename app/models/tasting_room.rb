@@ -105,16 +105,17 @@ class TastingRoom < ApplicationRecord
 
       #sales_summary.tasting_room.region.name,
     self.sales_summaries.order(year: :desc, month: :desc ).each do |sales_summary|
+
       csv << [ sales_summary.year,
         Date::MONTHNAMES[sales_summary.month],
         sales_summary.num_of_tasters,
         sales_summary.num_of_purchasers,
         sales_summary.sales_in_dollars,
         sales_summary.num_of_club_signups,
-        sales_summary.percent_tasters_purcahased.round(1),
-        sales_summary.percent_club_signup.round(1),
-        sales_summary.sales_per_taster.round(2),
-        sales_summary.sales_per_purchase.round(2) ]
+        sales_summary.percent_tasters_purcahased,
+        sales_summary.percent_club_signup,
+        sales_summary.sales_per_taster,
+        sales_summary.sales_per_purchase ]
     end
   end
 end
