@@ -45,7 +45,7 @@
 
 
         <%# link_to 'Edit', edit_winery_path(winery), class: 'btn btn-sm btn-info' %>
-        <%# link_to 'Destroy', winery, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= link_to 'Destroy', winery, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' if root? %></td>
       </tr>
     <% end %>
   </tbody>

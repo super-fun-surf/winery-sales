@@ -28,6 +28,12 @@ class WineryUsersController < ApplicationController
   # POST /winery_users
   # POST /winery_users.json
   def create
+    #debugger
+    #if winery_user_params[:new_user_email].present?
+    #  user = User.create(email: winery_user_params[:new_user_email], name: winery_user_params[:new_user_name])
+    #  winery_user_params[:user_id] = user.id
+    #end
+
     @winery_user = WineryUser.new(winery_user_params)
 
     respond_to do |format|
@@ -73,6 +79,6 @@ class WineryUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def winery_user_params
-      params.require(:winery_user).permit(:user_id, :winery_id, :permissions, :position)
+      params.require(:winery_user).permit(:user_id, :winery_id, :permissions, :position, :new_user_email, :new_user_name)
     end
 end
