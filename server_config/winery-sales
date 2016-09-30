@@ -1,0 +1,39 @@
+#upstream app_server { server 127.0.0.1:3000 fail_timeout=0; }
+
+
+
+
+server {
+
+	listen 80 default_server;
+  	listen [::]:80 default_server ipv6only=on;
+
+        listen   443 ssl;
+
+        ssl_certificate /etc/nginx/ssl/sn.crt;
+        ssl_certificate_key /etc/nginx/ssl/sn.key;
+
+        root /var/www/winery-sales/public;
+#        server_name 104.236.130.109;
+	server_name communitybenchmark.org
+        index index.htm index.html;
+
+	passenger_enabled on;
+	passenger_ruby /usr/local/rvm/gems/ruby-2.3.1/wrappers/ruby;
+	
+	# ENV cariables
+#	passenger_env_var VAR_NAME "var_value";
+#	env VAR1=value1;
+
+  #      if ( $request_filename ~ default.asp ) {
+  #            rewrite ^ https://bountifulgardens.org/? permanent;
+  #        }
+
+
+       
+   #     location / {
+#                rewrite ^.*/productinfo/(.*)$ /products/$1 permanent;
+ #       }
+
+}
+

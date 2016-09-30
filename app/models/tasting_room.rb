@@ -1,8 +1,10 @@
 class TastingRoom < ApplicationRecord
   attachment :profile_image
   belongs_to :region
+  has_one :county, through: :region
   belongs_to :winery
   has_many :sales_summaries, dependent: :destroy
+
 
   # Clean up the URLs a bit
   # def to_param
