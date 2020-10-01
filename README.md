@@ -1,4 +1,5 @@
 # Winery Sales
+This is outdated. Still very interesting but the production app is running at community something .com
 
 Ruby on Rails Application for Wineries to Improve Sales by co-creating regional Sales Figures and Graphs.
 * **The [todo list](design/TODO.md) and roadmap is in the design folder**
